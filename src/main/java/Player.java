@@ -47,7 +47,7 @@ public class Player{
     //Return array with players properties
     /*public boolean[] getmyProperties(){
         return myProperties;
-    }*/
+    }
 
-    //Wallet wallet = new Waller();
+    //Wallet wallet = new Waller();*/
 }

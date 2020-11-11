@@ -2,10 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GameBoard {
+/* !!!TANKER!!!
+- FIX SÅ PROGRAMMET IKKE STOPPER VED FOR STOR INT I NUMBEROFPLAYERS
+- DET SAMME KAN GØRES FOR STRING
+- SKAL GUI REFERERER OG KØRES HERFRA?
+- PLAYER.HASTURN???
+- WALLET FÅ STYR PÅ VARIABLER BRUGT
+*/
 
-    public static void Game() {
-        int MinCash = 0;
+public class GameBoard {
+     static void Game() {
+        int MinCash_EndGame = 0;
         int numberOfPlayers;
         Scanner scanner = new Scanner(System.in);
         List<Player> playerList = new ArrayList<>();
@@ -14,21 +21,33 @@ public class GameBoard {
         System.out.println("Please enter the number of players ranging from 2-4: ");
         numberOfPlayers = scanner.nextInt();
         while(numberOfPlayers > 4|| numberOfPlayers < 2) {
-                    System.out.println("Please try again in the range of 2-4: ");
-                    numberOfPlayers = scanner.nextInt();
+            System.out.println("Please try again in the range of 2-4: ");
+            numberOfPlayers = scanner.nextInt();
         }
-        // Create player objects as per numberOfPlayers int
+        // Create player objects as per the playerdefined numberOfPlayers int
         for(int i = 1; i < numberOfPlayers+1; i++){
             System.out.println("Please enter player " + i + "'s name: ");
             Player player = new Player(scanner.next(),i);
+            /* Sets the players money according the rules
+            switch(numberOfPlayers) {
+                case 2:
+                    player.Wallet.SetMoney(20);
+                    break;
+                case 3:
+                    player.Wallet.SetMoney(18);
+                    break;
+                case 4:
+                    player.Wallet.SetMoney(16);
+                    break;
+            }*/
             playerList.add(player);
         }
 
-        /*Printout playernames test
+        //printout playernames test
         for (Player player:
              playerList) {
             System.out.println(player.name);
-        }*/
+        }
 
         //Sets player 1 hasTurn variable to turn so that the game can start
         /*playerList.get(0).setHasTurn(true);
@@ -62,20 +81,19 @@ public class GameBoard {
                                 System.out.println("Rolls: " + d1.getFaceValue());
                                 System.out.println(playerList.get(i).name + " now has " + playerList.get(i).Wallet.getMoney() + " M!");
                             }
-                            // sets the hasTurn boolean to false ending the turn.
-                            if (playerList.get(0).hasTurn) {
-                                playerList.get(1).setHasTurn(true);
-                                playerList.get(0).setHasTurn(false);
-                            } else if (playerList.get(1).hasTurn) {
-                                playerList.get(2).setHasTurn(true);
-                                playerList.get(1).setHasTurn(false);
-                            } else if (playerList.get(2).hasTurn) {
-                                playerList.get(3).setHasTurn(true);
-                                playerList.get(2).setHasTurn(false);
-                            } else if (playerList.get(3).hasTurn) {
-                                playerList.get(0).setHasTurn(true);
-                                playerList.get(3).setHasTurn(false);
+
+
+                            // VIP SKIFT TUR BURDE VIRKE???
+                            if(playerList.get(i).hasTurn) {
+                                if(playerList.get(i) == playerList.Size()) {
+                                    playerList.get(i).setHasTurn(false)
+                                    playerList.get(0).setHasTurn(True)
+                                } else {
+                                    playerList.get(i).setHasTurn(false)
+                                    playerList.get(i+1).setHasTurn(true)
+                                }
                             }
+
                     }
                 }
             }
