@@ -27,22 +27,26 @@ public class Player{
     {
         return Position;
     }
+
     public void setPosition(int properties)
     {
         this.Position = Position;
     }
+
     public void setMyProperties(int k)
     {
         myProperties[k] = true;
     }
+
     public void setJailCard(boolean k) {
         if (!k)
             JailCard = false;
         else JailCard = true;
     }
+
     //Return array with players properties
-    public boolean getmyProperties(int k){
-        return myProperties[k];
+    public boolean[] getmyProperties(){
+        return myProperties;
     }
 
     Wallet wallet = new Waller();
