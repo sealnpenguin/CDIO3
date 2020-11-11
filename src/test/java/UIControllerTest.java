@@ -10,7 +10,7 @@ class UIControllerTest {
     @Test
     void UIFieldGen() {
         UIController myControl = new UIController();
-        GUI gui = new GUI(myControl.UIFieldGen(15));
+        GUI gui = new GUI(myControl.UIFieldGen(24));
         Scanner scan = new Scanner(System.in);
         scan.nextInt();
     }
