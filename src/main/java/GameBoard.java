@@ -1,3 +1,7 @@
+import gui_fields.GUI_Field;
+import gui_fields.GUI_Player;
+import gui_main.GUI;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,19 +19,26 @@ public class GameBoard {
         int MinCash_EndGame = 0;
         int numberOfPlayers;
         Scanner scanner = new Scanner(System.in);
-        List<Player> playerList = new ArrayList<>(); //Arraylist?
+        List<Player> playerList = new ArrayList<>();
         //Dice d1 = new Dice(1); // One die is instantiated with new Dice(int X);
+        GUI gui = new GUI();
 
-        System.out.println("Please enter the number of players ranging from 2-4: ");
-        numberOfPlayers = scanner.nextInt();
+
+
+        //System.out.println("Please enter the number of players ranging from 2-4: ");
+        //numberOfPlayers = scanner.nextInt();
+        numberOfPlayers = gui.getUserInteger("Enter the number of players ranging from 2-4");
         while(numberOfPlayers > 4|| numberOfPlayers < 2) {
-            System.out.println("Please try again in the range of 2-4: ");
-            numberOfPlayers = scanner.nextInt();
+            //System.out.println("Please try again in the range of 2-4: ");
+            gui.showMessage("Please try again in the range of 2-4");
+            //numberOfPlayers = scanner.nextInt();
+            numberOfPlayers = gui.getUserInteger("Please enter the number of players ranging from 2-4");
         }
         // Create player objects as per the playerdefined numberOfPlayers int
         for(int i = 1; i < numberOfPlayers+1; i++){
-            System.out.println("Please enter player " + i + "'s name: ");
-            Player player = new Player(scanner.nextLine());
+            //System.out.println("Please enter player " + i + "'s name: ");
+            //Player player = new Player(scanner.next(), i); old code :)
+            Player player = new Player(gui.getUserString("Enter name for player " + i),i);
             /* Sets the players money according the rules
             switch(numberOfPlayers) {
                 case 2:
@@ -42,12 +53,19 @@ public class GameBoard {
             }*/
             playerList.add(player);
         }
+         //printout playernames test
+         for (Player player:
+                 playerList) {
+             System.out.println(player.name);
+         }
 
         //printout playernames test
         for (Player player:
              playerList) {
-            System.out.println(player.getName());
+            GUI_Player guiplayerx = new GUI_Player(player.name, 2000);
+            gui.addPlayer(guiplayerx);
         }
+
 
         //Sets player 1 hasTurn variable to turn so that the game can start
         /*playerList.get(0).setHasTurn(true);
@@ -98,5 +116,6 @@ public class GameBoard {
                 }
             }
         }*/
+         scanner.close();
     }
 }
