@@ -15,7 +15,7 @@ public class GameBoard {
         int MinCash_EndGame = 0;
         int numberOfPlayers;
         Scanner scanner = new Scanner(System.in);
-        List<Player> playerList = new ArrayList<>();
+        List<Player> playerList = new ArrayList<>(); //Arraylist?
         //Dice d1 = new Dice(1); // One die is instantiated with new Dice(int X);
 
         System.out.println("Please enter the number of players ranging from 2-4: ");
@@ -27,7 +27,7 @@ public class GameBoard {
         // Create player objects as per the playerdefined numberOfPlayers int
         for(int i = 1; i < numberOfPlayers+1; i++){
             System.out.println("Please enter player " + i + "'s name: ");
-            Player player = new Player(scanner.next(),i);
+            Player player = new Player(scanner.nextLine());
             /* Sets the players money according the rules
             switch(numberOfPlayers) {
                 case 2:

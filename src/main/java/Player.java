@@ -1,53 +1,57 @@
 import java.util.ArrayList;
 
 public class Player{
-    public String name;
+    //Attributes
+    private String name;
     private Boolean inJail;
-    private Boolean JailCard;
+    private int JailCard;
     private Boolean[] myProperties = new Boolean[12]; //spilleren ejendomme
     private int Position;
-    private int  playernumber;
 
-
-    public Player(String Name, int number)
+    public Player(String Name)
     {
         name = Name;
         inJail = false;
-        JailCard = false;
+        JailCard = 0;
         Position = 0;
-        playernumber = number;
     }
 
-    public int getplayernumber()
-    {
-        return playernumber;
-    }
 
     public int getPosition()
     {
         return Position;
     }
 
-    public void setPosition(int properties)
+    public void setPosition(int Position)
     {
         this.Position = Position;
     }
-
-    public void setMyProperties(int k)
+    public String getName()
     {
-        myProperties[k] = true;
+        return name;
     }
 
-    public void setJailCard(boolean k) {
-        if (!k)
-            JailCard = false;
-        else JailCard = true;
+    public void setMyProperties(int k, boolean tf)
+    {
+        if (tf)
+        myProperties[k] = true;
+        else
+            myProperties[k] = false;
+    }
+
+    //adds or remove jailcard(s) to a player
+    public int setJailCard(int jailCard) {
+        return this.JailCard += jailCard;
+    }
+    public int getJailCard()
+    {
+        return this.JailCard;
     }
 
     //Return array with players properties
-    /*public boolean[] getmyProperties(){
+    public Boolean[] getmyProperties(){
         return myProperties;
     }
 
-    //Wallet wallet = new Waller();*/
+    //Wallet wallet = new Waller();
 }
