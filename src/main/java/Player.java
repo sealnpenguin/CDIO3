@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Player{
-    private String name;
+    public String name;
     private Boolean inJail;
     private Boolean JailCard;
     private Boolean[] myProperties = new Boolean[12]; //spilleren ejendomme
@@ -45,9 +45,9 @@ public class Player{
     }
 
     //Return array with players properties
-    public boolean[] getmyProperties(){
+    /*public boolean[] getmyProperties(){
         return myProperties;
-    }
+    }*/
 
-    Wallet wallet = new Waller();
+    //Wallet wallet = new Waller();
 }
