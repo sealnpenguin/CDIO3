@@ -1,9 +1,13 @@
-public class Properties {
+import gui_fields.GUI_Field;
+import gui_fields.GUI_Ownable;
+import gui_main.GUI;
 
-    public String property(int n){
-        switch (n) {
+import java.awt.*;
 
-        }
-        return "";
+public class Properties extends GUI_Ownable {
+    public Properties(Color bgColor, Color fgColor, String title, String subText, String description, String leje) {
+        super(bgColor, fgColor, title, subText, description, leje);
     }
+
+
 }

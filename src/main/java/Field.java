@@ -6,15 +6,16 @@ public class Field {
         faceValue = (int)(Math.random() * MAX) +1;
         return faceValue;
     }
-    String[] allFields;
-    public Field(String[]field){
-        this.allFields = field;
-    }
+
+    // Player position instantiation for development purposes
+    private int n = 0;
+    int playerPos = n;
 
     public static void play() { //working title
         rollDice();
         System.out.println(faceValue);
 
+        String[] allFields;
 
     }
 }
