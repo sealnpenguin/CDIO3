@@ -34,49 +34,6 @@ public class Main {
         field.setTitle("Burgerbaren");
         field.setSubText("M1");
 
-        field = gui.getFields()[2];
-        field.setTitle("Pizzahuset");
-        field.setSubText("M1");
-
-        field = gui.getFields()[3];
-        field.setTitle("Chance");
-        field.setSubText("");
-
-        field = gui.getFields()[4];
-        field.setTitle("Godtebutikken");
-        field.setSubText("M1");
-
-        field = gui.getFields()[5];
-        field.setTitle("Iskiosken");
-        field.setSubText("M1");
-
-        field = gui.getFields()[6];
-        field.setTitle("I fængsel");
-        field.setSubText("På besøg");
-
-        field = gui.getFields()[5];
-        field.setTitle("Museet");
-        field.setSubText("M2");
-
-        field = gui.getFields()[6];
-        field.setTitle("Biblioteket");
-        field.setSubText("M2");
-
-        field = gui.getFields()[7];
-        field.setTitle("Chance");
-
-        field = gui.getFields()[8];
-        field.setTitle("Rullebrætparken");
-        field.setSubText("M2");
-
-        field = gui.getFields()[9];
-        field.setTitle("Svømmebassinet");
-        field.setSubText("M2");
-
-        field = gui.getFields()[10];
-        field.setTitle("Gratis");
-        field.setSubText("Parkering");
-
     }
 
 }

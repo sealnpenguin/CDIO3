@@ -1,4 +1,9 @@
 public class Field {
+
+    String fieldName;
+    String fieldDescription = "";
+    int fieldValue = 1;
+
     //Die for development purposes (from CDIO 2)
     private static int MAX = 6; // max value of a die
     private static int faceValue; // value of the die
