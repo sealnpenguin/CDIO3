@@ -1,23 +1,35 @@
-import gui_fields.GUI_Field;
-import gui_fields.GUI_Jail;
-import gui_fields.GUI_Start;
+import gui_fields.*;
 
 import java.awt.*;
 
 public class UIController {
 
-    public GUI_Field[] UIFieldGen(int test){
-        GUI_Field[] guiFields = new GUI_Field[test];
-        for (int i = 0; i < guiFields.length; i++) {
-            //Stub code to see if it works as expected
-            if(i == 18){
-                guiFields[i] = new GUI_Jail("default", "Fængsel", "Fængsel", "På besøg i fængslet", new Color(125, 125, 125), Color.BLACK);
-            }
-            else {
-                guiFields[i] = new GUI_Start("Start", "Modtag: 200", "Modtag kr. 200,-\nnår de passerer start", Color.RED, Color.BLACK);
+    public GUI_Field[] UIFieldGen(Field[] fieldArray){
+        GUI_Field[] guiFields = new GUI_Field[fieldArray.length];
+        for (int i = 0; i < fieldArray.length; i++) {
 
+            if(fieldArray[i] instanceof FieldStart){
+                guiFields[i] = new GUI_Start(((FieldStart) fieldArray[i]).getFieldName(), ((FieldStart) fieldArray[i]).getFieldDescription(), ((FieldStart) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
             }
+            else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("chance")){
+                guiFields[i] = new GUI_Chance(((FieldInfo) fieldArray[i]).getFieldName(), ((FieldStart) fieldArray[i]).getFieldDescription(), ((FieldStart) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            }
+            else if(fieldArray[i] instanceof Jail) {
+                guiFields[i] = new GUI_Jail( "default",((Jail) fieldArray[i]).getFieldName(), ((Jail) fieldArray[i]).getFieldDescription(), ((Jail) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            }
+            else if(fieldArray[i] instanceof Properties) {
+                guiFields[i] = new GUI_Street(((Properties) fieldArray[i]).getFieldName(), ((Properties) fieldArray[i]).getFieldDescription(), ((Properties) fieldArray[i]).getFieldDescription(), "pris metode", Color.RED, Color.BLACK);
+            }
+            else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("visit")) {
+                guiFields[i] = new GUI_Refuge("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            }
+            else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("parking")) {
+                guiFields[i] = new GUI_Refuge("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            }
+
         }
+
+
         return guiFields;
     }
 }
