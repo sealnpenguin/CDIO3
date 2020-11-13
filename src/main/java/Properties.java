@@ -1,5 +1,7 @@
 public class Properties extends Field {
-        public Properties(){
+
+    // All ownable properties with a value and a color
+    public Properties(){
 
         fieldName = "";
         fieldDescription = "";
