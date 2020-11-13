@@ -6,4 +6,12 @@ public class FieldInfo extends Field{
         fieldName = "";
         fieldDescription = "";
     }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public String getFieldDescription() {
+        return fieldDescription;
+    }
 }

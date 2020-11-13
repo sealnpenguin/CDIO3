@@ -5,7 +5,18 @@ public class FieldStart extends Field{
 
         fieldName = "Start";
         fieldDescription = "Modtag 2M når du passerer start";
-        fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
+        int fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public String getFieldDescription() {
+        return fieldDescription;
+    }
+    public int getFieldValue() {
+        return getFieldValue();
     }
 
 }
