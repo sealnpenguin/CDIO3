@@ -7,6 +7,7 @@ public class Properties extends Field {
         fieldDescription = "";
         fieldValue = 1;
         String fieldColor = "";
+        String ownedBy = "";
     }
 
 }
