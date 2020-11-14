@@ -46,7 +46,7 @@ public class GameBoard {
         //printout playernames test
         for (Player player:
              playerList) {
-            System.out.println(player.name);
+            System.out.println(player.getName());
         }
 
         //Sets player 1 hasTurn variable to turn so that the game can start

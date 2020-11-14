@@ -5,7 +5,7 @@ public class Player{
     private String name;
     private Boolean inJail;
     private int JailCard;
-    private Boolean[] myProperties = new Boolean[12]; //spilleren ejendomme
+    private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position;
 
     public Player(String Name)
