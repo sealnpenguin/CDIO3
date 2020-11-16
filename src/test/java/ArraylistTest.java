@@ -16,19 +16,16 @@ class ArraylistTest {
         k.print();
 
         k.add(8);
-        k.atIndex(2);
+        System.out.println(k.atIndex(2));
         //expects 420
-        k.atIndex(44999);
+        System.out.println(k.atIndex(44999));
         k.addAt(3, 25);
         //25 at index 3
         k.print();
         k.decrease(1);
+
         k.print();
         k.decrease(25);
         k.print();
-
-
-
-
     }
 }
