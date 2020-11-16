@@ -12,11 +12,14 @@ public class Arraylist {
     // we multiply the size of the array everytime it has reached the limit.
     public void add(int data) {
         if (size == current) {
-            int[] newarr = new int[2 * size];
+            int[] newarr = new int[1 + size];
+
+            //setting old array elemtns into new array
+            for (int i = 0; i < size; i++) {
+                newarr[i] = arr[i];
+            }
         }
-        //setting old array elemtns into new array
-        for (int i = 0; i < size; i++) {
-            newarr[i] = arr[i];
-        }
+        arr[current] = data;
+        current++;
     }
 }
