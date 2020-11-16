@@ -4,6 +4,12 @@ import java.awt.*;
 
 public class UIController {
 
+   /* Generates GUI_Player array from logic player array
+   public GUI_Player[] UIPlayerGen(Player[] players){
+
+    }*/
+
+    //Generates a GUI_Field array from a logic Field array
     public GUI_Field[] UIFieldGen(Field[] fieldArray){
         GUI_Field[] guiFields = new GUI_Field[fieldArray.length];
         for (int i = 0; i < fieldArray.length; i++) {
