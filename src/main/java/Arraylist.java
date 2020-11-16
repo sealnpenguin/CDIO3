@@ -19,6 +19,8 @@ public class Arraylist {
                 newarr[i] = arr[i];
             }
         }
+        arr = new int[newarr.length];
+        arr = newarr;
         arr[current] = data;
         current++;
     }
