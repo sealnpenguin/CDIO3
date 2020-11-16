@@ -8,21 +8,27 @@ class ArraylistTest {
     void add() {
         Arraylist k = new Arraylist();
 
-        k.add(10);
-        for (int i = 0; i < k.size; i++)
-        {
-            System.out.print(k.atIndex(i));;
-        }
-        k.add(20);
-        for (int i = 0; i < k.size; i++)
-        {
-            System.out.print(k.atIndex(i));
-        }
-        k.add(30);
-        for (int i = 0; i < k.size; i++)
-        {
-            System.out.print(k.atIndex(i));
-        }
+        k.add(4);
+        k.print();
+        k.add(5);
+        k.print();
+        k.add(6);
+        k.print();
+
+        k.add(8);
+        k.atIndex(2);
+        //expects 420
+        k.atIndex(44999);
+        k.addAt(3, 25);
+        //25 at index 3
+        k.print();
+        k.decrease(1);
+        k.print();
+        k.decrease(25);
+        k.print();
+
+
+
 
     }
 }
