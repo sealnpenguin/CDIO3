@@ -1,6 +1,8 @@
+import java.util.Arrays;
+
 public class Arraylist {
-    int size, current;
-    int[] arr, newarr;
+    public int size, current;
+    public int[] arr, newarr;
     //constructor to initialise array of 1 element.
     public Arraylist()
     {
@@ -24,4 +26,16 @@ public class Arraylist {
         arr[current] = data;
         current++;
     }
+    int atIndex(int index)
+    {
+        if (index < current)
+        {
+            return arr[index];
+        }
+        else
+        {
+            return 93486;
+        }
+    }
+
 }
