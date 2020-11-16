@@ -1,4 +1,7 @@
-
+/*
+Hvis man har brug for lidt oplæsning til templates så kig nedenstående link
+reference brugt: https://www.geeksforgeeks.org/generics-in-java/
+ */
 
 public class Arraylist<T> {
     public int size, current;
@@ -13,7 +16,7 @@ public class Arraylist<T> {
     // Function to add element to the back of the array
     // we multiply the size of the array everytime it has reached the limit.
     public void add(T data) {
-        if (size == current || current < size) {
+        if (size == current) {
             T[] newarr =(T[])new Object[1 + size];
 
             //setting old array elements into new array
