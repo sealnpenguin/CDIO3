@@ -1,20 +1,20 @@
 
 
-public class Arraylist {
-    public int size, current, holdval;
-    private int[]  arr;
+public class Arraylist<T> {
+    public int size, current;
+    private T[]  arr;
     //constructor to initialise array of 1 element.
     public Arraylist()
     {
-        arr = new int[1];
+        arr = (T[])new Object[1];
         size = 1;
         current = 0;
     }
     // Function to add element to the back of the array
     // we multiply the size of the array everytime it has reached the limit.
-    public void add(int data) {
+    public void add(T data) {
         if (size == current || current < size) {
-            int[] newarr = new int[1 + size];
+            T[] newarr =(T[])new Object[1 + size];
 
             //setting old array elements into new array
             for (int i = 0; i < size; i++) {
@@ -29,7 +29,7 @@ public class Arraylist {
         current++;
     }
     //returns whatever there's in the given index
-    int atIndex(int index)
+    T atIndex(int index)
     {
         if (index < current)
         {
@@ -37,11 +37,11 @@ public class Arraylist {
         }
         else
         {
-            return 420;
+            return null;
         }
     }
     // add element into whatever index
-    void addAt(int index, int data)
+    void addAt(int index, T data)
     {
         if (index == size) {
             add(data);
