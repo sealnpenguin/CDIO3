@@ -6,8 +6,8 @@ class ArraylistTest {
 
     @org.junit.jupiter.api.Test
     void add() {
-        Arraylist <Integer> k = new Arraylist<Integer> ();
-        Arraylist <String> s = new Arraylist<String>();
+        Arraylist <Integer> k = new Arraylist<> ();
+        Arraylist <String> s = new Arraylist<>();
 
         // integer array
         k.add(4);

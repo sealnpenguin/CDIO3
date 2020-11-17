@@ -7,8 +7,7 @@ public class Arraylist<T> {
     public int size, current;
     private T[]  arr;
     //constructor to initialise array of 1 element.
-    public Arraylist()
-    {
+    public Arraylist() {
         arr = (T[])new Object[1];
         size = 1;
         current = 0;
@@ -32,20 +31,16 @@ public class Arraylist<T> {
         current++;
     }
     //returns whatever there's in the given index
-    T atIndex(int index)
-    {
-        if (index < current)
-        {
+    T atIndex(int index) {
+        if (index < current) {
             return arr[index];
         }
-        else
-        {
+        else {
             return null;
         }
     }
     // add element into whatever index
-    void addAt(int index, T data)
-    {
+    void addAt(int index, T data) {
         if (index == size) {
             add(data);
         }
@@ -54,8 +49,7 @@ public class Arraylist<T> {
         }
     }
     //print the entire array
-    void print()
-    {
+    void print() {
         for (int i = 0; i < current; i++)
         {
             System.out.print(arr[i]);
@@ -64,15 +58,19 @@ public class Arraylist<T> {
     }
     //decrease the array by x elements
     void decrease(int itteration) {
+        T[] newarr =(T[])new Object[current];
         //deletes the whole array except index 0
         if (itteration > current) {
             current = 1;
         }
-        //decreases the array by x elements.
         else {
-            for (int i = 0; i < itteration; i++) {
-                current--;
-            }
+            current -= itteration;
         }
+        //decreases the array by x elements.
+        for (int i = 0; i < current; i++) {
+            newarr[i] = arr[i];
+        }
+        size = current;
+        arr = newarr;
     }
 }
