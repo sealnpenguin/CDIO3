@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Player{
+    private boolean hasTurn;
     //Attributes
     private String name;
     private Boolean inJail;
@@ -53,5 +54,12 @@ public class Player{
         return myProperties;
     }
 
-    //Wallet wallet = new Waller();
+    Wallet wallet = new Wallet();
+
+    public boolean getHasTurn(boolean b) {return hasTurn;
+    }
+
+    public void setHasTurn(boolean hasTurn) {
+        this.hasTurn = hasTurn;
+    }
 }

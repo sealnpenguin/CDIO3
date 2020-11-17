@@ -1,23 +1,9 @@
 public class Wallet {
-
-    if playerCount = 2 {
-        private int money = 20;
-
-    }
-    else if playerCount = 3 {
-        private int money = 18;
-
-    }
-
-    else playerCount = 4 {
-        private int money = 16;
-
-    }
-
+    private int money;
     public Wallet(){
 
     }
-    public void setPoint(int money) {
+    public void setMoney(int money) {
 
         // Placeholder - Should "minus money" be possible?
         this.money += money;
