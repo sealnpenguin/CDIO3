@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Player{
-    private boolean hasTurn;
     //Attributes
     private String name;
     private Boolean inJail;
@@ -25,7 +24,8 @@ public class Player{
 
     public void setPosition(int Position)
     {
-        this.Position = Position;
+        this.Position += Position;
+        if(this.Position >= 40) this.Position -= 40;
     }
     public String getName()
     {
@@ -56,10 +56,4 @@ public class Player{
 
     Wallet wallet = new Wallet();
 
-    public boolean getHasTurn(boolean b) {return hasTurn;
-    }
-
-    public void setHasTurn(boolean hasTurn) {
-        this.hasTurn = hasTurn;
-    }
 }
