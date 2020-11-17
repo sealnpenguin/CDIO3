@@ -7,7 +7,11 @@ public abstract class Field {
     //public Field(String fieldName){
     //    this.fieldName = fieldName;
     //}
-    //public String getFieldName() {
-    //    return fieldName;
-    //}
+    public String getFieldName() {
+        return fieldName;
+    }
+
+    public String getFieldDescription(){
+        return fieldDescription;
+    }
 }
