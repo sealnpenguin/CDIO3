@@ -2,6 +2,7 @@ import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +13,14 @@ import java.util.List;
 - PLAYER.HASTURN? - HAR INDSAT EVENTUELT BRUG ANDEN LØSNING????
 - MÅSKE PLAYER SKAL HAVE EN GUI_PLAYER OBJECT I SIG FOR AT NEMMERE TILGÅ DEM?
 - BENYT MARTINS ARRAYLISTE!
+- SE VÆLG FARVE
+- GUI PLAYER ARRAY? NØDVENDIGT?
 */
 
 public class GameBoard {
     static void Game() {
-        int endGame = 0;
+        int endGameIf = 0;
+        Boolean GameOver = false;
         //int numberOfPlayers;
         List<Player> playerList = new ArrayList<>();
         Die die = new Die(1); // One die is instantiated with new Dice(int X);
@@ -36,15 +40,9 @@ public class GameBoard {
             Player player = new Player(gui.getUserString("Enter name for player " + i));
             //Sets the players money according the rules
             switch (numberOfPlayers) {
-                case 2:
-                    player.wallet.setMoney(20);
-                    break;
-                case 3:
-                    player.wallet.setMoney(18);
-                    break;
-                case 4:
-                    player.wallet.setMoney(16);
-                    break;
+                case 2 -> player.wallet.setMoney(20);
+                case 3 -> player.wallet.setMoney(18);
+                case 4 -> player.wallet.setMoney(16);
             }
             playerList.add(player);
         }
@@ -52,12 +50,26 @@ public class GameBoard {
         //Initialize and Add players to gui
         for (Player player : playerList) {
             GUI_Player guiplayerx = new GUI_Player(player.getName(), player.wallet.getMoney());
-            GuiPlayerArr.add(guiplayerx);
+
+            //Vælg farve - Lavet hurtigt - Måske ryk til andet sted?
+            String color = gui.getUserSelection(player.getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
+            switch (color) {
+                case "RED" -> guiplayerx.getCar().setPrimaryColor(Color.RED);
+                case "BLACK" -> guiplayerx.getCar().setPrimaryColor(Color.BLACK);
+                case "BLUE" -> guiplayerx.getCar().setPrimaryColor(Color.BLUE);
+                case "MAGENTA" -> guiplayerx.getCar().setPrimaryColor(Color.MAGENTA);
+                case "PINK" -> guiplayerx.getCar().setPrimaryColor(Color.PINK);
+                case "CYAN" -> guiplayerx.getCar().setPrimaryColor(Color.CYAN);
+                case "YELLOW" -> guiplayerx.getCar().setPrimaryColor(Color.YELLOW);
+                case "WHITE" -> guiplayerx.getCar().setPrimaryColor(Color.WHITE);
+            }
+
+            GuiPlayerArr.add(guiplayerx); // Adds guiplayer to guiplayer array might not be needed!!!
             gui.addPlayer(guiplayerx);
             field.setCar(guiplayerx, true);
         }
 
-        //Tanke.. GUI_Player array??
+        //Tanke.. GUI_Player array - måske brugbart???
         /*for (GUI_Player guiplayerx : GuiPlayerArr) {
             //GUI_Player guiplayerx = new GUI_Player(player.getName(), player.wallet.getMoney());
             //GuiPlayerArr.add(guiplayerx);
@@ -65,7 +77,7 @@ public class GameBoard {
         }*/
 
 
-        while (true) {
+        while (!GameOver) {
             // for loop which counts and loops thru the amount of players
             for (int i = 0; i < playerList.size(); i++) {
                 //Maybe use showmessage to make sure the correct player rolls?
@@ -78,7 +90,11 @@ public class GameBoard {
                     // function in Dice which rolls the dice
                     // add the dice value to the players points
                     gui.setDie(die.rollDie());
-                    //playerList.get(i).wallet.setMoney((+die.getFaceValue()));
+
+                    //Methods for setting the player money and to show gui money
+                    //playerList.get(i).wallet.setMoney(+die.getFaceValue());
+                    //GuiPlayerArr.atIndex(i).setBalance(playerList.get(i).wallet.getMoney());
+
 
                     // !!!!VIRKER, MEN OPTIMATION?!!!!
                     // gets player position/field and removes the car from the current field
@@ -91,10 +107,14 @@ public class GameBoard {
                     field.setCar(GuiPlayerArr.atIndex(i), true);
 
                     //!!!Skal ændres!!!
-                    if (playerList.get(i).wallet.getMoney() <= endGame)
+                    if (playerList.get(i).wallet.getMoney() <= endGameIf)
                     {
                         System.out.println("Rolls: " + die.getFaceValue());
-                        System.out.println(playerList.get(i).getName() + " has reached " +endGame);
+                        System.out.println(playerList.get(i).getName() + " has reached " +endGameIf);
+                        GameOver = true;
+                        gui.showMessage("Gameover "+ playerList.get(i).getName() + " lost");
+                        break;
+
                     }
                     else {
                         System.out.println("Rolls: " + die.getFaceValue());
