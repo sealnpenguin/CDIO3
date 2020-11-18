@@ -40,9 +40,9 @@ public class GameBoard {
             Player player = new Player(gui.getUserString("Enter name for player " + i));
             //Sets the players money according the rules
             switch (numberOfPlayers) {
-                case 2 -> player.wallet.setMoney(20);
-                case 3 -> player.wallet.setMoney(18);
-                case 4 -> player.wallet.setMoney(16);
+                case 2 -> player.setMoney(20);
+                case 3 -> player.setMoney(18);
+                case 4 -> player.setMoney(16);
             }
             playerList.add(player);
         }

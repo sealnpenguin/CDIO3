@@ -8,7 +8,7 @@ public class UIController {
     private GUI_Player[] guiPlayers;
 
 
-    // constructer der automatisk opretter gui ud fra fields og players
+    // Constructer that automatically generates GUI with all the players
     public UIController(Player[] players, Field[] fields){
         this.gui = new GUI(UIFieldGen(fields));
         this.guiPlayers = new GUI_Player[players.length];
@@ -54,13 +54,14 @@ public class UIController {
         }
         return guiFields;
     }
-
+        //Updates GUI_Player according to corresponding Player
         public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
             for (GUI_Player p: guiPlayers) {
                 if(p.getName().equals(player.getName())){
                     gui.getFields()[newPosition].setCar(p, true);
                     gui.getFields()[oldPosition].setCar(p, false);
                 }
+                else{gui.showMessage("Fejl i updateGUIPlayerPos. Spiller ikke fundet");}
             }
 
         }

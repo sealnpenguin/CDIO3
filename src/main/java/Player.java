@@ -59,4 +59,8 @@ public class Player{
         return wallet.getMoney();
     }
 
+    public void setMoney(int money){
+        wallet.setMoney(money);
+    }
+
 }
