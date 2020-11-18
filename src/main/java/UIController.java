@@ -1,9 +1,21 @@
 import gui_fields.*;
+import gui_main.GUI;
 
 import java.awt.*;
 
 public class UIController {
+    private GUI gui;
 
+
+    // constructer der automatisk opretter gui ud fra fields og players
+    public UIController(Player[] players, Field[] fields){
+        this.gui = new GUI(UIFieldGen(fields));
+        GUI_Player[] guiPlayers = new GUI_Player[players.length];
+        guiPlayers = UIPlayerGen(players);
+        for (int i = 0; i < players.length; i++) {
+            this.gui.addPlayer(guiPlayers[i]);
+        }
+    }
    //Generates GUI_Player array from logic player array
    public GUI_Player[] UIPlayerGen(Player[] players){
        GUI_Player[] guiPlayers = new GUI_Player[players.length];

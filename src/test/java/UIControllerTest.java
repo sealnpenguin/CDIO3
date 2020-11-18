@@ -13,9 +13,9 @@ class UIControllerTest {
         for (int i = 0; i < myFields.length; i++) {
             myFields[i] = new Properties();
         }
-        UIController myControl = new UIController();
-        GUI gui = new GUI(myControl.UIFieldGen(myFields));
-        Scanner scan = new Scanner(System.in);
-        scan.nextInt();
+//        UIController myControl = new UIController();
+//        GUI gui = new GUI(myControl.UIFieldGen(myFields));
+//        Scanner scan = new Scanner(System.in);
+//        scan.nextInt();
     }
 }
