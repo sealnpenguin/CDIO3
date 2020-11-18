@@ -5,13 +5,14 @@ import java.awt.*;
 
 public class UIController {
     private GUI gui;
+    private GUI_Player[] guiPlayers;
 
 
     // constructer der automatisk opretter gui ud fra fields og players
     public UIController(Player[] players, Field[] fields){
         this.gui = new GUI(UIFieldGen(fields));
-        GUI_Player[] guiPlayers = new GUI_Player[players.length];
-        guiPlayers = UIPlayerGen(players);
+        this.guiPlayers = new GUI_Player[players.length];
+        this.guiPlayers = UIPlayerGen(players);
         for (int i = 0; i < players.length; i++) {
             this.gui.addPlayer(guiPlayers[i]);
         }
@@ -53,4 +54,15 @@ public class UIController {
         }
         return guiFields;
     }
+
+        public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
+            for (GUI_Player p: guiPlayers) {
+                if(p.getName().equals(player.getName())){
+                    gui.getFields()[newPosition].setCar(p, true);
+                    gui.getFields()[oldPosition].setCar(p, false);
+                }
+            }
+
+        }
+
 }
