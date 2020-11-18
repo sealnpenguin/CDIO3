@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Player{
     //Attributes
     private String name;
@@ -26,7 +24,7 @@ public class Player{
     public void setPosition(int Position)
     {
         this.Position += Position;
-        if(this.Position >= 40) this.Position -= 40;
+        if(this.Position >= 24) this.Position -= 24;
     }
     public String getName()
     {

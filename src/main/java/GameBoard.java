@@ -20,24 +20,29 @@ import java.util.List;
 public class GameBoard {
     static void Game() {
         int endGameIf = 0;
-        Boolean GameOver = false;
+        boolean GameOver = false;
         //int numberOfPlayers;
         List<Player> playerList = new ArrayList<>();
         Die die = new Die(1); // One die is instantiated with new Dice(int X);
-        GUI gui = new GUI();
+        //GUI gui = new GUI();
         Arraylist <GUI_Player> GuiPlayerArr = new Arraylist<>();
-        GUI_Field field = gui.getFields()[0];
+        Field[] myFields = new Field[24];
+        for (int i = 0; i < myFields.length; i++) {
+            myFields[i] = new Properties();
+        }
+        UIController uiController = new UIController(playerList.toArray(Player[]::new),myFields);
+        GUI_Field field = uiController.getGUI().getFields()[0];
 
 
 
-        int numberOfPlayers = gui.getUserInteger("Enter the number of players ranging from 2-4");
+        int numberOfPlayers = uiController.getGUI().getUserInteger("Enter the number of players ranging from 2-4");
         while (numberOfPlayers > 4 || numberOfPlayers < 2) {
-            gui.showMessage("Please try again in the range of 2-4");
-            numberOfPlayers = gui.getUserInteger("Please enter the number of players ranging from 2-4");
+            uiController.getGUI().showMessage("Please try again in the range of 2-4");
+            numberOfPlayers = uiController.getGUI().getUserInteger("Please enter the number of players ranging from 2-4");
         }
         // Create player objects as per the playerdefined numberOfPlayers int.
         for (int i = 1; i < numberOfPlayers + 1; i++) {
-            Player player = new Player(gui.getUserString("Enter name for player " + i));
+            Player player = new Player(uiController.getGUI().getUserString("Enter name for player " + i));
             //Sets the players money according the rules
             switch (numberOfPlayers) {
                 case 2 -> player.setMoney(20);
@@ -52,7 +57,7 @@ public class GameBoard {
             GUI_Player guiplayerx = new GUI_Player(player.getName(), player.getMoney());
 
             //Vælg farve - Lavet hurtigt - Måske ryk til andet sted?
-            String color = gui.getUserSelection(player.getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
+            String color = uiController.getGUI().getUserSelection(player.getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
             switch (color) {
                 case "RED" -> guiplayerx.getCar().setPrimaryColor(Color.RED);
                 case "BLACK" -> guiplayerx.getCar().setPrimaryColor(Color.BLACK);
@@ -65,7 +70,7 @@ public class GameBoard {
             }
 
             GuiPlayerArr.add(guiplayerx); // Adds guiplayer to guiplayer array might not be needed!!!
-            gui.addPlayer(guiplayerx);
+            uiController.getGUI().addPlayer(guiplayerx);
             field.setCar(guiplayerx, true);
         }
 
@@ -84,12 +89,12 @@ public class GameBoard {
                 //gui.showMessage(playerList.get(i).getName() + " has the die in his court");
 
                 //Guibutton to read the next user input
-                String ready = gui.getUserButtonPressed(playerList.get(i).getName() + " press button to roll the die!", "Roll");
+                String ready = uiController.getGUI().getUserButtonPressed(playerList.get(i).getName() + " press button to roll the die!", "Roll");
                 // if statement to check if the user typed in throw
                 if (ready.equals("Roll")) {
                     // function in Dice which rolls the dice
                     // add the dice value to the players points
-                    gui.setDie(die.rollDie());
+                    uiController.getGUI().setDie(die.rollDie());
 
                     //Methods for setting the player money and to show gui money
                     //playerList.get(i).wallet.setMoney(+die.getFaceValue());
@@ -98,12 +103,12 @@ public class GameBoard {
 
                     // !!!!VIRKER, MEN OPTIMATION?!!!!
                     // gets player position/field and removes the car from the current field
-                    field = gui.getFields()[playerList.get(i).getPosition()];
+                    field = uiController.getGUI().getFields()[playerList.get(i).getPosition()];
                     field.setCar(GuiPlayerArr.atIndex(i), false);
                     playerList.get(i).setPosition(+die.getFaceValue());
-
+                    //uiController.updateGUIPlayerPos(playerList.get(i),playerList.get(i).getPosition(), playerList.get(i).getPosition()+ die.getFaceValue());
                     // gets player position/field and adds the car to the current field
-                    field = gui.getFields()[playerList.get(i).getPosition()];
+                    field = uiController.getGUI().getFields()[playerList.get(i).getPosition()];
                     field.setCar(GuiPlayerArr.atIndex(i), true);
 
                     //!!!Skal ændres!!!
@@ -112,7 +117,7 @@ public class GameBoard {
                         System.out.println("Rolls: " + die.getFaceValue());
                         System.out.println(playerList.get(i).getName() + " has reached " +endGameIf);
                         GameOver = true;
-                        gui.showMessage("Gameover "+ playerList.get(i).getName() + " lost");
+                        uiController.getGUI().showMessage("Gameover "+ playerList.get(i).getName() + " lost");
                         break;
 
                     }
