@@ -7,6 +7,7 @@ public class Player{
     private int JailCard;
     private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position;
+    private Wallet wallet = new Wallet();
 
     public Player(String Name)
     {
@@ -54,6 +55,8 @@ public class Player{
         return myProperties;
     }
 
-    Wallet wallet = new Wallet();
+    public int getMoney(){
+        return wallet.getMoney();
+    }
 
 }

@@ -4,10 +4,15 @@ import java.awt.*;
 
 public class UIController {
 
-   /* Generates GUI_Player array from logic player array
+   //Generates GUI_Player array from logic player array
    public GUI_Player[] UIPlayerGen(Player[] players){
+       GUI_Player[] guiPlayers = new GUI_Player[players.length];
+       for (int i = 0; i < players.length; i++) {
+           guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+       }
+        return guiPlayers;
 
-    }*/
+    }
 
     //Generates a GUI_Field array from a logic Field array
     public GUI_Field[] UIFieldGen(Field[] fieldArray){
@@ -34,8 +39,6 @@ public class UIController {
             }
 
         }
-
-
         return guiFields;
     }
 }
