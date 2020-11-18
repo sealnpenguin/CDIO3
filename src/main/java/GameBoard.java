@@ -49,7 +49,7 @@ public class GameBoard {
 
         //Initialize and Add players to gui
         for (Player player : playerList) {
-            GUI_Player guiplayerx = new GUI_Player(player.getName(), player.wallet.getMoney());
+            GUI_Player guiplayerx = new GUI_Player(player.getName(), player.getMoney());
 
             //Vælg farve - Lavet hurtigt - Måske ryk til andet sted?
             String color = gui.getUserSelection(player.getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
@@ -107,7 +107,7 @@ public class GameBoard {
                     field.setCar(GuiPlayerArr.atIndex(i), true);
 
                     //!!!Skal ændres!!!
-                    if (playerList.get(i).wallet.getMoney() <= endGameIf)
+                    if (playerList.get(i).getMoney() <= endGameIf)
                     {
                         System.out.println("Rolls: " + die.getFaceValue());
                         System.out.println(playerList.get(i).getName() + " has reached " +endGameIf);
@@ -118,7 +118,7 @@ public class GameBoard {
                     }
                     else {
                         System.out.println("Rolls: " + die.getFaceValue());
-                        System.out.println(playerList.get(i).getName() + " now has " + playerList.get(i).wallet.getMoney() + " M!");
+                        System.out.println(playerList.get(i).getName() + " now has " + playerList.get(i).getMoney() + " M!");
                     }
                 }
             }
