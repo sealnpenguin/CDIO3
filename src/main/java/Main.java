@@ -1,4 +1,5 @@
 import gui_main.GUI;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,10 +7,7 @@ public class Main {
         //gui.displayChanceCard("test");
 
 
-        //Test
-        //Jail j = new Jail();
-        //j.fieldDescription = "This is jail";
-        //System.out.println(j.fieldDescription);
+        FieldsOnBoard.fieldsOnBoard();
     }
 
 }

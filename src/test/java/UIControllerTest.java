@@ -11,7 +11,7 @@ class UIControllerTest {
     void UIFieldGen() {
         Field[] myFields = new Field[24];
         for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties();
+            //myFields[i] = new Properties();
         }
         UIController myControl = new UIController();
         GUI gui = new GUI(myControl.UIFieldGen(myFields));

@@ -1,25 +1,26 @@
 public class Properties extends Field {
-    String fieldColor;
-    String ownedBy;
+    private String fieldColor;
+    private String ownedBy;
+    private int fieldValue;
     // All ownable properties with a value and a color
-    public Properties(){
-
-        fieldName = "";
-        fieldDescription = "";
-        int fieldValue = 1;
+    public Properties(String fieldName, String fieldDescription, String fieldColor, String ownedBy){
+        super(fieldName, fieldDescription);
+        //fieldName = "";
+        //fieldDescription = "";
+        this.fieldValue = fieldValue;
         this.fieldColor = fieldColor;
         this.ownedBy = ownedBy;
     }
 
-    public String getFieldName() {
-        return fieldName;
-    }
+    //public String getFieldName() {
+    //    return fieldName;
+    //}
 
-    public String getFieldDescription() {
-        return fieldDescription;
-    }
+    //public String getFieldDescription() {
+    //    return fieldDescription;
+    //}
     public int getFieldValue() {
-        return getFieldValue();
+        return fieldValue;
     }
 
     public String getFieldColor() {

@@ -1,17 +1,19 @@
 public abstract class Field {
 
-    String fieldName;
-    String fieldDescription = "";
+    protected static String fieldName;
+    protected static String fieldDescription;
     //int fieldValue = 1;
 
-    //public Field(String fieldName){
-    //    this.fieldName = fieldName;
-    //}
-    public String getFieldName() {
+    public Field(String fieldName, String fieldDescription){
+        this.fieldName = fieldName;
+        this.fieldDescription = fieldDescription;
+    }
+    public static String getFieldName() {
         return fieldName;
     }
 
-    public String getFieldDescription(){
+    public static String getFieldDescription() {
         return fieldDescription;
     }
+
 }

@@ -1,4 +1,4 @@
-public class Wallet {
+/*public class Wallet {
 
     if playerCount = 2 {
         private int money = 20;
@@ -29,4 +29,4 @@ public class Wallet {
         return money;
     }
 
-}
+}*/

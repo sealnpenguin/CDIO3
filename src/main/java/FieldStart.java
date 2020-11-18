@@ -1,21 +1,24 @@
 public class FieldStart extends Field{
-
     //Starting field
-    public FieldStart(){
-        fieldName = "Start";
-        fieldDescription = "Modtag 2M når du passerer start";
-        int fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
+    private int fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
+
+    public FieldStart(String fieldName, String fieldDescription){
+        super(fieldName, fieldDescription);
+        this.fieldValue = fieldValue;
+
+        //this.fieldName = "Start";
+        //this.fieldDescription = "Modtag 2M når du passerer start";
     }
 
-    public String getFieldName() {
-        return fieldName;
-    }
+    //public static String getFieldName() {
+    //    return fieldName;
+    //}
 
-    public String getFieldDescription() {
-        return fieldDescription;
-    }
+    //public static String getFieldDescription() {
+    //    return fieldDescription;
+    //}
+
     public int getFieldValue() {
-        return getFieldValue();
+        return fieldValue;
     }
-
 }
