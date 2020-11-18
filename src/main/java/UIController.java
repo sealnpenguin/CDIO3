@@ -56,14 +56,21 @@ public class UIController {
     }
         //Updates GUI_Player according to corresponding Player
         public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
-            for (GUI_Player p: guiPlayers) {
-                if(p.getName().equals(player.getName())){
-                    gui.getFields()[newPosition].setCar(p, true);
-                    gui.getFields()[oldPosition].setCar(p, false);
+
+            for (int i = 0; i < guiPlayers.length; i++) {
+                if(guiPlayers[i].getName().equals(player.getName())){
+                    gui.getFields()[oldPosition].setCar(guiPlayers[i], false);
+                    gui.getFields()[newPosition].setCar(guiPlayers[i], true);
+
                 }
-                else{gui.showMessage("Fejl i updateGUIPlayerPos. Spiller ikke fundet");}
             }
 
         }
+
+        public GUI_Player getGuiPlayer(int playerNumber){
+        return guiPlayers[playerNumber];
+        }
+
+        public GUI getGUI(){return this.gui;}
 
 }
