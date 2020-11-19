@@ -9,13 +9,8 @@ public class UIController {
 
 
     // Constructer that automatically generates GUI with all the players
-    public UIController(Player[] players, Field[] fields){
+    public UIController(Field[] fields){
         this.gui = new GUI(UIFieldGen(fields));
-        this.guiPlayers = new GUI_Player[players.length];
-        this.guiPlayers = UIPlayerGen(players);
-        for (int i = 0; i < players.length; i++) {
-            this.gui.addPlayer(guiPlayers[i]);
-        }
     }
    //Generates GUI_Player array from logic player array
    public GUI_Player[] UIPlayerGen(Player[] players){
@@ -25,6 +20,13 @@ public class UIController {
        }
         return guiPlayers;
 
+    }
+
+    public void addPlayers(Player[] players){
+        guiPlayers = new GUI_Player[players.length];
+        for (int i = 0; i < players.length; i++) {
+            guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+        }
     }
 
     //Generates a GUI_Field array from a logic Field array
