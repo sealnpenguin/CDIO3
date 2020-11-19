@@ -7,6 +7,7 @@ public class Player{
     private int Position;
     private Wallet wallet = new Wallet();
 
+
     public Player(String Name)
     {
         name = Name;

@@ -3,14 +3,20 @@ Hvis man har brug for lidt oplæsning til templates så kig nedenstående link
 reference brugt: https://www.geeksforgeeks.org/generics-in-java/
  */
 
-public class Arraylist<T> {
+
+public class DynamicArr<T> {
     public int size, current;
     private T[]  arr;
     //constructor to initialise array of 1 element.
-    public Arraylist() {
+    public DynamicArr() {
         arr = (T[])new Object[1];
         size = 1;
         current = 0;
+    }
+    public Arraylist(T[] startArray) {
+        arr = startArray;
+        size = startArray.length;
+        current = size;
     }
     // Function to add element to the back of the array
     // we multiply the size of the array everytime it has reached the limit.
@@ -78,7 +84,9 @@ public class Arraylist<T> {
         return this.arr.length;
     }
 
-    public T[] returnArray(){
+
+
+     T[] returnArray() {
         return arr;
     }
 }
