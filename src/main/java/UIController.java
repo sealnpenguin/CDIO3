@@ -5,54 +5,53 @@ import java.awt.*;
 
 public class UIController {
     private GUI gui;
+    private DynamicArr<GUI_Player> GuiPlayers = new DynamicArr<>();
     private GUI_Player[] guiPlayers;
 
 
     // Constructer that automatically generates GUI with all the players
-    public UIController(Player[] players, Field[] fields){
+    public UIController(DynamicArr<Player> players, DynamicArr<Field> fields){
+
         this.gui = new GUI(UIFieldGen(fields));
-        this.guiPlayers = new GUI_Player[players.length];
-        this.guiPlayers = UIPlayerGen(players);
-        for (int i = 0; i < players.length; i++) {
+        this.GuiPlayers = UIPlayerGen(players);
+        for (int i = 0; i < players.listLength(); i++) {
             this.gui.addPlayer(guiPlayers[i]);
         }
     }
    //Generates GUI_Player array from logic player array
-   public GUI_Player[] UIPlayerGen(Player[] players){
-       GUI_Player[] guiPlayers = new GUI_Player[players.length];
-       for (int i = 0; i < players.length; i++) {
-           guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+   public DynamicArr<GUI_Player> UIPlayerGen(DynamicArr<Player> list){
+       for (int i = 0; i < list.listLength(); i++) {
+           this.GuiPlayers.add(new GUI_Player(list.atIndex(i).getName(), list.atIndex(i).getMoney()));
        }
-        return guiPlayers;
+        return GuiPlayers;
 
     }
 
     //Generates a GUI_Field array from a logic Field array
-    public GUI_Field[] UIFieldGen(Field[] fieldArray){
-        GUI_Field[] guiFields = new GUI_Field[fieldArray.length];
-        for (int i = 0; i < fieldArray.length; i++) {
+    public GUI_Field[] UIFieldGen(DynamicArr<Field> fieldList){
+        DynamicArr<GUI_Field> guiFields = new DynamicArr<>();
+        for (int i = 0; i < fieldList.listLength(); i++) {
 
-            if(fieldArray[i] instanceof FieldStart){
-                guiFields[i] = new GUI_Start(((FieldStart) fieldArray[i]).getFieldName(), ((FieldStart) fieldArray[i]).getFieldDescription(), ((FieldStart) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            if(fieldList.atIndex(i) instanceof FieldStart){
+                guiFields.add(new GUI_Start(((FieldStart) fieldList.atIndex(i)).getFieldName(), ((FieldStart) fieldList.atIndex(i)).getFieldDescription(), ((FieldStart) fieldList.atIndex(i)).getFieldDescription(), Color.RED, Color.BLACK));
             }
-            else if(fieldArray[i] instanceof FieldChance){
-                guiFields[i] = new GUI_Chance(((FieldChance) fieldArray[i]).getFieldName(), ((FieldChance) fieldArray[i]).getFieldDescription(), ((FieldChance) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            else if(fieldList.atIndex(i) instanceof FieldChance){
+                guiFields.add(new GUI_Chance(((FieldChance) fieldList.atIndex(i)).getFieldName(), ((FieldChance) fieldList.atIndex(i)).getFieldDescription(), ((FieldChance) fieldList.atIndex(i)).getFieldDescription(), Color.RED, Color.BLACK));
             }
-            else if(fieldArray[i] instanceof Jail) {
-                guiFields[i] = new GUI_Jail( "default",((Jail) fieldArray[i]).getFieldName(), ((Jail) fieldArray[i]).getFieldDescription(), ((Jail) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            else if(fieldList.atIndex(i) instanceof Jail) {
+                guiFields.add(new GUI_Jail( "default",((Jail) fieldList.atIndex(i)).getFieldName(), ((Jail) fieldList.atIndex(i)).getFieldDescription(), ((Jail) fieldList.atIndex(i)).getFieldDescription(), Color.RED, Color.BLACK));
             }
-            else if(fieldArray[i] instanceof Properties) {
-                guiFields[i] = new GUI_Street(((Properties) fieldArray[i]).getFieldName(), ((Properties) fieldArray[i]).getFieldDescription(), ((Properties) fieldArray[i]).getFieldDescription(), "pris metode", Color.RED, Color.BLACK);
+            else if(fieldList.atIndex(i) instanceof Properties) {
+                guiFields.add(new GUI_Street(((Properties) fieldList.atIndex(i)).getFieldName(), ((Properties) fieldList.atIndex(i)).getFieldDescription(), ((Properties) fieldList.atIndex(i)).getFieldDescription(), "pris metode", Color.RED, Color.BLACK));
             }
-            else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("visit")) {
-                guiFields[i] = new GUI_Refuge("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            else if(fieldList.atIndex(i) instanceof FieldInfo && ((FieldInfo)fieldList.atIndex(i)).getFieldName().equals("visit")) {
+                guiFields.add(new GUI_Refuge("default",((FieldInfo) fieldList.atIndex(i)).getFieldName(), ((FieldInfo) fieldList.atIndex(i)).getFieldDescription(), ((FieldInfo) fieldList.atIndex(i)).getFieldDescription(), Color.RED, Color.BLACK));
             }
-            else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("parking")) {
-                guiFields[i] = new GUI_Refuge("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+            else if(fieldList.atIndex(i) instanceof FieldInfo && ((FieldInfo)fieldList.atIndex(i)).getFieldName().equals("parking")) {
+                guiFields.add(new GUI_Refuge("default",((FieldInfo) fieldList.atIndex(i)).getFieldName(), ((FieldInfo) fieldList.atIndex(i)).getFieldDescription(), ((FieldInfo) fieldList.atIndex(i)).getFieldDescription(), Color.RED, Color.BLACK));
             }
-
         }
-        return guiFields;
+        return guiFields.returnArray();
     }
         //Updates GUI_Player according to corresponding Player
         public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
