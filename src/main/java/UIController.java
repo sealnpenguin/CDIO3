@@ -6,7 +6,6 @@ import java.awt.*;
 public class UIController {
     private GUI gui;
     private Arraylist<GUI_Player> GuiPlayers = new Arraylist<>();
-    private GUI_Player[] guiPlayers;
 
 
     // Constructer that automatically generates GUI with all the players
@@ -15,7 +14,7 @@ public class UIController {
         this.gui = new GUI(UIFieldGen(fields));
         this.GuiPlayers = UIPlayerGen(players);
         for (int i = 0; i < players.listLength(); i++) {
-            this.gui.addPlayer(guiPlayers[i]);
+            this.gui.addPlayer(UIPlayerGen(players).atIndex(i));
         }
     }
    //Generates GUI_Player array from logic player array
@@ -52,15 +51,15 @@ public class UIController {
             }
 
         }
-        return guiFields.returnArray();
+        return  guiFields.returnArray();
     }
         //Updates GUI_Player according to corresponding Player
         public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
 
-            for (int i = 0; i < guiPlayers.length; i++) {
-                if(guiPlayers[i].getName().equals(player.getName())){
-                    gui.getFields()[oldPosition].setCar(guiPlayers[i], false);
-                    gui.getFields()[newPosition].setCar(guiPlayers[i], true);
+            for (int i = 0; i < GuiPlayers.listLength(); i++) {
+                if(GuiPlayers.atIndex(i).getName().equals(player.getName())){
+                    gui.getFields()[oldPosition].setCar(GuiPlayers.atIndex(i), false);
+                    gui.getFields()[newPosition].setCar(GuiPlayers.atIndex(i), true);
 
                 }
             }
@@ -68,7 +67,7 @@ public class UIController {
         }
 
         public GUI_Player getGuiPlayer(int playerNumber){
-        return guiPlayers[playerNumber];
+        return GuiPlayers.atIndex(playerNumber);
         }
 
         public GUI getGUI(){return this.gui;}

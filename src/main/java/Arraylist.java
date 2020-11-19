@@ -12,6 +12,11 @@ public class Arraylist<T> {
         size = 1;
         current = 0;
     }
+    public Arraylist(T[] startArray) {
+        arr = startArray;
+        size = startArray.length;
+        current = size;
+    }
     // Function to add element to the back of the array
     // we multiply the size of the array everytime it has reached the limit.
     public void add(T data) {
