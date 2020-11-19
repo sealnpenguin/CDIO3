@@ -1,26 +1,17 @@
-//import gui_fields.GUI_Field;
-//import gui_fields.GUI_Player;
-
 import java.awt.*;
-//import java.util.ArrayList;
-//import java.util.List;
+
 
 /* !!!TANKER!!!
-- DET SAMME KAN GØRES FOR STRING
-- SKAL GUI REFERERER OG KØRES HERFRA? - RET NÅR JAN HAR OPSAT GUI
-- PLAYER.HASTURN? - HAR INDSAT EVENTUELT BRUG ANDEN LØSNING????
-- MÅSKE PLAYER SKAL HAVE EN GUI_PLAYER OBJECT I SIG FOR AT NEMMERE TILGÅ DEM?
-- BENYT MARTINS ARRAYLISTE!
+- Sørg for at bruger ikke kan taste samme navn ind
 - SE VÆLG FARVE
-- GUI PLAYER ARRAY? NØDVENDIGT?
 */
 
 public class GameBoard {
     static void Game() {
         int endGameIf = 0;
         boolean GameOver = false;
-
         Die die = new Die(1); // One die is instantiated with new Dice(int X);
+
 
         Field[] myFields = new Field[24];
         for (int i = 0; i < myFields.length; i++) {
