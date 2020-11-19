@@ -1,13 +1,9 @@
-import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-class ArraylistTest {
+class DynamicArrTest {
 
     @org.junit.jupiter.api.Test
     void add() {
-        Arraylist <Integer> k = new Arraylist<> ();
-        Arraylist <String> s = new Arraylist<>();
+        DynamicArr<Integer> k = new DynamicArr<>();
+        DynamicArr<String> s = new DynamicArr<>();
 
         // integer array
         k.add(4);

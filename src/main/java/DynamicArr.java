@@ -3,11 +3,11 @@ Hvis man har brug for lidt oplæsning til templates så kig nedenstående link
 reference brugt: https://www.geeksforgeeks.org/generics-in-java/
  */
 
-public class Arraylist<T> {
+public class DynamicArr<T> {
     public int size, current;
     private T[]  arr;
     //constructor to initialise array of 1 element.
-    public Arraylist() {
+    public DynamicArr() {
         arr = (T[])new Object[1];
         size = 1;
         current = 0;

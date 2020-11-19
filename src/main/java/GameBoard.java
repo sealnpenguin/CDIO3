@@ -1,6 +1,5 @@
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
-import gui_main.GUI;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class GameBoard {
         List<Player> playerList = new ArrayList<>();
         Die die = new Die(1); // One die is instantiated with new Dice(int X);
         //GUI gui = new GUI();
-        Arraylist <GUI_Player> GuiPlayerArr = new Arraylist<>();
+        DynamicArr<GUI_Player> GuiPlayerArr = new DynamicArr<>();
         Field[] myFields = new Field[24];
         for (int i = 0; i < myFields.length; i++) {
             myFields[i] = new Properties();
