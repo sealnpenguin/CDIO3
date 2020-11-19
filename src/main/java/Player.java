@@ -2,7 +2,7 @@ public class Player{
     //Attributes
     private String name;
     private Boolean inJail;
-    private int JailCard;
+    private boolean JailCard;
     private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position;
     private Wallet wallet = new Wallet();
@@ -11,7 +11,7 @@ public class Player{
     {
         name = Name;
         inJail = false;
-        JailCard = 0;
+        JailCard = false;
         Position = 0;
     }
 
