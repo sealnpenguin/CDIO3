@@ -22,15 +22,16 @@ public class GameBoard {
         int endGameIf = 0;
         boolean GameOver = false;
         //int numberOfPlayers;
-        List<Player> playerList = new ArrayList<>();
+        DynamicArr<Player> playerList = new DynamicArr<>();
         Die die = new Die(1); // One die is instantiated with new Dice(int X);
         //GUI gui = new GUI();
-        Arraylist <GUI_Player> GuiPlayerArr = new Arraylist<>();
-        Field[] myFields = new Field[24];
-        for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties();
+        DynamicArr <GUI_Player> GuiPlayerArr = new DynamicArr<>();
+        DynamicArr<Field> myFields = new DynamicArr<>();
+        for (int i = 0; i < 24; i++)
+        {
+            myFields.add(new Properties());
         }
-        UIController uiController = new UIController(playerList.toArray(Player[]::new),myFields);
+        UIController uiController = new UIController(playerList,myFields);
         GUI_Field field = uiController.getGUI().getFields()[0];
 
 
@@ -53,11 +54,11 @@ public class GameBoard {
         }
 
         //Initialize and Add players to gui
-        for (Player player : playerList) {
-            GUI_Player guiplayerx = new GUI_Player(player.getName(), player.getMoney());
+        for  (int i = 0; i < playerList.size; i++) {
+            GUI_Player guiplayerx = new GUI_Player(playerList.atIndex(i).getName(), playerList.atIndex(i).getMoney());
 
             //Vælg farve - Lavet hurtigt - Måske ryk til andet sted?
-            String color = uiController.getGUI().getUserSelection(player.getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
+            String color = uiController.getGUI().getUserSelection(playerList.atIndex(i).getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
             switch (color) {
                 case "RED" -> guiplayerx.getCar().setPrimaryColor(Color.RED);
                 case "BLACK" -> guiplayerx.getCar().setPrimaryColor(Color.BLACK);
@@ -84,12 +85,12 @@ public class GameBoard {
 
         while (!GameOver) {
             // for loop which counts and loops thru the amount of players
-            for (int i = 0; i < playerList.size(); i++) {
+            for (int i = 0; i < playerList.size; i++) {
                 //Maybe use showmessage to make sure the correct player rolls?
                 //gui.showMessage(playerList.get(i).getName() + " has the die in his court");
 
                 //Guibutton to read the next user input
-                String ready = uiController.getGUI().getUserButtonPressed(playerList.get(i).getName() + " press button to roll the die!", "Roll");
+                String ready = uiController.getGUI().getUserButtonPressed(playerList.atIndex(i).getName() + " press button to roll the die!", "Roll");
                 // if statement to check if the user typed in throw
                 if (ready.equals("Roll")) {
                     // function in Dice which rolls the dice
@@ -103,27 +104,27 @@ public class GameBoard {
 
                     // !!!!VIRKER, MEN OPTIMATION?!!!!
                     // gets player position/field and removes the car from the current field
-                    field = uiController.getGUI().getFields()[playerList.get(i).getPosition()];
+                    field = uiController.getGUI().getFields()[playerList.atIndex(i).getPosition()];
                     field.setCar(GuiPlayerArr.atIndex(i), false);
-                    playerList.get(i).setPosition(+die.getFaceValue());
-                    //uiController.updateGUIPlayerPos(playerList.get(i),playerList.get(i).getPosition(), playerList.get(i).getPosition()+ die.getFaceValue());
+                    playerList.atIndex(i).setPosition(+die.getFaceValue());
+                    //uiController.updateGUIPlayerPos(playerList.atIndex(i),playerList.atIndex(i).getPosition(), playerList.atIndex(i).getPosition()+ die.getFaceValue());
                     // gets player position/field and adds the car to the current field
-                    field = uiController.getGUI().getFields()[playerList.get(i).getPosition()];
+                    field = uiController.getGUI().getFields()[playerList.atIndex(i).getPosition()];
                     field.setCar(GuiPlayerArr.atIndex(i), true);
 
                     //!!!Skal ændres!!!
-                    if (playerList.get(i).getMoney() <= endGameIf)
+                    if (playerList.atIndex(i).getMoney() <= endGameIf)
                     {
                         System.out.println("Rolls: " + die.getFaceValue());
-                        System.out.println(playerList.get(i).getName() + " has reached " +endGameIf);
+                        System.out.println(playerList.atIndex(i).getName() + " has reached " +endGameIf);
                         GameOver = true;
-                        uiController.getGUI().showMessage("Gameover "+ playerList.get(i).getName() + " lost");
+                        uiController.getGUI().showMessage("Gameover "+ playerList.atIndex(i).getName() + " lost");
                         break;
 
                     }
                     else {
                         System.out.println("Rolls: " + die.getFaceValue());
-                        System.out.println(playerList.get(i).getName() + " now has " + playerList.get(i).getMoney() + " M!");
+                        System.out.println(playerList.atIndex(i).getName() + " now has " + playerList.atIndex(i).getMoney() + " M!");
                     }
                 }
             }

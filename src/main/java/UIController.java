@@ -5,12 +5,12 @@ import java.awt.*;
 
 public class UIController {
     private GUI gui;
-    private Arraylist<GUI_Player> GuiPlayers = new Arraylist<>();
+    private DynamicArr<GUI_Player> GuiPlayers = new DynamicArr<>();
     private GUI_Player[] guiPlayers;
 
 
     // Constructer that automatically generates GUI with all the players
-    public UIController(Arraylist<Player> players, Arraylist<Field> fields){
+    public UIController(DynamicArr<Player> players, DynamicArr<Field> fields){
 
         this.gui = new GUI(UIFieldGen(fields));
         this.GuiPlayers = UIPlayerGen(players);
@@ -19,7 +19,7 @@ public class UIController {
         }
     }
    //Generates GUI_Player array from logic player array
-   public Arraylist<GUI_Player> UIPlayerGen(Arraylist<Player> list){
+   public DynamicArr<GUI_Player> UIPlayerGen(DynamicArr<Player> list){
        for (int i = 0; i < list.listLength(); i++) {
            this.GuiPlayers.add(new GUI_Player(list.atIndex(i).getName(), list.atIndex(i).getMoney()));
        }
@@ -28,8 +28,8 @@ public class UIController {
     }
 
     //Generates a GUI_Field array from a logic Field array
-    public GUI_Field[] UIFieldGen(Arraylist<Field> fieldList){
-        Arraylist<GUI_Field> guiFields = new Arraylist<>();
+    public GUI_Field[] UIFieldGen(DynamicArr<Field> fieldList){
+        DynamicArr<GUI_Field> guiFields = new DynamicArr<>();
         for (int i = 0; i < fieldList.listLength(); i++) {
 
             if(fieldList.atIndex(i) instanceof FieldStart){
@@ -50,7 +50,6 @@ public class UIController {
             else if(fieldList.atIndex(i) instanceof FieldInfo && ((FieldInfo)fieldList.atIndex(i)).getFieldName().equals("parking")) {
                 guiFields.add(new GUI_Refuge("default",((FieldInfo) fieldList.atIndex(i)).getFieldName(), ((FieldInfo) fieldList.atIndex(i)).getFieldDescription(), ((FieldInfo) fieldList.atIndex(i)).getFieldDescription(), Color.RED, Color.BLACK));
             }
-
         }
         return guiFields.returnArray();
     }
