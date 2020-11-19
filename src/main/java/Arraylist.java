@@ -73,4 +73,12 @@ public class Arraylist<T> {
         size = current;
         arr = newarr;
     }
+
+    public int listLength(){
+        return this.arr.length;
+    }
+
+    public T[] returnArray(){
+        return arr;
+    }
 }
