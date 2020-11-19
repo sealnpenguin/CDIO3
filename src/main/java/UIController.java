@@ -19,13 +19,13 @@ public class UIController {
            guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
        }
         return guiPlayers;
-
     }
 
     public void addPlayers(Player[] players){
         guiPlayers = new GUI_Player[players.length];
         for (int i = 0; i < players.length; i++) {
             guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+            this.gui.addPlayer(guiPlayers[i]);
         }
     }
 
