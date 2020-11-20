@@ -7,7 +7,7 @@ public class Jail extends Field{
         super(fieldName, fieldDescription);
         this.occupiedBy = occupiedBy;
         this.fieldName = "Jail";
-        this.fieldDescription = "In jail or visiting";
+        this.fieldDescription = "Gå i fængsel";
     }
 
     /*public String getFieldName() {

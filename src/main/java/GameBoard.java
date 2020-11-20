@@ -41,8 +41,6 @@ public class GameBoard {
         uiController.addPlayers(playerList);
         //Initialize and Add players to gui
         for (int i = 0; i < playerList.length; i++) {
-
-
             //Vælg farve - Lavet hurtigt - Måske ryk til andet sted?
             String color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+" choose a color for your car","RED", "BLACK", "BLUE","MAGENTA","PINK","CYAN","YELLOW","WHITE");
             switch (color) {
@@ -55,13 +53,9 @@ public class GameBoard {
                 case "YELLOW" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
                 case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
             }
-
-
-
-        }
-        for (int i = 0; i < numberOfPlayers; i++) {
             uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
         }
+
 
 
 
