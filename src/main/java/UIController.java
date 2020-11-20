@@ -1,13 +1,33 @@
 import gui_fields.*;
+import gui_main.GUI;
 
 import java.awt.*;
 
 public class UIController {
+    private GUI gui;
+    private GUI_Player[] guiPlayers;
 
-   /* Generates GUI_Player array from logic player array
+
+    // Constructer that automatically generates GUI with all the players
+    public UIController(Field[] fields){
+        this.gui = new GUI(UIFieldGen(fields));
+    }
+   //Generates GUI_Player array from logic player array
    public GUI_Player[] UIPlayerGen(Player[] players){
+       GUI_Player[] guiPlayers = new GUI_Player[players.length];
+       for (int i = 0; i < players.length; i++) {
+           guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+       }
+        return guiPlayers;
+    }
 
-    }*/
+    public void addPlayers(Player[] players){
+        guiPlayers = new GUI_Player[players.length];
+        for (int i = 0; i < players.length; i++) {
+            guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+            this.gui.addPlayer(guiPlayers[i]);
+        }
+    }
 
     //Generates a GUI_Field array from a logic Field array
     public GUI_Field[] UIFieldGen(Field[] fieldArray){
@@ -34,8 +54,25 @@ public class UIController {
             }
 
         }
-
-
         return guiFields;
     }
+        //Updates GUI_Player according to corresponding Player
+        public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
+
+            for (int i = 0; i < guiPlayers.length; i++) {
+                if(guiPlayers[i].getName().equals(player.getName())){
+                    gui.getFields()[oldPosition].setCar(guiPlayers[i], false);
+                    gui.getFields()[newPosition].setCar(guiPlayers[i], true);
+
+                }
+            }
+
+        }
+
+        public GUI_Player getGuiPlayer(int playerNumber){
+        return guiPlayers[playerNumber];
+        }
+
+        public GUI getGUI(){return this.gui;}
+
 }
