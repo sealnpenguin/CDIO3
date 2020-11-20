@@ -12,21 +12,21 @@ public class Properties extends Field {
         this.ownedBy = ownedBy;
     }
 
-    //public String getFieldName() {
-    //    return fieldName;
-    //}
+//    public String getFieldName() {
+//        return this.fieldName;
+//    }
 
     //public String getFieldDescription() {
     //    return fieldDescription;
     //}
     public int getFieldValue() {
-        return fieldValue;
+        return this.fieldValue;
     }
 
     public String getFieldColor() {
-        return fieldColor;
+        return this.fieldColor;
     }
     public String getOwnedBy() {
-        return ownedBy;
+        return this.ownedBy;
     }
 }

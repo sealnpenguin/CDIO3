@@ -2,12 +2,9 @@ public class FieldStart extends Field{
     //Starting field
     private int fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
 
-    public FieldStart(String fieldName, String fieldDescription){
-        super(fieldName, fieldDescription);
-        this.fieldValue = fieldValue;
+    public FieldStart(){
+       super("Start", "Modtag 2M når du passerer start");
 
-        //this.fieldName = "Start";
-        //this.fieldDescription = "Modtag 2M når du passerer start";
     }
 
     //public static String getFieldName() {

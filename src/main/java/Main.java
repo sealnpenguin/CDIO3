@@ -7,7 +7,6 @@ public class Main {
         //gui.displayChanceCard("test");
         GameBoard.Game();
 
-        FieldsOnBoard.fieldsOnBoard();
     }
 
 }

@@ -1,9 +1,9 @@
 public class FieldChance extends Field {
-    public FieldChance(String fieldName, String fieldDescription){
-        super(fieldName, fieldDescription);
+    public FieldChance(){
+        super("Chance", "Tag et chancekort");
         //Field.getFieldName() = fieldName;// "Chance";
-        fieldName = "Chance";
-        fieldDescription = "Tag et chancekort";
+      //  fieldName = "Chance";
+        //fieldDescription = "Tag et chancekort";
 
     }
 

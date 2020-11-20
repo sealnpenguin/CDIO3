@@ -26,7 +26,7 @@ class UIControllerTest {
     void updateGuiPlayerPos(){
         Field[] myFields = new Field[24];
         for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties();
+            //myFields[i] = new Properties();
         }
         Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         UIController myControl = new UIController(players, myFields);

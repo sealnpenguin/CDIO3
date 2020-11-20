@@ -15,7 +15,7 @@ public class GameBoard {
 
         Field[] myFields = new Field[24];
         for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties();
+            myFields[i] = new Properties("Test", "test desc", "test colour", "owner");
         }
         UIController uiController = new UIController(myFields);
 
