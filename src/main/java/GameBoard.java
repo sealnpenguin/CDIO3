@@ -56,8 +56,11 @@ public class GameBoard {
                 case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
             }
 
-            uiController.getGUI().addPlayer(uiController.getGuiPlayer(i));
 
+
+        }
+        for (int i = 0; i < numberOfPlayers; i++) {
+            uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
         }
 
 
