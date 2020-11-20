@@ -1,6 +1,6 @@
 public class FieldChance extends Field {
     public FieldChance(){
-        super("Chance", "Tag et chancekort");
+        super("?", "Tag et chancekort");
         //Field.getFieldName() = fieldName;// "Chance";
       //  fieldName = "Chance";
         //fieldDescription = "Tag et chancekort";
