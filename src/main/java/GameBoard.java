@@ -104,6 +104,7 @@ public class GameBoard {
                     //updates gui player position
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 
+                    //temp for testing
                     //Set money for both the logical and gui parts of the game
                     playerList[i].setMoney(+-die.getFaceValue());
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
