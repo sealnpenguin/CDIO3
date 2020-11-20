@@ -1,15 +1,15 @@
 public class Properties extends Field {
     private String fieldColor;
-    private String ownedBy;
+    private int ownedBy;
     private int fieldValue;
     // All ownable properties with a value and a color
-    public Properties(String fieldName, String fieldDescription, String fieldColor, String ownedBy){
+    public Properties(String fieldName, String fieldDescription, String fieldColor){
         super(fieldName, fieldDescription);
         //fieldName = "";
         //fieldDescription = "";
         this.fieldValue = fieldValue;
         this.fieldColor = fieldColor;
-        this.ownedBy = ownedBy;
+        this.ownedBy = -1;
     }
 
 //    public String getFieldName() {
@@ -26,7 +26,7 @@ public class Properties extends Field {
     public String getFieldColor() {
         return this.fieldColor;
     }
-    public String getOwnedBy() {
+    public int getOwnedBy() {
         return this.ownedBy;
     }
 }

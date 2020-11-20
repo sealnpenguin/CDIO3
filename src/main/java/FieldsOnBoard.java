@@ -4,15 +4,6 @@ public class FieldsOnBoard {
     private Field[] fieldArr = new Field[24];
 
     public FieldsOnBoard(){
-
-    }
-    public void fieldsOnBoard() {
-        //Test
-        //Jail j = new Jail();
-        //j.fieldDescription = "This is jail";
-        //System.out.println(j.fieldDescription);
-
-        //Samtlige felter, inkl. beskrivelser, på brættet
         String[][] allFields = new String[24][];
         allFields[0] = new String[]{"Start", "Modtag 2M når du passerer start"};
         allFields[1] = new String[]{"Burgerbaren", "M1"};
@@ -43,31 +34,35 @@ public class FieldsOnBoard {
         for (int i = 0; i < allFields.length; i++) {
             if(allFields[i][0].equals("Start")){
                 this.fieldArr[i] = new FieldStart();
-                String test = this.fieldArr[i].getFieldName();
-                System.out.println(test + "FieldsOnBoard test");
+
             }
             else if(allFields[i][0].equals("Chance")){
                 this.fieldArr[i] = new FieldChance();
-                String test = this.fieldArr[i].getFieldName();
-                System.out.println(test + "FieldsOnBoard test");
+
             }
             else if(allFields[i][0].equals("I fængsel") && allFields[i][0].equals("Gratis")){
                 this.fieldArr[i] = new FieldInfo(allFields[i][0], allFields[i][1]);
-                String test = this.fieldArr[i].getFieldName();
-                System.out.println(test + "FieldsOnBoard test");
+
             }
             else if(allFields[i][0].equals("Gå i fængsel")){
                 this.fieldArr[i] = new Jail("Fængsel", allFields[i][0], "test");
-                String test = this.fieldArr[i].getFieldName();
-                System.out.println(test + "FieldsOnBoard test");
+
             }
             else {
-                this.fieldArr[i] = new Properties(allFields[i][0], allFields[i][1], "test color", "test");
-                String test = this.fieldArr[i].getFieldName();
-                System.out.println(test + "FieldsOnBoard test");
+                this.fieldArr[i] = new Properties(allFields[i][0], allFields[i][1], "test color");
 
             }
         }
+
+    }
+    public void fieldsOnBoard() {
+        //Test
+        //Jail j = new Jail();
+        //j.fieldDescription = "This is jail";
+        //System.out.println(j.fieldDescription);
+
+        //Samtlige felter, inkl. beskrivelser, på brættet
+
 
         //Forsøg på at hente attributter fra de forskellige klasser
         //allFields[3] = new String[]{FieldChance.getFieldName(), FieldChance.getFieldDescription()});

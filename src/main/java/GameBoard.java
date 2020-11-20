@@ -13,10 +13,8 @@ public class GameBoard {
         Die die = new Die(1); // One die is instantiated with new Dice(int X);
 
 
-        Field[] myFields = new Field[24];
-        for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties("Test", "test desc", "test colour", "owner");
-        }
+        FieldsOnBoard f1 = new FieldsOnBoard();
+        Field[] myFields = f1.getFieldArr();
         UIController uiController = new UIController(myFields);
 
 
