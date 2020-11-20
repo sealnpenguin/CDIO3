@@ -8,6 +8,7 @@ public class FieldsOnBoard {
         //System.out.println(j.fieldDescription);
 
         //Samtlige felter, inkl. beskrivelser, på brættet
+        Field[] fieldArr = new Field[24];
         String[] allFields = new String[24];
         allFields[0] = Arrays.toString(new String[]{"Start", "Modtag 2M når du passerer start"});
         allFields[1] = Arrays.toString(new String[]{"Burgerbaren", "M1"});
