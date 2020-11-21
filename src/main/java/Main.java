@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         //GUI gui = new GUI();
         //gui.displayChanceCard("test");
-        GameBoard.Game();
+        GameBoard gameBoard = new GameBoard();
+        gameBoard.Game();
 
     }
 
