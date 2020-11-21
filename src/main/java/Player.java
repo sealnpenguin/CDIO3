@@ -4,7 +4,7 @@ public class Player{
     private Boolean inJail;
     private boolean JailCard;
     private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
-    private int Position;
+    private int Position, oldposition;
     private Wallet wallet = new Wallet();
 
 
@@ -14,6 +14,7 @@ public class Player{
         inJail = false;
         JailCard = false;
         Position = 0;
+        oldposition = 0;
     }
 
 
@@ -24,8 +25,13 @@ public class Player{
 
     public void setPosition(int Position)
     {
+        this.oldposition = this.Position;
         this.Position += Position;
         if(this.Position >= 24) this.Position -= 24;
+    }
+    public int getOldposition()
+    {
+        return oldposition;
     }
     public String getName()
     {
