@@ -3,8 +3,8 @@ package Fields;
 import Fields.Field;
 
 public class Properties extends Field {
-    String fieldColor;
-    String ownedBy;
+    private String fieldColor;
+    private int ownedBy;
     // All ownable properties with a value and a color
     public Properties(){
 
@@ -29,7 +29,8 @@ public class Properties extends Field {
     public String getFieldColor() {
         return fieldColor;
     }
-    public String getOwnedBy() {
+    public int getOwnedBy() {
         return ownedBy;
     }
+    public void setOwnedBy(int ownerIndex){this.ownedBy = ownerIndex;}
 }
