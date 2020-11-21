@@ -1,4 +1,4 @@
-/*
+package Cards;/*
 Hvis man har brug for lidt oplæsning til templates så kig nedenstående link
 reference brugt: https://www.geeksforgeeks.org/generics-in-java/
  */
@@ -31,7 +31,7 @@ public class DynamicArr<T> {
         current++;
     }
     //returns whatever there's in the given index
-    T atIndex(int index) {
+    public T atIndex(int index) {
         if (index < current) {
             return arr[index];
         }
@@ -40,7 +40,7 @@ public class DynamicArr<T> {
         }
     }
     // add element into whatever index
-    void addAt(int index, T data) {
+    public void addAt(int index, T data) {
         if (index == size) {
             add(data);
         }
@@ -49,7 +49,7 @@ public class DynamicArr<T> {
         }
     }
     //print the entire array
-    void print() {
+    public void print() {
         for (int i = 0; i < current; i++)
         {
             System.out.print(arr[i]);
@@ -57,7 +57,7 @@ public class DynamicArr<T> {
         System.out.println(" ");
     }
     //decrease the array by x elements
-    void decrease(int itteration) {
+    public void decrease(int itteration) {
         T[] newarr =(T[])new Object[current];
         //deletes the whole array except index 0
         if (itteration > current) {

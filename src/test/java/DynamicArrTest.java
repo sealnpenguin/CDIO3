@@ -1,9 +1,11 @@
+import Cards.DynamicArr;
+
 class DynamicArrTest {
 
     @org.junit.jupiter.api.Test
     void add() {
-        DynamicArr<Integer> k = new DynamicArr<>();
-        DynamicArr<String> s = new DynamicArr<>();
+        DynamicArr<Integer> k = new DynamicArr<Integer>();
+        DynamicArr<String> s = new DynamicArr<String>();
 
        //ynamicArr<Field>
         // integer array

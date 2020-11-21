@@ -10,6 +10,7 @@ public class Player{
     private Wallet wallet = new Wallet();
 
 
+
     public Player(String Name)
     {
         name = Name;
@@ -31,6 +32,11 @@ public class Player{
         this.Position += Position;
         if(this.Position >= 24) this.Position -= 24;
     }
+
+    public void setSpecificPosition(int position){
+        this.oldposition = this.Position;
+        this.Position = position;
+    }
     public int getOldposition()
     {
         return oldposition;
@@ -49,10 +55,10 @@ public class Player{
     }
 
     //adds or remove jailcard(s) to a player
-    public int setJailCard(int jailCard) {
-        return this.JailCard += jailCard;
+    public void setJailCard(boolean jailCard) {
+        this.JailCard = jailCard;
     }
-    public int getJailCard()
+    public boolean getJailCard()
     {
         return this.JailCard;
     }

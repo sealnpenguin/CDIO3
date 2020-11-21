@@ -13,6 +13,15 @@ public class UIController {
     public UIController(Field[] fields){
         this.gui = new GUI(UIFieldGen(fields));
     }
+
+    public UIController(Player[] players, Field[] fields){
+        this.gui = new GUI(UIFieldGen(fields));
+        this.guiPlayers = new GUI_Player[players.length];
+        for (int i = 0; i < players.length; i++) {
+            this.guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+            this.gui.addPlayer(guiPlayers[i]);
+        }
+    }
    //Generates GUI_Player array from logic player array
    public GUI_Player[] UIPlayerGen(Player[] players){
        GUI_Player[] guiPlayers = new GUI_Player[players.length];
@@ -23,9 +32,9 @@ public class UIController {
     }
 
     public void addPlayers(Player[] players){
-        guiPlayers = new GUI_Player[players.length];
+        this.guiPlayers = new GUI_Player[players.length];
         for (int i = 0; i < players.length; i++) {
-            guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
+            this.guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
             this.gui.addPlayer(guiPlayers[i]);
         }
     }

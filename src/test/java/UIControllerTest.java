@@ -2,16 +2,18 @@ import Player.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
+import Cards.*;
+import Player.*;
 
 class UIControllerTest {
 
     @Test
     void UIFieldGen() {
-        Arraylist<Field> myFields = new Arraylist<>();
-        for (int i = 0; i < myFields.listLength(); i++) {
+        DynamicArr<Field> myFields = new DynamicArr<Field>();
+        for (int i = 0; i < myFields.size; i++) {
             myFields.add(new Properties());
         }
-        Arraylist<Player> players = new Arraylist<>(new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")});
+        DynamicArr<Player> players = new DynamicArr<Player>(new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")});
         UIController myControl = new UIController(players, myFields);
 
 
@@ -21,11 +23,11 @@ class UIControllerTest {
 
     @Test
     void updateGuiPlayerPos(){
-        Arraylist<Field> myFields = new Arraylist<>();
+        DynamicArr<Field> myFields = new DynamicArr<>();
         for (int i = 0; i < myFields.listLength(); i++) {
             myFields.add(new Properties());
         }
-        Arraylist<Player> players = new Arraylist<>(new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")});
+        DynamicArr<Player> players = new DynamicArr<>(new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")});
         UIController myControl = new UIController(players, myFields);
         for (int i = 0; i < players.listLength(); i++) {
             myControl.getGUI().addPlayer(myControl.UIPlayerGen(players).atIndex(i));

@@ -1,3 +1,5 @@
+package Player;
+
 public class Wallet {
     private int money;
     public Wallet(){

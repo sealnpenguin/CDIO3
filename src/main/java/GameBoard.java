@@ -1,4 +1,6 @@
 import java.awt.*;
+import Player.*;
+import Cards.*;
 
 
 /* !!!TANKER!!!
