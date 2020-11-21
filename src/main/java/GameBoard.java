@@ -27,35 +27,16 @@ public class GameBoard {
         currentLang = langSelector.returnLang();
         playerList = new Player[SetPlayerAmount()];
 
+        PlayerCreator();
 
-        //sets player name and sets start money amount
-        for (int i = 1; i < numberOfPlayers + 1; i++) {
-            Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
-            //Made fast to check if name is already taken
-            if (i == 2 ){
-                while(player.getName().equals(playerList[0].getName())) {
-                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 2));}
-            } else if (i == 3) {
-                while(player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName())) {
-                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 3));}
-            } else if (i == 4){
-                while(player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName()) || player.getName().equals(playerList[2].getName())) {
-                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 4));}
-            }
-            //Sets the players money according the rules
-            switch (numberOfPlayers) {
-                case 2 -> player.setMoney(20);
-                case 3 -> player.setMoney(18);
-                case 4 -> player.setMoney(16);
-            }
-            playerList[i - 1] = player;
-        }
         uiController.addPlayers(playerList);
 
         ChooseColor();
 
         //Fast way to test jail functionality
         //playerList[3].SetinJail(true);
+        //playerList[3].setJailCard(true);
+
         GameFlow();
 
     }
@@ -66,6 +47,34 @@ public class GameBoard {
             uiController.getGUI().showMessage(currentLang[1]);
             numberOfPlayers = uiController.getGUI().getUserInteger(currentLang[0]);
         } return numberOfPlayers;
+    }
+
+    private void PlayerCreator(){
+        //sets player name and sets start money amount
+        for (int i = 1; i < numberOfPlayers + 1; i++) {
+            Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
+            //Made fast to check if name is already taken
+            if (i == 2) {
+                while (player.getName().equals(playerList[0].getName())) {
+                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 2));
+                }
+            } else if (i == 3) {
+                while (player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName())) {
+                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 3));
+                }
+            } else if (i == 4) {
+                while (player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName()) || player.getName().equals(playerList[2].getName())) {
+                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 4));
+                }
+            }
+            //Sets the players money according the rules
+            switch (numberOfPlayers) {
+                case 2 -> player.setMoney(20);
+                case 3 -> player.setMoney(18);
+                case 4 -> player.setMoney(16);
+            }
+            playerList[i - 1] = player;
+        }
     }
 
     private void EndGame() {
@@ -108,8 +117,7 @@ public class GameBoard {
                     case "YELLOW" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
                     case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
                 }
-            }
-            if(lang.equals("Dansk")) {
+            } else if(lang.equals("Dansk")) {
                 switch (color) {
                     case "RØD" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
                     case "SORT" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
@@ -130,14 +138,20 @@ public class GameBoard {
         while (!GameOver) {
             // Change turn loop
             for (int i = 0; i < playerList.length; i++) {
+                //************************************JAIL************************************
                 if(playerList[i].GetinJail() && !playerList[i].getJailCard())
                 {
                     playerList[i].SetinJail(false);
-                    break;
+                    uiController.getGUI().showMessage(playerList[i].getName() + currentLang[20]);
+                    playerList[i].setMoney(+-1);
+                    uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
+                    //break;
                 } else if(playerList[i].GetinJail() && playerList[i].getJailCard())
                 {
                     playerList[i].setJailCard(false);
-                }
+                    playerList[i].SetinJail(false);
+                    uiController.getGUI().showMessage(playerList[i].getName() + currentLang[21]);
+                }//***********************************JAIL************************************
 
                 //loop to check if a player as reached 0
                 EndGame();
@@ -163,11 +177,11 @@ public class GameBoard {
                 }
             }
         }
-        //*******************************Restart game?!!***************************************************
+        //****************************************Restart game?!!*******************************************
         if(uiController.getGUI().getUserLeftButtonPressed(currentLang[16], currentLang[17], currentLang[18])){
             uiController.getGUI().close();
             Game();
         } else uiController.getGUI().close();
-        //**************************************************************************************************
+        //****************************************Restart game?!!*******************************************
     }
 }
