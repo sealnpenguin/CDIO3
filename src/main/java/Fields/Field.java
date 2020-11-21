@@ -1,10 +1,12 @@
 package Fields;
 
+import Player.Player;
+
 public abstract class Field {
 
     protected String fieldName;
     protected String fieldDescription;
-    //int fieldValue = 1;
+
 
     public Field(String fieldName, String fieldDescription){
         this.fieldName = fieldName;
@@ -16,5 +18,7 @@ public abstract class Field {
     public String getFieldDescription() {
         return fieldDescription;
     }
+
+    public abstract void landOnField(Player[] players, int player);
 
 }

@@ -1,6 +1,7 @@
 package Fields;
 
 import Fields.Field;
+import Player.Player;
 
 public class Jail extends Field {
     // Fields.Jail field
@@ -14,12 +15,9 @@ public class Jail extends Field {
         this.fieldDescription = "Gå i fængsel";
     }
 
-    public String getFieldName() {
-        return fieldName;
-    }
+    @Override
+    public void landOnField(Player[] players, int player) {
 
-    public String getFieldDescription() {
-        return fieldDescription;
     }
 
     public String getOccupiedBy() {

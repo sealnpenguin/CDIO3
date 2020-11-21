@@ -1,23 +1,17 @@
 package Fields;
+import Player.*;
 
 public class FieldChance extends Field {
     public FieldChance(){
         super("?", "Tag et chancekort");
-        //Field.getFieldName() = fieldName;// "Chance";
-      //  fieldName = "Chance";
-        //fieldDescription = "Tag et chancekort";
-
     }
 
-    /*public String setFieldName() {
-        fieldName = "Chance";
-        return fieldName;
+
+    @Override
+    public void landOnField(Player[] players, int player) {
+        takeChanceCard(players, player);
     }
-    public String getFieldName() {
-        return fieldName;
-    }*/
 
-    public void takeChanceCard(){
-
+    public void takeChanceCard(Player[] players, int player){
     }
 }

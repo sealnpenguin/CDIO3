@@ -1,19 +1,17 @@
 package Fields;
+
+import Player.Player;
+
 public class FieldInfo extends Field{
 
     // Chance card, straight to jail and free parking
     public FieldInfo(String fieldName, String fieldDescription){
         super(fieldName, fieldDescription);
 
-        //fieldName = "";
-        //fieldDescription = "";
     }
 
-    //public String getFieldName() {
-    //    return fieldName;
-    //}
+    @Override
+    public void landOnField(Player[] players, int player) {
 
-    //public String getFieldDescription() {
-    //    return fieldDescription;
-    //}
+    }
 }

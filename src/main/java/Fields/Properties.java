@@ -1,6 +1,7 @@
 package Fields;
 
 
+import Player.Player;
 
 public class Properties extends Field {
     private String fieldColor;
@@ -12,6 +13,11 @@ public class Properties extends Field {
         this.fieldColor = color;
         this.price = value;
         this.ownedBy = -1;
+    }
+
+    @Override
+    public void landOnField(Player[] players, int player) {
+
     }
 
     public String getFieldName() {

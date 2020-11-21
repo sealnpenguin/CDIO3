@@ -1,5 +1,7 @@
 package Fields;
 
+import Player.Player;
+
 public class FieldStart extends Field{
     //Starting field
     private int fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
@@ -9,13 +11,10 @@ public class FieldStart extends Field{
 
     }
 
-    //public static String getFieldName() {
-    //    return fieldName;
-    //}
+    @Override
+    public void landOnField(Player[] players, int player) {
 
-    //public static String getFieldDescription() {
-    //    return fieldDescription;
-    //}
+    }
 
     public int getFieldValue() {
         return fieldValue;
