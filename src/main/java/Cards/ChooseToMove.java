@@ -22,6 +22,7 @@ public class ChooseToMove extends Cards
 
     }
 
+    /* Ved chancekort 3 er det denne funktion der lader en vælge hvor langt frem der skal gåes */
     public static void moveForward(Player[] players, int player){
         Scanner ryk = new Scanner(System.in);
         System.out.println("indtast hvor mange felter de ønsker at rykke frem: ");
@@ -30,9 +31,9 @@ public class ChooseToMove extends Cards
             System.out.println("Der er indtastet en ugyldig værdig. Indtast en gyldig værdi mellem 1 og 5: ");
             FremRyk = ryk.nextInt();
         }
-
         players[player].setPosition(FremRyk);
-
     }
+
+
 
 }

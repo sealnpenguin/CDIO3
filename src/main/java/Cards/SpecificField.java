@@ -28,6 +28,17 @@ public class SpecificField extends Cards
 
             case("4:"):
 
+            case("11:"):
+                Properties p1 = ((Properties)fields[23]);
+                players[player].setSpecificPosition(23);
+                if(p1.getOwnedBy() == -1 && p1.getOwnedBy() == player){
+                    p1.setOwnedBy(player);
+                }
+                else{
+                    players[player].setMoney(-p1.getPrice());
+                    players[p1.getOwnedBy()].setMoney(p1.getPrice());
+                }
+                break;
 
             case("18"):
                 Properties p1 = ((Properties)fields[10]);
