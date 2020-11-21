@@ -30,7 +30,7 @@ public class FieldsOnBoard {
         allFields[22] = new String[]{"Vandlandet", "M5", "blå"};
         allFields[23] = new String[]{"Strandpromenaden", "M5", "blå"};
 
-
+        //Creates a field array based on Strings
         for (int i = 0; i < allFields.length; i++) {
             if(allFields[i][0].equals("Start")){
                 this.fieldArr[i] = new FieldStart();
