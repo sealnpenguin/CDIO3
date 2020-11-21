@@ -5,14 +5,14 @@ import Fields.Field;
 public class Properties extends Field {
     private String fieldColor;
     private int ownedBy;
+    private int price;
     // All ownable properties with a value and a color
-    public Properties(){
+    public Properties(String name, String description, String color,int value){
 
-        fieldName = "";
-        fieldDescription = "";
-        int fieldValue = 1;
-        this.fieldColor = fieldColor;
-        this.ownedBy = ownedBy;
+        fieldName = name;
+        fieldDescription = description;
+        this.fieldColor = color;
+        this.ownedBy = -1;
     }
 
     public String getFieldName() {
@@ -33,4 +33,8 @@ public class Properties extends Field {
         return ownedBy;
     }
     public void setOwnedBy(int ownerIndex){this.ownedBy = ownerIndex;}
+
+    public int getPrice() {
+        return price;
+    }
 }
