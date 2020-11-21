@@ -138,7 +138,7 @@ public class GameBoard {
             }
         }
         //*******************************Restart game?!!***************************************************
-        if(uiController.getGUI().getUserLeftButtonPressed("Go Again?", "Yes", "No")){
+        if(uiController.getGUI().getUserLeftButtonPressed(currentLang[16], currentLang[17], currentLang[18])){
             uiController.getGUI().close();
             Game();
         } else uiController.getGUI().close();
