@@ -1,3 +1,5 @@
+package Fields;
+
 public class FieldStart extends Field{
 
     //Starting field

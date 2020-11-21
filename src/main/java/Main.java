@@ -7,7 +7,7 @@ public class Main {
         //GameBoard.Game();
 
         //Test
-        //Jail j = new Jail();
+        //Fields.Jail j = new Fields.Jail();
         //j.fieldDescription = "This is jail";
         //System.out.println(j.fieldDescription);
     }

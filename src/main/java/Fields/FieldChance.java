@@ -1,3 +1,5 @@
+package Fields;
+
 public class FieldChance extends Field {
     public FieldChance(){
         fieldName = "Chance";

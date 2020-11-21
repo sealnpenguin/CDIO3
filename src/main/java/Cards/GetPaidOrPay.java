@@ -1,5 +1,6 @@
 package Cards;
 import Player.*;
+import Fields.*;
 
 public class GetPaidOrPay extends Cards
 {
@@ -9,7 +10,7 @@ public class GetPaidOrPay extends Cards
     }
 
     @Override
-    public void drawCard(Player[] players, int player)
+    public void drawCard(Player[] players, int player, Field[] fields)
     {
 
     }

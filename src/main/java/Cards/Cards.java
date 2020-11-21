@@ -1,5 +1,6 @@
 package Cards;
 import Player.*;
+import Fields.*;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -28,7 +29,7 @@ public abstract class Cards
         return cardText;
     }
 
-    public abstract void drawCard(Player[] players, int player);
+    public abstract void drawCard(Player[] players, int player, Field[] fields);
 
 
 }

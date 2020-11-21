@@ -1,9 +1,10 @@
+import Fields.Field;
+import Fields.Properties;
 import Player.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
 import Cards.*;
-import Player.*;
 
 class UIControllerTest {
 

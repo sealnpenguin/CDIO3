@@ -1,13 +1,15 @@
 import java.awt.*;
+
+import Fields.Field;
+import Fields.Properties;
 import Player.*;
-import Cards.*;
 
 
 /* !!!TANKER!!!
 - Sørg for at bruger ikke kan taste samme navn ind
 - SE VÆLG FARVE
 */
-import Player.*;
+
 public class GameBoard {
     static void Game() {
         int endGameIf = 0;

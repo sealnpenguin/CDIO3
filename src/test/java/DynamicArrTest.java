@@ -7,7 +7,7 @@ class DynamicArrTest {
         DynamicArr<Integer> k = new DynamicArr<Integer>();
         DynamicArr<String> s = new DynamicArr<String>();
 
-       //ynamicArr<Field>
+       //ynamicArr<Fields.Field>
         // integer array
         k.add(4);
         k.print();

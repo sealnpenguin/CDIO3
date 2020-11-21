@@ -1,4 +1,6 @@
 package Cards;
+import Fields.*;
+
 
 import Player.Player;
 
@@ -10,7 +12,7 @@ public class ChooseToMove extends Cards
     }
 
     @Override
-    public void drawCard(Player[] players, int player)
+    public void drawCard(Player[] players, int player, Field[] fields)
     {
 
     }

@@ -1,12 +1,16 @@
-public class Jail extends Field{
-    // Jail field
+package Fields;
+
+import Fields.Field;
+
+public class Jail extends Field {
+    // Fields.Jail field
 
     String occupiedBy = "";
 
     public Jail(){
         //super(fieldName, fieldDescription);
         //this.occupiedBy = occupiedBy;
-        fieldName = "Jail";
+        fieldName = "Fields.Jail";
         fieldDescription = "In jail or visiting";
     }
 

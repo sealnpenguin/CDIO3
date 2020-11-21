@@ -1,5 +1,7 @@
 package Cards;
 import Player.*;
+import Fields.*;
+
 
 public class SpecificField extends Cards
 {
@@ -9,7 +11,7 @@ public class SpecificField extends Cards
     }
 
     @Override
-    public void drawCard(Player[] players, int player)
+    public void drawCard(Player[] players, int player, Field[] fields)
     {
         switch(this.getCardText().substring(0, 2))
         {

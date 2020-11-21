@@ -1,3 +1,4 @@
+import Fields.*;
 import Player.Player;
 import gui_fields.*;
 import gui_main.GUI;
@@ -39,7 +40,7 @@ public class UIController {
         }
     }
 
-    //Generates a GUI_Field array from a logic Field array
+    //Generates a GUI_Field array from a logic Fields.Field array
     public GUI_Field[] UIFieldGen(Field[] fieldArray){
         GUI_Field[] guiFields = new GUI_Field[fieldArray.length];
         for (int i = 0; i < fieldArray.length; i++) {

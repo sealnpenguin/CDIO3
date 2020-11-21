@@ -1,3 +1,7 @@
+package Fields;
+
+import Fields.Field;
+
 public class Properties extends Field {
     String fieldColor;
     String ownedBy;
