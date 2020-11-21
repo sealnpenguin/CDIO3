@@ -12,6 +12,7 @@ public abstract class Cards
     private int cardIndex;
     private String cardText;
     private CardInfo info;
+    private boolean drawAgain;
 
 
         public Cards (String text, int index)
@@ -19,6 +20,7 @@ public abstract class Cards
             this.info = new CardInfo();
             this.cardIndex = index;
             this.cardText = text;
+            this.drawAgain = false;
         }
 
     public int getCardIndex() {
@@ -27,6 +29,10 @@ public abstract class Cards
 
     public String getCardText() {
         return cardText;
+    }
+
+    public void setDrawAgain(boolean input){
+            this.drawAgain = input;
     }
 
     public abstract void drawCard(Player[] players, int player, Field[] fields);

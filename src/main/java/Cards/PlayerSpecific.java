@@ -7,6 +7,7 @@ public class PlayerSpecific extends Cards
     public PlayerSpecific(String text, int index)
     {
         super(text,index);
+        this.setDrawAgain(true);
     }
 
     @Override
