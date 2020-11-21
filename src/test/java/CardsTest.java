@@ -1,8 +1,4 @@
-import org.junit.jupiter.api.Test;
-
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
+import Cards.Cards;
 
 class CardsTest {
 
@@ -70,15 +66,21 @@ class CardsTest {
             };
 
 
-
+        /*
         Cards[] cards = new Cards[tekst.length];
 
         for(int j = 0; j < tekst.length; j++)
         {
             cards[j] = new Cards(tekst[j], j);
         }
+            this.cardIndex = index;
+            this.cardText = text;
+        }
+
         cards[10].getCardText();
+        */
     }
+
 }
 
 

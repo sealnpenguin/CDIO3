@@ -1,3 +1,5 @@
+package Cards;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -8,7 +10,8 @@ public abstract class Cards
     private String cardText;
 
 
-        public Cards (String text, int index){
+        public Cards (String text, int index)
+        {
             this.cardIndex = index;
             this.cardText = text;
         }
@@ -21,7 +24,7 @@ public abstract class Cards
         return cardText;
     }
 
-    public abstract void drawCard(Player p);
+    public abstract void drawCard(Player[] players);
 
 
 }
