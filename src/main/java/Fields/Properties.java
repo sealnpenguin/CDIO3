@@ -12,6 +12,7 @@ public class Properties extends Field {
         fieldName = name;
         fieldDescription = description;
         this.fieldColor = color;
+        this.price = value;
         this.ownedBy = -1;
     }
 

@@ -12,6 +12,13 @@ public class GetPaidOrPay extends Cards
     @Override
     public void drawCard(Player[] players, int player, Field[] fields)
     {
+        switch (this.getCardText().substring(0, 2)){
+            case("14"):
+                for (int i = 0; i < players.length; i++) {
 
+                }
+                players[player].setMoney(players.length-1);
+
+        }
     }
 }
