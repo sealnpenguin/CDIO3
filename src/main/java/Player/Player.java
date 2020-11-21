@@ -1,3 +1,7 @@
+package Player;
+
+import Cards.*;
+
 public class Player{
     //Attributes
     private String name;
@@ -6,6 +10,9 @@ public class Player{
     private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position, oldposition;
     private Wallet wallet = new Wallet();
+    private DynamicArr<Cards> cardArray = new DynamicArr<Cards>();
+
+
 
     public Player(String Name)
     {
@@ -36,6 +43,11 @@ public class Player{
         this.Position += Position;
         if(this.Position >= 24) this.Position -= 24;
     }
+
+    public void setSpecificPosition(int position){
+        this.oldposition = this.Position;
+        this.Position = position;
+    }
     public int getOldposition()
     {
         return oldposition;
@@ -65,6 +77,10 @@ public class Player{
         return this.JailCard;
     }
 
+    public void setInJail(boolean input){
+        this.inJail = input;
+    }
+
     //Return array with players properties
     public Boolean[] getmyProperties(){
         return myProperties;
@@ -78,4 +94,7 @@ public class Player{
         wallet.setMoney(money);
     }
 
+    public DynamicArr<Cards> getCardArray() {
+        return cardArray;
+    }
 }

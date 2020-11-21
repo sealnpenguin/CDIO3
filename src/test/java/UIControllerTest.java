@@ -1,10 +1,10 @@
-import gui_fields.GUI_Player;
-import gui_main.GUI;
+import Fields.Field;
+import Fields.Properties;
+import Player.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
-
-import static org.junit.jupiter.api.Assertions.*;
+import Cards.*;
 
 class UIControllerTest {
 

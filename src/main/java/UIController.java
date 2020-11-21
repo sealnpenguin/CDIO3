@@ -1,7 +1,11 @@
+import Fields.*;
+import Player.*;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
+import Fields.*;
+import Player.*;
 
 public class UIController {
     private GUI gui;

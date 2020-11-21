@@ -1,14 +1,15 @@
-import Cards.DynamicArr;
+package Cards;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class DynamicArrTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void add() {
-        DynamicArr<Integer> k = new DynamicArr<Integer>();
-        DynamicArr<String> s = new DynamicArr<String>();
-
-       //ynamicArr<Fields.Field>
-        // integer array
+        DynamicArr<Integer> k = new DynamicArr();
+        DynamicArr<String> s = new DynamicArr();
         k.add(4);
         k.print();
         k.add(5);
@@ -17,17 +18,13 @@ class DynamicArrTest {
         k.print();
         k.add(8);
         System.out.println(k.atIndex(2));
-        //expects 420
         System.out.println(k.atIndex(44999));
         k.addAt(3, 25);
-        //25 at index 3
         k.print();
         k.decrease(1);
         k.print();
         k.decrease(25);
         k.print();
-
-        // String array
         s.add("zero");
         s.print();
         s.add("first");
@@ -35,15 +32,39 @@ class DynamicArrTest {
         s.add("second");
         s.print();
         s.add("third");
-        System.out.println(s.atIndex(2));
-        //expects 420
-        System.out.println(s.atIndex(44999));
+        System.out.println((String)s.atIndex(2));
+        System.out.println((String)s.atIndex(44999));
         s.addAt(3, "twenty-five");
-        //25 at index 3
         s.print();
         s.decrease(1);
         s.print();
         s.decrease(25);
         s.print();
+    }
+
+    @Test
+    void atIndex() {
+    }
+
+    @Test
+    void addAt() {
+    }
+
+    @Test
+    void print() {
+    }
+
+    @Test
+    void decrease() {
+    }
+
+    @Test
+    void removeAt() {
+        DynamicArr<Integer> arr = new DynamicArr();
+        arr.add(5);
+        arr.add(15);
+        arr.print();
+        arr.removeAt(0);
+        arr.print();
     }
 }
