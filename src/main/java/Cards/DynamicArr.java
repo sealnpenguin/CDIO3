@@ -79,11 +79,11 @@ public class DynamicArr<T> {
     }
 
     public void removeAt(int index) {
-        T[] newArr = (T[]) new Objects[this.size - 1];
+        T[] newArr = (T[]) new Object[size-1];
         int newArrCounter = 0;
         for (int i = 0; i < this.arr.length; i++) {
             if (i != index) {
-                newArr[newArrCounter] = this.arr[i];
+                newArr[newArrCounter] = arr[i];
                 newArrCounter++;
             }
         }

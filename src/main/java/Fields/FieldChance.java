@@ -13,13 +13,17 @@ public class FieldChance extends Field {
         this.generateChanceCards();
     }
 
+    public void landOnField(Player[] players, int player){
 
-    @Override
-    public void landOnField(Player[] players, int player) {
-        takeChanceCard(players, player);
     }
 
-    public void takeChanceCard(Player[] players, int player){
+    public void landOnField(Player[] players, int player, Field[] fields) {
+        takeChanceCard(players, player, fields);
+    }
+
+    public void takeChanceCard(Player[] players, int player, Field[] fields){
+        cards.atIndex(cards.size-1).drawCard(players, player, fields);
+
     }
 
     public void generateChanceCards(){
@@ -55,6 +59,7 @@ public class FieldChance extends Field {
             int random = ran.nextInt(this.cards.size);
             tempArr[counter]=cards.atIndex(random);
             cards.removeAt(random);
+            counter++;
         }
         for (int i = 0; i < tempArr.length; i++) {
             cards.add(tempArr[i]);
