@@ -20,7 +20,7 @@ class CardsTest {
 
         String[] tekst =
             {
-                "1: Giv dette kort til BILEN, og tag et Chancekort mere. BIL: på din næste tur, tag til vilkårligt ledigt felt og købe det.\n"
+                "1: Giv dette kort til BILEN, og tag et Chancekort mere. BIL: på din næste tur, tag til vilkårligt ledigt felt og købe det.\n" +
                 "Hvis ingen ledige felter, skal du købe et fra en anden spiller \n",
 
                 "2: Ryk frem til START, modtag M2 \n",

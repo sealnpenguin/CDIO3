@@ -10,10 +10,12 @@ public abstract class Cards
 {
     private int cardIndex;
     private String cardText;
+    private CardInfo info;
 
 
         public Cards (String text, int index)
         {
+            this.info = new CardInfo();
             this.cardIndex = index;
             this.cardText = text;
         }
