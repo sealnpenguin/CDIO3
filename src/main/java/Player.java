@@ -45,6 +45,9 @@ public class Player{
         return name;
     }
 
+    public void setName(String Name){
+        this.name = Name;
+    }
     public void setMyProperties(int k, boolean tf)
     {
         if (tf)

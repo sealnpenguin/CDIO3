@@ -1,8 +1,10 @@
 import java.awt.*;
 
 /* !!!TANKER!!!
-- Sørg for at bruger ikke kan taste samme navn ind
+- Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
 - SE VÆLG FARVE
+- Property value int i player for at nemmere at kunne tjekke når der er en der vinder?
+- Se gameflow jail løsning - skal rettes til når chance kort er på plads!
 */
 
 public class GameBoard {
@@ -29,6 +31,17 @@ public class GameBoard {
         //sets player name and sets start money amount
         for (int i = 1; i < numberOfPlayers + 1; i++) {
             Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
+            //Made fast to check if name is already taken
+            if (i == 2 ){
+                while(player.getName().equals(playerList[0].getName())) {
+                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 2));}
+            } else if (i == 3) {
+                while(player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName())) {
+                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 3));}
+            } else if (i == 4){
+                while(player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName()) || player.getName().equals(playerList[2].getName())) {
+                    player.setName(uiController.getGUI().getUserString(currentLang[19] + 4));}
+            }
             //Sets the players money according the rules
             switch (numberOfPlayers) {
                 case 2 -> player.setMoney(20);
@@ -40,6 +53,8 @@ public class GameBoard {
         uiController.addPlayers(playerList);
 
         ChooseColor();
+
+        //Fast way to test jail functionality
         //playerList[3].SetinJail(true);
         GameFlow();
 
