@@ -17,7 +17,8 @@ public class Jail extends Field {
 
     @Override
     public void landOnField(Player[] players, int player) {
-
+        players[player].setSpecificPosition(18);
+        players[player].setInJail(true);
     }
 
     public String getOccupiedBy() {

@@ -1,7 +1,10 @@
 package Fields;
 import Player.*;
-
+import Cards.*;
 public class FieldChance extends Field {
+
+    private DynamicArr<Cards> cards = new DynamicArr<Cards>();
+
     public FieldChance(){
         super("?", "Tag et chancekort");
     }
@@ -13,5 +16,9 @@ public class FieldChance extends Field {
     }
 
     public void takeChanceCard(Player[] players, int player){
+    }
+
+    public void generateChanceCards(){
+
     }
 }

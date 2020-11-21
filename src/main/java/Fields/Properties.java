@@ -17,7 +17,16 @@ public class Properties extends Field {
 
     @Override
     public void landOnField(Player[] players, int player) {
-
+        //Case when no one owns
+        if(this.getOwnedBy() == -1){
+            players[player].setMoney(-this.getPrice());
+            this.setOwnedBy(player);
+        }
+        //case if you dont own meaning someone else owns
+        else if(this.getOwnedBy() != player){
+            players[player].setMoney(-this.getPrice());
+            players[this.getOwnedBy()].setMoney(this.getPrice());
+        }
     }
 
     public String getFieldName() {

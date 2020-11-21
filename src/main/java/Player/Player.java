@@ -66,6 +66,10 @@ public class Player{
         return this.JailCard;
     }
 
+    public void setInJail(boolean input){
+        this.inJail = input;
+    }
+
     //Return array with players properties
     public Boolean[] getmyProperties(){
         return myProperties;

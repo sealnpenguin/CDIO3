@@ -57,6 +57,5 @@ public class CardInfo {
     public String[] getText()
     {
         return this.text;
-
     }
 }
