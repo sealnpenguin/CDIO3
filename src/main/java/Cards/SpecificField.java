@@ -14,6 +14,7 @@ public class SpecificField extends Cards
     @Override
     public void drawCard(Player[] players, int player, Field[] fields)
     {
+        /* Se CardInfo for beskrivelse af forskellige cases */
         switch(this.getCardText().substring(0, 2))
         {
             case("1:"):
@@ -52,8 +53,6 @@ public class SpecificField extends Cards
                 }
                 break;
 
-
-                //Plads 10
         }
     }
 }
