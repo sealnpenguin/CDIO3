@@ -6,17 +6,16 @@ import java.awt.*;
 */
 
 public class GameBoard {
-    int endGameIf = 0;
-    boolean GameOver = false;
-    String lang;
-    Die die = new Die(1); // One die is instantiated with new Dice(int X);
-    int numberOfPlayers = 0;
-    Player[] playerList = new Player[0];
+    private boolean GameOver = false;
+    private String lang;
+    private final Die die = new Die(1); // One die is instantiated with new Dice(int X);
+    private int numberOfPlayers = 0;
+    private Player[] playerList = new Player[0];
 
-    FieldsOnBoard f1 = new FieldsOnBoard();
-    Field[] myFields = f1.getFieldArr();
-    UIController uiController;
-    String[] currentLang;
+    private final FieldsOnBoard f1 = new FieldsOnBoard();
+    private final Field[] myFields = f1.getFieldArr();
+    private UIController uiController;
+    private String[] currentLang;
 
     public void Game() {
         uiController = new UIController(myFields);
@@ -24,14 +23,8 @@ public class GameBoard {
         lang = uiController.getGUI().getUserButtonPressed("", "English", "Dansk");
         Language langSelector = new Language(lang);
         currentLang = langSelector.returnLang();
+        playerList = new Player[SetPlayerAmount()];
 
-        numberOfPlayers = uiController.getGUI().getUserInteger(currentLang[0]);
-        while (numberOfPlayers > 4 || numberOfPlayers < 2) {
-            uiController.getGUI().showMessage(currentLang[1]);
-            numberOfPlayers = uiController.getGUI().getUserInteger(currentLang[0]);
-        }
-        playerList = new Player[numberOfPlayers];
-        // Create player objects as per the playerdefined numberOfPlayers int.
 
         //sets player name and sets start money amount
         for (int i = 1; i < numberOfPlayers + 1; i++) {
@@ -52,7 +45,16 @@ public class GameBoard {
 
     }
 
+    private int SetPlayerAmount(){
+        numberOfPlayers = uiController.getGUI().getUserInteger(currentLang[0]);
+        while (numberOfPlayers > 4 || numberOfPlayers < 2) {
+            uiController.getGUI().showMessage(currentLang[1]);
+            numberOfPlayers = uiController.getGUI().getUserInteger(currentLang[0]);
+        } return numberOfPlayers;
+    }
+
     private void EndGame() {
+        int endGameIf = 0;
         for (int k = 0; k < numberOfPlayers; k++) {
             if (uiController.getGuiPlayer(k).getBalance() <= endGameIf) {
                 int[] a = new int[numberOfPlayers];
