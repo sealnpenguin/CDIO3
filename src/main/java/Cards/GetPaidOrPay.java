@@ -15,7 +15,9 @@ public class GetPaidOrPay extends Cards
         switch (this.getCardText().substring(0, 2)){
             case("14"):
                 for (int i = 0; i < players.length; i++) {
-
+                    if(i != player){
+                        players[player].setMoney(-1);
+                    }
                 }
                 players[player].setMoney(players.length-1);
 
