@@ -10,7 +10,7 @@ public class FieldChance extends Field {
 
     public FieldChance(){
         super("?", "Tag et chancekort");
-        this.generateChanceCards();
+        this.generateChanceCards(true);
     }
 
     public void landOnField(Player[] players, int player){
@@ -25,16 +25,18 @@ public class FieldChance extends Field {
         cards.atIndex(cards.size-1).drawCard(players, player, fields);
 
     }
-
-    public void generateChanceCards(){
+    //Method that generates a set of cards from cardInfo
+    //Get out of jail card excluded parameter is false
+    public void generateChanceCards(boolean jail){
         CardInfo info = new CardInfo();
+        cards = new DynamicArr<Cards>();
         String temp;
         for (int i = 0; i < info.getText().length; i++) {
             temp = info.getText()[i];
             if(temp.substring(0,2).equals("1:") || temp.substring(0,2).equals("6:") || temp.substring(0,2).equals("12") || temp.substring(0,2).equals("13")){
                 cards.add(new PlayerSpecific(temp, 0));
             }
-            else if(temp.substring(0,2).equals("10")){
+            else if(temp.substring(0,2).equals("10") && jail == true){
                 cards.add(new GetOutOfJail(temp,0));
             }
             else if(temp.substring(0,2).equals("7:") || temp.substring(0,2).equals("14") || temp.substring(0,2).equals("16")){
@@ -43,7 +45,7 @@ public class FieldChance extends Field {
             else if(temp.substring(0,2).equals("2:") || temp.substring(0,2).equals("11") || temp.substring(0,2).equals("18") ){
                 cards.add(new SpecificField(temp,0));
             }
-            else{
+            else if(!temp.substring(0,2).equals("10")){
                 cards.add(new ChooseToMove(temp, 0));
             }
 

@@ -17,6 +17,7 @@ class FieldChanceTest {
     @Test
     void generateChanceCards() {
         FieldChance f1 = new FieldChance();
+        f1.generateChanceCards(false);
         for (int i = 0; i < f1.getCards().size; i++) {
             System.out.println(f1.getCards().atIndex(i).getCardText());
         }
