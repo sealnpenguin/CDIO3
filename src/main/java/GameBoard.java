@@ -1,4 +1,8 @@
 import java.awt.*;
+import java.util.Arrays;
+import Cards.*;
+import Fields.*;
+import Player.*;
 
 /* !!!TANKER!!!
 - Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
