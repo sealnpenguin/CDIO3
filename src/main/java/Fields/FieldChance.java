@@ -19,6 +19,10 @@ public class FieldChance extends Field {
     }
 
     public void generateChanceCards(){
+        CardInfo info = new CardInfo();
+        for (int i = 0; i < info.getText().length; i++) {
+
+        }
 
     }
 }
