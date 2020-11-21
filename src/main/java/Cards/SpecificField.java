@@ -31,7 +31,7 @@ public class SpecificField extends Cards
             case("11"):
                 Properties p1 = ((Properties)fields[23]);
                 players[player].setSpecificPosition(23);
-                if(p1.getOwnedBy() == -1 && p1.getOwnedBy() == player){
+                if(p1.getOwnedBy() == -1 || p1.getOwnedBy() == player){
                     p1.setOwnedBy(player);
                 }
                 else{
@@ -43,7 +43,7 @@ public class SpecificField extends Cards
             case("18"):
                 Properties p2 = ((Properties)fields[10]);
                 players[player].setSpecificPosition(10);
-                if(p2.getOwnedBy() == -1 && p2.getOwnedBy() == player){
+                if(p2.getOwnedBy() == -1 || p2.getOwnedBy() == player){
                     p2.setOwnedBy(player);
                 }
                 else{

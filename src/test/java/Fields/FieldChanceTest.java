@@ -1,4 +1,6 @@
 package Fields;
+import Cards.*;
+import Player.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +14,16 @@ class FieldChanceTest {
 
     @Test
     void takeChanceCard() {
+        Player[] p1 = {new Player("test1"),  new Player("test2"),  new Player("test3"), new Player("test4")};
+        FieldsOnBoard fieldCreator = new FieldsOnBoard();
+        Field[] fields = fieldCreator.getFieldArr();
+        FieldChance f1 = new FieldChance();
+        f1.mixCards();
+        for (int i = 0; i < 100; i++) {
+            System.out.println(f1.getCards().size + ": " + f1.getCards().atIndex(f1.getCards().size-1).getCardText());
+            f1.takeChanceCard(p1,1,fields);
+
+        }
     }
 
     @Test

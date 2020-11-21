@@ -23,6 +23,7 @@ public class FieldChance extends Field {
 
     public void takeChanceCard(Player[] players, int player, Field[] fields){
         cards.atIndex(cards.size-1).drawCard(players, player, fields);
+        cards.removeAt(cards.size-1);
         if(cards.size == 0){
             boolean jail = true;
             for (int i = 0; i < players.length; i++) {
