@@ -2,7 +2,7 @@ public class Player{
     //Attributes
     private String name;
     private Boolean inJail;
-    private int JailCard;
+    private boolean JailCard;
     private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position, oldposition;
     private Wallet wallet = new Wallet();
@@ -11,12 +11,20 @@ public class Player{
     {
         name = Name;
         inJail = false;
-        JailCard = 0;
+        JailCard = false;
         Position = 0;
         oldposition = 0;
     }
 
+    public boolean GetinJail()
+    {
+        return inJail;
+    }
 
+    public void SetinJail(boolean inJail)
+    {
+        this.inJail = inJail;
+    }
     public int getPosition()
     {
         return Position;
@@ -46,10 +54,10 @@ public class Player{
     }
 
     //adds or remove jailcard(s) to a player
-    public int setJailCard(int jailCard) {
-        return this.JailCard += jailCard;
+    public void setJailCard(boolean jailCard) {
+        this.JailCard = jailCard;
     }
-    public int getJailCard()
+    public boolean getJailCard()
     {
         return this.JailCard;
     }

@@ -40,7 +40,7 @@ public class GameBoard {
         uiController.addPlayers(playerList);
 
         ChooseColor();
-
+        //playerList[3].SetinJail(true);
         GameFlow();
 
     }
@@ -115,6 +115,15 @@ public class GameBoard {
         while (!GameOver) {
             // Change turn loop
             for (int i = 0; i < playerList.length; i++) {
+                if(playerList[i].GetinJail() && !playerList[i].getJailCard())
+                {
+                    playerList[i].SetinJail(false);
+                    break;
+                } else if(playerList[i].GetinJail() && playerList[i].getJailCard())
+                {
+                    playerList[i].setJailCard(false);
+                }
+
                 //loop to check if a player as reached 0
                 EndGame();
                 if(GameOver) break;
