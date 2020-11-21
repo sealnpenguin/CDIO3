@@ -12,6 +12,10 @@ public class PlayerSpecific extends Cards
     @Override
     public void drawCard(Player[] players, int player, Field[] fields)
     {
+        switch (this.getCardText().substring(0,2)){
+            case("1:"):
+
+        }
 
     }
 }

@@ -1,5 +1,7 @@
 package Player;
 
+import Cards.*;
+
 public class Player{
     //Attributes
     private String name;
@@ -8,6 +10,7 @@ public class Player{
     private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position, oldposition;
     private Wallet wallet = new Wallet();
+    private DynamicArr<Cards> cardArray = new DynamicArr<Cards>();
 
 
 
@@ -76,4 +79,7 @@ public class Player{
         wallet.setMoney(money);
     }
 
+    public DynamicArr<Cards> getCardArray() {
+        return cardArray;
+    }
 }
