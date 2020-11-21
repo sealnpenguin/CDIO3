@@ -1,5 +1,7 @@
 package Cards;
 
+import Player.Player;
+
 public class ChooseToMove extends Cards
 {
     public ChooseToMove(String text, int index)

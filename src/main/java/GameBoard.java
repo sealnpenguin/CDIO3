@@ -5,7 +5,7 @@ import java.awt.*;
 - Sørg for at bruger ikke kan taste samme navn ind
 - SE VÆLG FARVE
 */
-
+import Player.*;
 public class GameBoard {
     static void Game() {
         int endGameIf = 0;

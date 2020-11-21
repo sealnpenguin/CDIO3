@@ -1,3 +1,4 @@
+import Player.Player;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -56,7 +57,7 @@ public class UIController {
         }
         return guiFields;
     }
-        //Updates GUI_Player according to corresponding Player
+        //Updates GUI_Player according to corresponding Player.Player
         public void updateGUIPlayerPos(Player player, int oldPosition,int newPosition){
 
             for (int i = 0; i < guiPlayers.length; i++) {

@@ -1,4 +1,5 @@
 package Cards;
+import Player.*;
 
 public class GetOutOfJail extends Cards
 {

@@ -1,4 +1,5 @@
 package Cards;
+import Player.*;
 
 public class PlayerSpecific extends Cards
 {
