@@ -10,7 +10,7 @@ public class ChooseToMove extends Cards
     }
 
     @Override
-    public void drawCard(Player[] players)
+    public void drawCard(Player[] players, int player)
     {
 
     }
