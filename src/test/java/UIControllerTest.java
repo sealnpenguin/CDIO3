@@ -10,11 +10,11 @@ class UIControllerTest {
 
     @Test
     void UIFieldGen() {
-        DynamicArr<Field> myFields = new DynamicArr<Field>();
-        for (int i = 0; i < myFields.size; i++) {
-            myFields.add(new Properties());
+        Field[] myFields = new Field[24];
+        for (int i = 0; i < myFields.length; i++) {
+            //myFields[i] = new Properties();
         }
-        DynamicArr<Player> players = new DynamicArr<Player>(new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")});
+        Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         UIController myControl = new UIController(players, myFields);
 
 
@@ -24,26 +24,26 @@ class UIControllerTest {
 
     @Test
     void updateGuiPlayerPos(){
-        DynamicArr<Field> myFields = new DynamicArr<>();
-        for (int i = 0; i < myFields.listLength(); i++) {
-            myFields.add(new Properties());
+        Field[] myFields = new Field[24];
+        for (int i = 0; i < myFields.length; i++) {
+            //myFields[i] = new Properties();
         }
-        DynamicArr<Player> players = new DynamicArr<>(new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")});
+        Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         UIController myControl = new UIController(players, myFields);
-        for (int i = 0; i < players.listLength(); i++) {
-            myControl.getGUI().addPlayer(myControl.UIPlayerGen(players).atIndex(i));
+        for (int i = 0; i < players.length; i++) {
+            myControl.getGUI().addPlayer(myControl.UIPlayerGen(players)[i]);
         }
         myControl.getGUI().getUserButtonPressed( "Click a button",
                 "Button 1", "Button 2");
-        for (int i = 0; i < players.listLength(); i++) {
-            myControl.updateGUIPlayerPos(players.atIndex(i), 0, 5);
+        for (int i = 0; i < players.length; i++) {
+            myControl.updateGUIPlayerPos(players[i], 0, 5);
         }
         myControl.getGUI().getUserButtonPressed( "Click a button",
                 "Button 1", "Button 2");
-        myControl.updateGUIPlayerPos(players.atIndex(0),5, 7);
-        myControl.updateGUIPlayerPos(players.atIndex(1),5, 8);
-        myControl.updateGUIPlayerPos(players.atIndex(2),5, 10);
-        myControl.updateGUIPlayerPos(players.atIndex(3),5, 11);
+        myControl.updateGUIPlayerPos(players[0],5, 7);
+        myControl.updateGUIPlayerPos(players[1],5, 8);
+        myControl.updateGUIPlayerPos(players[2],5, 10);
+        myControl.updateGUIPlayerPos(players[3],5, 11);
         myControl.getGUI().getUserButtonPressed( "Click a button",
                 "Button 1", "Button 2");
     }

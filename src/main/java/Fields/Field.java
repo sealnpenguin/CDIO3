@@ -2,18 +2,19 @@ package Fields;
 
 public abstract class Field {
 
-    String fieldName;
-    String fieldDescription = "";
+    protected String fieldName;
+    protected String fieldDescription;
     //int fieldValue = 1;
 
-    //public Fields.Field(String fieldName){
-    //    this.fieldName = fieldName;
-    //}
-    public String getFieldName() {
-        return fieldName;
+    public Field(String fieldName, String fieldDescription){
+        this.fieldName = fieldName;
+        this.fieldDescription = fieldDescription;
     }
 
-    public String getFieldDescription(){
+    public String getFieldName() { return this.fieldName;}
+
+    public String getFieldDescription() {
         return fieldDescription;
     }
+
 }

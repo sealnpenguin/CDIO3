@@ -5,13 +5,13 @@ import Fields.Field;
 public class Jail extends Field {
     // Fields.Jail field
 
-    String occupiedBy = "";
+    private String occupiedBy;
 
-    public Jail(){
-        //super(fieldName, fieldDescription);
-        //this.occupiedBy = occupiedBy;
-        fieldName = "Fields.Jail";
-        fieldDescription = "In jail or visiting";
+    public Jail(String fieldName, String fieldDescription, String occupiedBy){
+        super(fieldName, fieldDescription);
+        this.occupiedBy = occupiedBy;
+        this.fieldName = "Fængsel";
+        this.fieldDescription = "Gå i fængsel";
     }
 
     public String getFieldName() {
@@ -25,6 +25,4 @@ public class Jail extends Field {
     public String getOccupiedBy() {
         return occupiedBy;
     }
-
-
 }

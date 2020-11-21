@@ -1,15 +1,12 @@
 import gui_main.GUI;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
         //GUI gui = new GUI();
         //gui.displayChanceCard("test");
-        //GameBoard.Game();
+        GameBoard.Game();
 
-        //Test
-        //Fields.Jail j = new Fields.Jail();
-        //j.fieldDescription = "This is jail";
-        //System.out.println(j.fieldDescription);
     }
 
 }
