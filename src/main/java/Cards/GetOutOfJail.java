@@ -13,6 +13,7 @@ public class GetOutOfJail extends Cards
     @Override
     public void drawCard(Player[] players, int player, Field[] fields)
     {
-
+        players[player].getCardArray().add(this);
+        players[player].setJailCard(true);
     }
 }
