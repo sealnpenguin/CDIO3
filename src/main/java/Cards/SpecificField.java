@@ -1,6 +1,7 @@
 package Cards;
 import Player.*;
 import Fields.*;
+import java.util.Scanner;
 
 
 public class SpecificField extends Cards
@@ -15,6 +16,19 @@ public class SpecificField extends Cards
     {
         switch(this.getCardText().substring(0, 2))
         {
+            case("1:"):
+
+            case("2:"):
+                players[player].setSpecificPosition(0);
+                break;
+
+            case("3:"):
+                ChooseToMove.moveForward(players, player);
+                break;
+
+            case("4:"):
+
+
             case("18"):
                 Properties p1 = ((Properties)fields[10]);
                 players[player].setSpecificPosition(10);
@@ -25,6 +39,7 @@ public class SpecificField extends Cards
                     players[player].setMoney(-p1.getPrice());
                     players[p1.getOwnedBy()].setMoney(p1.getPrice());
                 }
+                break;
 
 
                 //Plads 10

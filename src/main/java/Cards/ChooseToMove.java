@@ -1,8 +1,13 @@
 package Cards;
 import Fields.*;
+import Cards.*;
+import Player.*;
+import java.util.Scanner;
 
 
 import Player.Player;
+
+import java.util.Scanner;
 
 public class ChooseToMove extends Cards
 {
@@ -16,4 +21,18 @@ public class ChooseToMove extends Cards
     {
 
     }
+
+    public static void moveForward(Player[] players, int player){
+        Scanner ryk = new Scanner(System.in);
+        System.out.println("indtast hvor mange felter de ønsker at rykke frem: ");
+        int FremRyk = ryk.nextInt();
+        while(FremRyk < 1 || FremRyk > 5) {
+            System.out.println("Der er indtastet en ugyldig værdig. Indtast en gyldig værdi mellem 1 og 5: ");
+            FremRyk = ryk.nextInt();
+        }
+
+        players[player].setPosition(FremRyk);
+
+    }
+
 }
