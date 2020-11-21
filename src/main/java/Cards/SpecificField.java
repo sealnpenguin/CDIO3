@@ -28,7 +28,7 @@ public class SpecificField extends Cards
 
             case("4:"):
 
-            case("11:"):
+            case("11"):
                 Properties p1 = ((Properties)fields[23]);
                 players[player].setSpecificPosition(23);
                 if(p1.getOwnedBy() == -1 && p1.getOwnedBy() == player){
@@ -41,14 +41,14 @@ public class SpecificField extends Cards
                 break;
 
             case("18"):
-                Properties p1 = ((Properties)fields[10]);
+                Properties p2 = ((Properties)fields[10]);
                 players[player].setSpecificPosition(10);
-                if(p1.getOwnedBy() == -1 && p1.getOwnedBy() == player){
-                    p1.setOwnedBy(player);
+                if(p2.getOwnedBy() == -1 && p2.getOwnedBy() == player){
+                    p2.setOwnedBy(player);
                 }
                 else{
-                    players[player].setMoney(-p1.getPrice());
-                    players[p1.getOwnedBy()].setMoney(p1.getPrice());
+                    players[player].setMoney(-p2.getPrice());
+                    players[p2.getOwnedBy()].setMoney(p2.getPrice());
                 }
                 break;
 
