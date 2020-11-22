@@ -17,9 +17,11 @@ public class ChooseToMove extends Cards
     }
 
     @Override
-    public void drawCard(Player[] players, int player, Field[] fields)
+    public void drawCard(Player[] players, int player, Field[] fields, int choice)
     {
+        switch (this.getCardText().substring(0,2)){
 
+        }
     }
 
 

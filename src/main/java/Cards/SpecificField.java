@@ -12,7 +12,7 @@ public class SpecificField extends Cards
     }
 
     @Override
-    public void drawCard(Player[] players, int player, Field[] fields)
+    public void drawCard(Player[] players, int player, Field[] fields, int choice)
     {
         /* Se CardInfo for beskrivelse af forskellige cases */
         switch(this.getCardText().substring(0, 2))

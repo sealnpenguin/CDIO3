@@ -111,7 +111,7 @@ public class UIController {
             }
 
         }
-
+        //Takes in a card and asks user for input if nessecary
         public int getGuiInput(Cards card){
             switch (card.getCardText().substring(0, 2)){
                 case("3:"):
