@@ -11,28 +11,22 @@ public class FieldChance extends Field {
     public FieldChance(){
         super("?", "Tag et chancekort");
         this.generateChanceCards(true);
+        this.mixCards();
     }
 
     public void landOnField(Player[] players, int player){
 
     }
 
-    public void landOnField(Player[] players, int player, Field[] fields) {
-        takeChanceCard(players, player, fields);
+    public void landOnField(Player[] players, int player, Field[] fields, int choice) {
+
+        takeChanceCard(players, player, fields, choice);
     }
 
-    public void takeChanceCard(Player[] players, int player, Field[] fields){
-        cards.atIndex(cards.size-1).drawCard(players, player, fields);
-        cards.removeAt(cards.size-1);
-        if(cards.size == 0){
-            boolean jail = true;
-            for (int i = 0; i < players.length; i++) {
-                if(players[i].getJailCard()){
-                    jail = false;
-                }
-            }
-            generateChanceCards(jail);
-        }
+    public void takeChanceCard(Player[] players, int player, Field[] fields, int choice){
+        cards.getLast().drawCard(players, player, fields, choice);
+        cards.lastItemToFront();
+
     }
     //Method that generates a set of cards from cardInfo
     //Get out of jail card excluded parameter is false
@@ -76,6 +70,8 @@ public class FieldChance extends Field {
             cards.add(tempArr[i]);
         }
     }
+
+    public Cards nextCard(){return this.cards.getLast();}
 
     public DynamicArr<Cards> getCards(){
         return this.cards;

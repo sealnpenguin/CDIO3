@@ -1,3 +1,6 @@
+package ViewLayer;
+
+import Cards.Cards;
 import Fields.*;
 import Player.*;
 import gui_fields.*;
@@ -20,10 +23,7 @@ public class UIController {
     public UIController(Player[] players, Field[] fields){
         this.gui = new GUI(UIFieldGen(fields));
         guiPlayers = new GUI_Player[players.length];
-        for (int i = 0; i < players.length; i++) {
-            guiPlayers[i] = new GUI_Player(players[i].getName(), players[i].getMoney());
-            this.gui.addPlayer(guiPlayers[i]);
-        }
+        guiPlayers = this.UIPlayerGen(players);
     }
    //Generates GUI_Player array from logic player array
    public GUI_Player[] UIPlayerGen(Player[] players){
@@ -50,8 +50,9 @@ public class UIController {
             if(fieldArray[i] instanceof FieldStart){
                 guiFields[i] = new GUI_Start(((FieldStart) fieldArray[i]).getFieldName(), ((FieldStart) fieldArray[i]).getFieldDescription(), ((FieldStart) fieldArray[i]).getFieldDescription(), Color.white, Color.BLACK);
             }
-            else if(fieldArray[i] instanceof FieldChance){
+            else if(fieldArray[i] instanceof FieldChance) {
                 guiFields[i] = new GUI_Chance(((FieldChance) fieldArray[i]).getFieldName(), ((FieldChance) fieldArray[i]).getFieldDescription(), ((FieldChance) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+
             }
             else if(fieldArray[i] instanceof Jail) {
                 guiFields[i] = new GUI_Jail( "default",((Jail) fieldArray[i]).getFieldName(), ((Jail) fieldArray[i]).getFieldDescription(), ((Jail) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
@@ -109,6 +110,56 @@ public class UIController {
                 }
             }
 
+        }
+        //Takes in a card and asks user for input if nessecary
+        public int getGuiInput(Cards card){
+            switch (card.getCardText().substring(0, 2)){
+                case("3:"):
+                    return this.gui.getUserInteger("Ryk 1 - 5 felter", 1, 5);
+                case("4:"):
+                    String choice = this.gui.getUserButtonPressed("Vælg dit felt", "Skaterparken", "Swimmingpoolen");
+                    if(choice.equals("Skaterparken")){return 0;}
+                    else{return 1;}
+                case("5:"):
+                    choice = this.gui.getUserButtonPressed("Hvad vælger du?", "1 felt frem", "1 chancekort");
+                    if(choice.equals("1 chancekort")){return 0;}
+                    else{return 1;}
+                case("8:"):
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Skaterparken", "Swimmingpoolen", "Bowlinghallen", "Zoologisk have");
+                    if(choice.equals("Skaterparken")){return 0;}
+                    else if(choice.equals("Swimmingpoolen")){return 1;}
+                    else if(choice.equals("Bowlinghallen")){return 2;}
+                    else{return 3;}
+                case("9:"):
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Godtebutikken", "Iskiosken");
+                    if(choice.equals("Godtebutikken")){return 0;}
+                    else{return 1;}
+                case("15"):
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Museet", "Biblioteket", "Vandlandet", "Strandpromenaden");
+                    if(choice.equals("Museet")){return 0;}
+                    else if(choice.equals("Biblioteket")){return 1;}
+                    else if(choice.equals("Vandlandet")){return 2;}
+                    else{return 3;}
+                case("17"):
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Spillehallen", "Biografen");
+                    if(choice.equals("Spillehallen")){return 0;}
+                    else{return 1;}
+                case("19"):
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Godtebutikken", "Iskiosken", "Spillehallen", "Biografen");
+                    if(choice.equals("Godtebutikken")){return 0;}
+                    else if(choice.equals("Iskiosken")){return 1;}
+                    else if(choice.equals("Spillehallen")){return 2;}
+                    else{return 3;}
+                case("20"):
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Pizzabar", "Burgerhus", "Lejetøjsbutikken", "Dyrehandlen");
+                    if(choice.equals("Pizzabar")){return 0;}
+                    else if(choice.equals("Burgerhus")){return 1;}
+                    else if(choice.equals("Lejetøjsbutikken")){return 2;}
+                    else{return 3;}
+                default:
+                    return -1;
+
+            }
         }
 
         public GUI_Player getGuiPlayer(int playerNumber){

@@ -56,7 +56,7 @@ public class DynamicArr<T> {
     //print the entire array
     public void print() {
         for (int i = 0; i < current; i++) {
-            System.out.print(arr[i]);
+            System.out.println(arr[i]);
         }
         System.out.println(" ");
     }
@@ -91,5 +91,18 @@ public class DynamicArr<T> {
         size--;
         current--;
 
+    }
+
+    public void lastItemToFront(){
+        T temp = arr[size-1];
+        for (int i = size-1; i > 0; i--) {
+            arr[i] = arr[i-1];
+        }
+        arr[0] = temp;
+
+    }
+
+    public T getLast(){
+        return this.atIndex(this.size-1);
     }
 }
