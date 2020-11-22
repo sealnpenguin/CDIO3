@@ -22,11 +22,6 @@ public class SpecificField extends Cards
                 players[player].setSpecificPosition(0);
                 break;
 
-            case("3:"):
-                ChooseToMove.moveForward(players, player);
-                break;
-
-            case("4:"):
 
             case("11"):
                 Properties p1 = ((Properties)fields[23]);

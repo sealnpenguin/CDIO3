@@ -25,8 +25,8 @@ public class ChooseToMove extends Cards
                 players[player].setPosition(choice);
                 break;
             case("4:"):
-                if(choice == 0){ players[player].setPosition(10);}
-                else { players[player].setPosition(11);}
+                if(choice == 0){ players[player].setSpecificPosition(10);}
+                else { players[player].setSpecificPosition(11);}
                 break;
             case("5:"):
                 if(choice == 0){
@@ -35,38 +35,42 @@ public class ChooseToMove extends Cards
                 else{players[player].setPosition(choice);}
                 break;
             case("8:"):
-                if(choice == 0){ players[player].setPosition(10);}
-                else if(choice == 1) { players[player].setPosition(11);}
-                else if(choice == 2){ players[player].setPosition(19);}
-                else if(choice == 3){ players[player].setPosition(20);}
+                if(choice == 0){ players[player].setSpecificPosition(10);}
+                else if(choice == 1) { players[player].setSpecificPosition(11);}
+                else if(choice == 2){ players[player].setSpecificPosition(19);}
+                else if(choice == 3){ players[player].setSpecificPosition(20);}
                 break;
             case("9:"):
-                if(choice == 0){ players[player].setPosition(4);}
-                else { players[player].setPosition(5);}
+                if(choice == 0){ players[player].setSpecificPosition(4);}
+                else { players[player].setSpecificPosition(5);}
                 break;
             case("15"):
-                if(choice == 0){ players[player].setPosition(7);}
-                else if(choice == 1) { players[player].setPosition(8);}
-                else if(choice == 2){ players[player].setPosition(22);}
-                else if(choice == 3){ players[player].setPosition(23);}
+                if(choice == 0){ players[player].setSpecificPosition(7);}
+                else if(choice == 1) { players[player].setSpecificPosition(8);}
+                else if(choice == 2){ players[player].setSpecificPosition(22);}
+                else if(choice == 3){ players[player].setSpecificPosition(23);}
                 break;
             case("17"):
-                if(choice == 0){ players[player].setPosition(13);}
-                else { players[player].setPosition(14);}
+                if(choice == 0){ players[player].setSpecificPosition(13);}
+                else { players[player].setSpecificPosition(14);}
                 break;
             case("19"):
-                if(choice == 0){ players[player].setPosition(4);}
-                else if(choice == 1) { players[player].setPosition(5);}
-                else if(choice == 2){ players[player].setPosition(13);}
-                else if(choice == 3){ players[player].setPosition(14);}
+                if(choice == 0){ players[player].setSpecificPosition(4);}
+                else if(choice == 1) { players[player].setSpecificPosition(5);}
+                else if(choice == 2){ players[player].setSpecificPosition(13);}
+                else if(choice == 3){ players[player].setSpecificPosition(14);}
                 break;
             case("20"):
-                if(choice == 0){ players[player].setPosition(1);}
-                else if(choice == 1) { players[player].setPosition(2);}
-                else if(choice == 2){ players[player].setPosition(16);}
-                else if(choice == 3){ players[player].setPosition(17);}
+                if(choice == 0){ players[player].setSpecificPosition(1);}
+                else if(choice == 1) { players[player].setSpecificPosition(2);}
+                else if(choice == 2){ players[player].setSpecificPosition(16);}
+                else if(choice == 3){ players[player].setSpecificPosition(17);}
                 break;
 
+        }
+        //Checks that the one case with no movement i not the path and calls land on field method
+        if(!this.getCardText().substring(0,2).equals("5:") && choice != 0) {
+            fields[players[player].getPosition()].landOnField(players, player);
         }
 
     }
