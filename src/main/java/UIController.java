@@ -142,8 +142,8 @@ public class UIController {
                     else{return 3;}
                 case("17"):
                     choice = this.gui.getUserButtonPressed("Vælg dit felt", "Spillehallen", "Biografen");
-                    if(choice.equals("Spillehallen")){return 2;}
-                    else{return 3;}
+                    if(choice.equals("Spillehallen")){return 0;}
+                    else{return 1;}
                 case("19"):
                     choice = this.gui.getUserButtonPressed("Vælg dit felt", "Godtebutikken", "Iskiosken", "Spillehallen", "Biografen");
                     if(choice.equals("Godtebutikken")){return 0;}

@@ -17,11 +17,58 @@ public class ChooseToMove extends Cards
     }
 
     @Override
+    //Updates the playerPosition **** not sure if it should use landOnField method on new field as well
     public void drawCard(Player[] players, int player, Field[] fields, int choice)
     {
         switch (this.getCardText().substring(0,2)){
+            case("3:"):
+                players[player].setPosition(choice);
+                break;
+            case("4:"):
+                if(choice == 0){ players[player].setPosition(10);}
+                else { players[player].setPosition(11);}
+                break;
+            case("5:"):
+                if(choice == 0){
+                    this.setDrawAgain(true);
+                }
+                else{players[player].setPosition(choice);}
+                break;
+            case("8:"):
+                if(choice == 0){ players[player].setPosition(10);}
+                else if(choice == 1) { players[player].setPosition(11);}
+                else if(choice == 2){ players[player].setPosition(19);}
+                else if(choice == 3){ players[player].setPosition(20);}
+                break;
+            case("9:"):
+                if(choice == 0){ players[player].setPosition(4);}
+                else { players[player].setPosition(5);}
+                break;
+            case("15"):
+                if(choice == 0){ players[player].setPosition(7);}
+                else if(choice == 1) { players[player].setPosition(8);}
+                else if(choice == 2){ players[player].setPosition(22);}
+                else if(choice == 3){ players[player].setPosition(23);}
+                break;
+            case("17"):
+                if(choice == 0){ players[player].setPosition(13);}
+                else { players[player].setPosition(14);}
+                break;
+            case("19"):
+                if(choice == 0){ players[player].setPosition(4);}
+                else if(choice == 1) { players[player].setPosition(5);}
+                else if(choice == 2){ players[player].setPosition(13);}
+                else if(choice == 3){ players[player].setPosition(14);}
+                break;
+            case("20"):
+                if(choice == 0){ players[player].setPosition(1);}
+                else if(choice == 1) { players[player].setPosition(2);}
+                else if(choice == 2){ players[player].setPosition(16);}
+                else if(choice == 3){ players[player].setPosition(17);}
+                break;
 
         }
+
     }
 
 
