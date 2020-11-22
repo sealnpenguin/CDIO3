@@ -67,4 +67,8 @@ class DynamicArrTest {
         arr.removeAt(0);
         arr.print();
     }
+    @Test
+    void lastItemToFront(){
+
+    }
 }

@@ -1,7 +1,6 @@
-import gui_main.GUI;
+import ViewLayer.UIController;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import Fields.*;
 
 class FieldsOnBoardTest {

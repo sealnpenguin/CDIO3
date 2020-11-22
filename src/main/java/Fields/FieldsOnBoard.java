@@ -42,7 +42,14 @@ public class FieldsOnBoard {
 
             }
             else if(allFields[i][0].equals("Chance")){
-                this.fieldArr[i] = new FieldChance();
+                if (i == 3) {
+                    //initialises first FieldChance
+                    this.fieldArr[i] = new FieldChance();
+
+                }
+                //makes all chanceFields the reference
+                else{fieldArr[i] = fieldArr[3];}
+
 
             }
             else if(allFields[i][0].equals("I fængsel") || allFields[i][0].equals("Gratis")){

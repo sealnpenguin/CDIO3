@@ -1,10 +1,10 @@
 import Fields.Field;
-import Fields.Properties;
+import Fields.FieldChance;
 import Player.Player;
+import ViewLayer.UIController;
 import org.junit.jupiter.api.Test;
 
 import java.util.Scanner;
-import Cards.*;
 
 class UIControllerTest {
 
@@ -12,14 +12,13 @@ class UIControllerTest {
     void UIFieldGen() {
         Field[] myFields = new Field[24];
         for (int i = 0; i < myFields.length; i++) {
-            //myFields[i] = new Properties();
+            myFields[i] = new FieldChance();
         }
         Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         UIController myControl = new UIController(players, myFields);
 
 
-        Scanner scan = new Scanner(System.in);
-        scan.nextInt();
+        myControl.getGUI().getUserButtonPressed("test", "ok");
     }
 
     @Test
