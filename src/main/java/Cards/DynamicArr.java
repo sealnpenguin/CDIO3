@@ -92,4 +92,8 @@ public class DynamicArr<T> {
         current--;
 
     }
+
+    public T getLast(){
+        return this.atIndex(this.size-1);
+    }
 }

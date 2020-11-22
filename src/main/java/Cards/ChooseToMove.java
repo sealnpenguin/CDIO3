@@ -22,6 +22,7 @@ public class ChooseToMove extends Cards
 
     }
 
+
     /* Ved chancekort 3 er det denne funktion der lader en vælge hvor langt frem der skal gåes */
     public static void moveForward(Player[] players, int player){
         Scanner ryk = new Scanner(System.in);
@@ -33,6 +34,7 @@ public class ChooseToMove extends Cards
         }
         players[player].setPosition(FremRyk);
     }
+
 
 
 

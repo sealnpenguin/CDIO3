@@ -13,7 +13,7 @@ public class CardInfo {
 
                         "2: Ryk frem til START, modtag M2 \n",
 
-                        "3: Ryk OP til 5 felter frem, ELLER tag et chancekort mere \n",
+                        "3: Ryk OP til 5 felter frem\n",
 
                         "4: Ryk frem til et orange felt. Hvis det er ledigt får du det gratis! Ellers skal du betale leje til ejeren. \n",
 
