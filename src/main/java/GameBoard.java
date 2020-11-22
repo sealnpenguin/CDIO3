@@ -1,3 +1,7 @@
+import Fields.*;
+import Player.Player;
+import ViewLayer.UIController;
+
 import java.awt.*;
 
 /* !!!TANKER!!!
