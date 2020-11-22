@@ -23,7 +23,15 @@ public class Player{
         oldposition = 0;
     }
 
+    public boolean GetinJail()
+    {
+        return inJail;
+    }
 
+    public void SetinJail(boolean inJail)
+    {
+        this.inJail = inJail;
+    }
     public int getPosition()
     {
         return Position;
@@ -49,6 +57,9 @@ public class Player{
         return name;
     }
 
+    public void setName(String Name){
+        this.name = Name;
+    }
     public void setMyProperties(int k, boolean tf)
     {
         if (tf)
