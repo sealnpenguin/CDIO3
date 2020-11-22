@@ -69,6 +69,13 @@ class DynamicArrTest {
     }
     @Test
     void lastItemToFront(){
+        DynamicArr<Integer> arr = new DynamicArr();
+        arr.add(5);
+        arr.add(15);
+        arr.add(18);
+        arr.print();
+        arr.lastItemToFront();
+        arr.print();
 
     }
 }

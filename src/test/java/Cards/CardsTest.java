@@ -42,7 +42,8 @@ class CardsTest {
                     int input = uiController.getGuiInput(((FieldChance)myFields[3]).nextCard());
                     uiController.getGUI().displayChanceCard(((FieldChance)myFields[3]).nextCard().getCardText());
                     ((FieldChance) myFields[3]).landOnField(players, i, myFields, input);
-                    uiController.getGUI().getUserButtonPressed("asd", "k");
+                    uiController.getGuiPlayer(i).setBalance(players[i].getMoney());
+                    uiController.updateGUIPlayerPos(players[i], players[i].getOldposition() , players[i].getPosition());
                 }
             }
 
