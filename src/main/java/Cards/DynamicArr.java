@@ -93,6 +93,15 @@ public class DynamicArr<T> {
 
     }
 
+    public void lastItemToFront(){
+        T temp = arr[size-1];
+        for (int i = size-1; i > 0; i--) {
+            arr[i] = arr[-1];
+        }
+        arr[0] = temp;
+
+    }
+
     public T getLast(){
         return this.atIndex(this.size-1);
     }
