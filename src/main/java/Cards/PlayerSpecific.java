@@ -24,10 +24,18 @@ public class PlayerSpecific extends Cards
                 break;
             //Kattekort
             case("12"):
+                if (2 >= players.length)
+                {
+                    break;
+                }
                 players[2].getCardArray().add(this);
                 break;
             //Hundekort
             case("13"):
+                if (3 >= players.length)
+                {
+                    break;
+                }
                 players[3].getCardArray().add(this);
                 break;
 
