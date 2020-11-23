@@ -191,9 +191,9 @@ public class GameBoard {
                     //checks is player is on a chancefield if so he draws a card
                     if(playerList[i].getPosition() == 3 || playerList[i].getPosition() == 9 || playerList[i].getPosition() == 15 || playerList[i].getPosition() == 21){
                         boolean draw = true;
+                        //Loop that draws cards until the last drawn card has drawAgain == false
                         while(draw) {
                             uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
-
                             fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
                             draw = fieldChance.getCards().atIndex(0).getDrawAgain();
                         }

@@ -13,8 +13,8 @@ public class FieldsOnBoard {
     public FieldsOnBoard(){
         String[][] allFields = new String[24][];
         allFields[0] = new String[]{"Start", "Modtag 2M når du passerer start"};
-        allFields[1] = new String[]{"Burgerbaren", "M1", "brun"};
-        allFields[2] = new String[]{"Pizzahuset", "M1", "brun"};
+        allFields[1] = new String[]{"Burgerbaren", "M1", "grå"};
+        allFields[2] = new String[]{"Pizzahuset", "M1", "grå"};
         allFields[3] = new String[]{"Chance", "Tag et kort"};
         allFields[4] = new String[]{"Godtebutikken", "M1", "lyseblå"};
         allFields[5] = new String[]{"Iskiosken", "M1" , "lyseblå"};

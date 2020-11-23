@@ -68,7 +68,7 @@ public class UIController {
                 else if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("lilla")){
                     color = Color.magenta;
                 }
-                else if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("brun")){
+                else if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("grå")){
                     color = Color.gray;
                 }
                 else if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("rød")){

@@ -50,7 +50,7 @@ public class CardInfo {
 
                         "19: Ryk frem til et rødt eller lyseblåt felt. Hvis det ingen ejer der, får du det gratis! Ellers skal du betale leje til ejeren\n",
 
-                        "20: Ryk frem til et brunt eller gult felt. Hvis ingen ejer det, får du det gratis! Ellers skal du betale leje til ejeren \n"
+                        "20: Ryk frem til et gråt eller gult felt. Hvis ingen ejer det, får du det gratis! Ellers skal du betale leje til ejeren \n"
                 };
 
     }
