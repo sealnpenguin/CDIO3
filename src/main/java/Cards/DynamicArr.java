@@ -26,7 +26,7 @@ public class DynamicArr<T> {
             for (int i = 0; i < size; i++) {
                 newarr[i] = arr[i];
             }
-            size += 1;
+            size++;
             arr = newarr;
         }
         //arr = new int[newarr.length];
