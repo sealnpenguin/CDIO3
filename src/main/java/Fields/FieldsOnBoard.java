@@ -4,6 +4,8 @@ import Fields.Field;
 
 import java.util.Arrays;
 
+import static java.lang.Integer.parseInt;
+
 
 public class FieldsOnBoard {
     private Field[] fieldArr = new Field[24];
@@ -61,7 +63,7 @@ public class FieldsOnBoard {
 
             }
             else {
-                this.fieldArr[i] = new Properties(allFields[i][0], allFields[i][1], allFields[i][2], ((int)allFields[i][1].charAt(1)));
+                this.fieldArr[i] = new Properties(allFields[i][0], allFields[i][1], allFields[i][2], parseInt(allFields[i][1].substring(1)));
 
             }
         }

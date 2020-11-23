@@ -11,7 +11,6 @@ public class FieldChance extends Field {
     public FieldChance(){
         super("?", "Tag et chancekort");
         this.generateChanceCards(true);
-        this.mixCards();
     }
 
     public void landOnField(Player[] players, int player){
