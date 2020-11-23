@@ -193,8 +193,9 @@ public class GameBoard {
                         boolean draw = true;
                         while(draw) {
                             uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
-                            draw = fieldChance.getCards().getLast().getDrawAgain();
+
                             fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                            draw = fieldChance.getCards().atIndex(0).getDrawAgain();
                         }
                     }
                     //here we update the player position again to make sure it's correct if a chancecard has been used
