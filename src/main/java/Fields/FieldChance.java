@@ -31,6 +31,7 @@ public class FieldChance extends Field {
         else{cards.lastItemToFront();
         }
 
+
     }
     //Method that generates a set of cards from cardInfo
     //Get out of jail card excluded parameter is false

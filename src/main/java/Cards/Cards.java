@@ -35,6 +35,8 @@ public abstract class Cards
             this.drawAgain = input;
     }
 
+    public boolean getDrawAgain(){return this.drawAgain;}
+
     public abstract void drawCard(Player[] players, int player, Field[] fields, int choice);
 
 
