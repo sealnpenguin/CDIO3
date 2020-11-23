@@ -29,11 +29,12 @@ public class GameBoard {
     public void Game() {
         uiController = new UIController(myFields);
         GameOver = false;
-        lang = uiController.getGUI().getUserButtonPressed("", "English", "Dansk");
+        lang = uiController.getGUI().getUserButtonPressed("", "WIP English", "Dansk");
         Language langSelector = new Language(lang);
         currentLang = langSelector.returnLang();
         playerList = new Player[SetPlayerAmount()];
 
+        fieldChance.mixCards();
         PlayerCreator();
         uiController.addPlayers(playerList);
 
@@ -80,6 +81,7 @@ public class GameBoard {
                 case 4 -> player.setMoney(16);
             }
             playerList[i - 1] = player;
+            playerList[i-1].setName(playerList[i-1].getName() + currentLang[i+21]);
         }
     }
 
