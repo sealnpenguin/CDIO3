@@ -17,7 +17,7 @@ public class GetPaidOrPay extends Cards
             case("14"):
                 for (int i = 0; i < players.length; i++) {
                     if(i != player){
-                        players[player].setMoney(-1);
+                        players[i].setMoney(-1);
                     }
                 }
                 players[player].setMoney(players.length-1);

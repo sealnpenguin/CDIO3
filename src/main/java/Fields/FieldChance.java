@@ -51,7 +51,6 @@ public class FieldChance extends Field {
             else if(!temp.substring(0,2).equals("10")){
                 cards.add(new ChooseToMove(temp, 0));
             }
-
         }
 
     }

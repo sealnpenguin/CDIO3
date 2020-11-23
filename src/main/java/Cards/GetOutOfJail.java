@@ -10,6 +10,7 @@ public class GetOutOfJail extends Cards
         super(text,index);
     }
 
+
     @Override
     public void drawCard(Player[] players, int player, Field[] fields, int choice)
     {
