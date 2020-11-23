@@ -23,11 +23,11 @@ public class PlayerSpecific extends Cards
                 players[1].getCardArray().add(this);
                 break;
             //Kattekort
-            case("12:"):
+            case("12"):
                 players[2].getCardArray().add(this);
                 break;
             //Hundekort
-            case("13:"):
+            case("13"):
                 players[3].getCardArray().add(this);
                 break;
 
