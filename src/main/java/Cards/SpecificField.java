@@ -17,7 +17,7 @@ public class SpecificField extends Cards
         /* Se CardInfo for beskrivelse af forskellige cases */
         switch(this.getCardText().substring(0, 2))
         {
-
+            //Gå til start kort
             case("2:"):
                 players[player].setSpecificPosition(0);
                 break;
