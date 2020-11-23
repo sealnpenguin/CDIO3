@@ -46,7 +46,7 @@ public class GameBoard {
         ChooseColor();
 
         //Fast way to test jail functionality
-        //playerList[3].SetinJail(true);
+        //playerList[3].setInJail(true);
         //playerList[3].setJailCard(true);
 
         GameFlow();
@@ -152,14 +152,14 @@ public class GameBoard {
             // Change turn loop
             for (int i = 0; i < playerList.length; i++) {
                 //************************************JAIL************************************
-                if(playerList[i].GetinJail() && !playerList[i].getJailCard())
+                if(playerList[i].getInJail() && !playerList[i].getJailCard())
                 {
                     playerList[i].SetinJail(false);
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[20]);
                     playerList[i].setMoney(+-1);
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
                     //break;
-                } else if(playerList[i].GetinJail() && playerList[i].getJailCard())
+                } else if(playerList[i].getInJail() && playerList[i].getJailCard())
                 {
                     playerList[i].setJailCard(false);
                     playerList[i].SetinJail(false);
