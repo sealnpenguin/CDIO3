@@ -25,7 +25,12 @@ public class FieldChance extends Field {
 
     public void takeChanceCard(Player[] players, int player, Field[] fields, int choice){
         cards.getLast().drawCard(players, player, fields, choice);
-        cards.lastItemToFront();
+        //Checks if chance card is getOutOfJail and removes it from stack of cards if so
+        if(cards.getLast() instanceof GetOutOfJail){
+            cards.removeAt(cards.size-1);
+        }
+        else{cards.lastItemToFront();
+        }
 
     }
     //Method that generates a set of cards from cardInfo
