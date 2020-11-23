@@ -15,7 +15,7 @@ class GetOutOfJailTest {
         Player[] players = new Player[]{new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         FieldChance f1 = new FieldChance();
         Field[] f2 = new Field[0];
-        System.out.println("Du har intet jailkort");
+        System.out.println("Du har jailkort");
         System.out.println(players[0].getJailCard());
         DynamicArr<GetOutOfJail> choiceCards = new DynamicArr<GetOutOfJail>();
         int choiceCounter = 0;
@@ -27,6 +27,7 @@ class GetOutOfJailTest {
         }
             choiceCards.getLast().drawCard(players, 0, f2, -1);
             System.out.print(choiceCards.getLast().getCardText());
+        System.out.println("Du har jailkort");
         System.out.println(players[0].getJailCard());
         //System.out.println();
     }
