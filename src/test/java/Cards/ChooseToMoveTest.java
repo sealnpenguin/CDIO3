@@ -23,6 +23,7 @@ class ChooseToMoveTest {
                 choiceCards.add((ChooseToMove) ((FieldChance)fields[3]).getCards().getLast());
             }
             ((FieldChance)fields[3]).getCards().lastItemToFront();
+
         }
         //test for kort 3 "Ryk op til 5 felter frem"
         for (int i = 0; i < 5; i++) {
@@ -33,7 +34,7 @@ class ChooseToMoveTest {
 
         //Test for kort 4 "Vælg orange felt" (Skatepark: position 10 og swimmingpool: position 11)
         choiceCards.getLast().drawCard(players, 0, fields, 0);
-        assertEquals(players[0].getPosition(), 10);
+        assertEquals(10, players[0].getPosition());
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(players[0].getPosition(), 11);
         choiceCards.lastItemToFront();
