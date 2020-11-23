@@ -1,6 +1,7 @@
 import Fields.*;
 import Player.Player;
 import ViewLayer.UIController;
+import Cards.*;
 
 import java.awt.*;
 
@@ -17,6 +18,8 @@ public class GameBoard {
     private final Die die = new Die(1); // One die is instantiated with new Dice(int X);
     private int numberOfPlayers = 0;
     private Player[] playerList = new Player[0];
+    FieldChance fieldChance = new FieldChance();
+
 
     private final FieldsOnBoard f1 = new FieldsOnBoard();
     private final Field[] myFields = f1.getFieldArr();
@@ -32,7 +35,6 @@ public class GameBoard {
         playerList = new Player[SetPlayerAmount()];
 
         PlayerCreator();
-
         uiController.addPlayers(playerList);
 
         ChooseColor();
@@ -174,9 +176,27 @@ public class GameBoard {
                     //updates gui player position
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 
-                    //temp for testing
-                    //Set money for both the logical and gui parts of the game
-                    playerList[i].setMoney(+-die.getFaceValue());
+                    //Part 1 of landOnField test see part 2
+                    //System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
+
+                    myFields[playerList[i].getPosition()].landOnField(playerList,i);
+
+                    //checks is player is on a chancefield if so he draws a card
+                    if(playerList[i].getPosition() == 3 || playerList[i].getPosition() == 9 || playerList[i].getPosition() == 15 || playerList[i].getPosition() == 21){
+                        uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
+                        fieldChance.takeChanceCard(playerList,i,myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                    }
+                    //here we update the player position again to make sure it's correct if a chancecard has been used
+                    uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
+
+                    //Mulige måder at holde styr på spiller-ejet felter?
+                    //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
+                    //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
+
+                    //Part 2 of landOnField test
+                    //System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
+
+                    //we use set balance here to update the gui
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
                 }
             }

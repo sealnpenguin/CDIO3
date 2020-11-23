@@ -22,7 +22,7 @@ public class FieldsOnBoard {
         allFields[7] = new String[]{"Museet", "M2", "lilla"};
         allFields[8] = new String[]{"Biblioteket", "M2", "lilla"};
         allFields[9] = new String[]{"Chance", "Tag et kort"};
-        allFields[10] = new String[]{"Rullebrætparken", "M2", "lysegul"};
+        allFields[10] = new String[]{"Skaterparken", "M2", "lysegul"};
         allFields[11] = new String[]{"Svømmebassinet", "M2", "lysegul"};
         allFields[12] = new String[]{"Gratis", "Parkering"};
         allFields[13] = new String[]{"Spillehallen", "M3", "Rød"};
