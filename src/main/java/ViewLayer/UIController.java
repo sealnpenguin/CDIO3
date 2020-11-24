@@ -163,7 +163,8 @@ public class UIController {
             }
         }
 
-        public void updateGUIFieldOwner(Player[] players, int player,  Field[] fields, int field){
+        //Updates Owners of GUI fields, by referencing the name of the owner of logical fields
+        public void updateGUIFieldOwner(Player[] players, Field[] fields, int field){
             ((GUI_Ownable)this.gui.getFields()[field]).setOwnerName(players[((Properties) fields[field]).getOwnedBy()].getName());
         }
 
