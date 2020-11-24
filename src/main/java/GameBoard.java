@@ -23,7 +23,7 @@ public class GameBoard {
     private final Die die = new Die(1); // One die is instantiated with new Dice(int X);
     private int numberOfPlayers = 0;
     private Player[] playerList = new Player[0];
-    FieldChance fieldChance = new FieldChance();
+
 
 
 
@@ -31,6 +31,7 @@ public class GameBoard {
     private final Field[] myFields = f1.getFieldArr();
     private UIController uiController;
     private String[] currentLang;
+    FieldChance fieldChance = (FieldChance) myFields[3];
 
 
     public void Game() {
@@ -190,6 +191,7 @@ public class GameBoard {
                     //updates gui player position
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 
+                    }
                     //Part 1 of landOnField test see part 2
                     System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
 
@@ -214,7 +216,9 @@ public class GameBoard {
 
                     //here we update the player position again to make sure it's correct if a chancecard has been used
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
-
+                    //Checks if player lands on Property and updates GUI with owner
+                    if(myFields[playerList[i].getPosition()] instanceof Properties) {
+                    uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition());
                     //Mulige måder at holde styr på spiller-ejet felter?
                     //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
                     //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);

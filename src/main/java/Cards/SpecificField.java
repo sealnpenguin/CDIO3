@@ -26,7 +26,7 @@ public class SpecificField extends Cards
             case("11"):
                 Properties p1 = ((Properties)fields[23]);
                 players[player].setSpecificPosition(23);
-                p1.landOnField(players, player);
+                p1.landOnField(players, player, fields);
                 break;
 
             case("18"):
@@ -36,7 +36,7 @@ public class SpecificField extends Cards
                     players[player].setMoney(p2.getPrice());
 
                 }
-                p2.landOnField(players, player);
+                p2.landOnField(players, player, fields);
                 break;
 
         }
