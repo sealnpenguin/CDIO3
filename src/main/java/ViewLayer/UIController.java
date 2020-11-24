@@ -88,7 +88,7 @@ public class UIController {
                     color = Color.green;
                 }
 
-                guiFields[i] = new GUI_Street(((Properties) fieldArray[i]).getFieldName(), ((Properties) fieldArray[i]).getFieldDescription(), ((Properties) fieldArray[i]).getFieldDescription(), "pris metode", color, txtcolor);
+                guiFields[i] = new GUI_Street(((Properties) fieldArray[i]).getFieldName(), ((Properties) fieldArray[i]).getFieldDescription(), ((Properties) fieldArray[i]).getFieldDescription(), String.valueOf(((Properties) fieldArray[i]).getPrice()), color, txtcolor);
             }
             else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("I fængsel")) {
                 guiFields[i] = new GUI_Jail("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
@@ -165,7 +165,10 @@ public class UIController {
 
         //Updates Owners of GUI fields, by referencing the name of the owner of logical fields
         public void updateGUIFieldOwner(Player[] players, Field[] fields, int field){
-            ((GUI_Ownable)this.gui.getFields()[field]).setOwnerName(players[((Properties) fields[field]).getOwnedBy()].getName());
+            if(((Properties)fields[field]).getOwnedBy() != -1) {
+                ((GUI_Ownable) this.gui.getFields()[field]).setOwnerName(players[((Properties) fields[field]).getOwnedBy()].getName());
+                ((GUI_Ownable) this.gui.getFields()[field]).setBorder(this.guiPlayers[((Properties)fields[field]).getOwnedBy()].getPrimaryColor());
+            }
         }
 
         public GUI_Player getGuiPlayer(int playerNumber){
