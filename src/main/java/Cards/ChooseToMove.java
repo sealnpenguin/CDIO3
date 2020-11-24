@@ -24,7 +24,12 @@ public class ChooseToMove extends Cards
             //Chancecard where you choose how to move 1-5 fields
             case("3:"):
                 players[player].setPosition(choice);
-                ((Properties) fields[players[player].getPosition()]).landOnField(players, player, fields);
+                if(fields[players[player].getPosition()] instanceof Properties) {
+                    ((Properties) fields[players[player].getPosition()]).landOnField(players, player, fields);
+                }
+                else{
+                    fields[players[player].getPosition()].landOnField(players, player);
+                }
                 break;
             //Card where you choose between Skaterpark or swimmingpool(Orange fields)
             case("4:"):
@@ -42,7 +47,12 @@ public class ChooseToMove extends Cards
                 else{
                     this.setDrawAgain(false);
                     players[player].setPosition(choice);
-                    ((Properties) fields[players[player].getPosition()]).landOnField(players, player, fields);
+                    if(fields[players[player].getPosition()] instanceof Properties) {
+                        ((Properties) fields[players[player].getPosition()]).landOnField(players, player, fields);
+                    }
+                    else{
+                        fields[players[player].getPosition()].landOnField(players, player);
+                    }
                 }
                 break;
             //Card where you choose between orange or green fields: Skatepark, swimmingpool(orange). Bowling, Zoo(Green)
@@ -100,7 +110,14 @@ public class ChooseToMove extends Cards
         }
         //Checks that the one case with no movement i not the path and calls land on field method
         if(!this.getCardText().substring(0,2).equals("5:") && choice != 0) {
-            ((Properties) fields[players[player].getPosition()]).landOnField(players, player, fields);
+
+            if(fields[players[player].getPosition()] instanceof Properties){
+                ((Properties) fields[players[player].getPosition()]).landOnField(players, player, fields);
+            }
+            else {fields[players[player].getPosition()].landOnField(players, player);
+
+            }
+
         }
 
     }

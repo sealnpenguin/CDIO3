@@ -151,9 +151,9 @@ public class UIController {
                     else if(choice.equals("Spillehallen")){return 2;}
                     else{return 3;}
                 case("20"):
-                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Pizzabar", "Burgerhus", "Lejetøjsbutikken", "Dyrehandlen");
-                    if(choice.equals("Pizzabar")){return 0;}
-                    else if(choice.equals("Burgerhus")){return 1;}
+                    choice = this.gui.getUserButtonPressed("Vælg dit felt", "Burgerbar", "Pizzahus", "Lejetøjsbutikken", "Dyrehandlen");
+                    if(choice.equals("Burgerbar")){return 0;}
+                    else if(choice.equals("Pizzahus")){return 1;}
                     else if(choice.equals("Lejetøjsbutikken")){return 2;}
                     else{return 3;}
                 default:
