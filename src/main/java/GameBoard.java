@@ -186,10 +186,10 @@ public class GameBoard {
                     //Part 1 of landOnField test see part 2
                     //System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
 
-                    myFields[playerList[i].getPosition()].landOnField(playerList,i);
+
 
                     //checks is player is on a chancefield if so he draws a card
-                    if(playerList[i].getPosition() == 3 || playerList[i].getPosition() == 9 || playerList[i].getPosition() == 15 || playerList[i].getPosition() == 21){
+                    if(myFields[playerList[i].getPosition()] instanceof FieldChance){
                         boolean draw = true;
                         //Loop that draws cards until the last drawn card has drawAgain == false
                         while(draw) {
@@ -198,6 +198,13 @@ public class GameBoard {
                             draw = fieldChance.getCards().atIndex(0).getDrawAgain();
                         }
                     }
+                    else if(myFields[playerList[i].getPosition()] instanceof Properties){
+                        ((Properties) myFields[playerList[i].getPosition()]).landOnField(playerList,i, myFields);
+                    }
+                    else{
+                        myFields[playerList[i].getPosition()].landOnField(playerList, i);
+                    }
+
                     //here we update the player position again to make sure it's correct if a chancecard has been used
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 

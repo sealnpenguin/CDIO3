@@ -3,6 +3,7 @@ package Cards;
 import Fields.Field;
 import Fields.FieldChance;
 import Fields.FieldsOnBoard;
+import Fields.Properties;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -127,7 +128,6 @@ class ChooseToMoveTest {
         choiceCards.getLast().drawCard(players, 0, fields, 3);
         assertEquals(17, players[0].getPosition());
 
-        System.out.println(players[0].getMoney());
 
 
     }
