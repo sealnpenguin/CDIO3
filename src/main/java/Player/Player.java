@@ -23,15 +23,6 @@ public class Player{
         oldposition = 0;
     }
 
-    public boolean GetinJail()
-    {
-        return inJail;
-    }
-
-    public void SetinJail(boolean inJail)
-    {
-        this.inJail = inJail;
-    }
     public int getPosition()
     {
         return Position;
@@ -47,6 +38,9 @@ public class Player{
     public void setSpecificPosition(int position){
         this.oldposition = this.Position;
         this.Position = position;
+    }
+    public int getSpecificPosition(){
+        return Position;
     }
     public int getOldposition()
     {
@@ -77,8 +71,16 @@ public class Player{
         return this.JailCard;
     }
 
+    public void SetinJail(boolean inJail)
+    {
+        this.inJail = inJail;
+    } //slet?
     public void setInJail(boolean input){
         this.inJail = input;
+    }
+    public boolean getInJail()
+    {
+        return inJail;
     }
 
     //Return array with players properties
