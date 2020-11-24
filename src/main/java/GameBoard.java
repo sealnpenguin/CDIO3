@@ -218,7 +218,7 @@ public class GameBoard {
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
                     //Checks if player lands on Property and updates GUI with owner
                     if(myFields[playerList[i].getPosition()] instanceof Properties) {
-                    uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition());
+                    uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition()); }
                     //Mulige måder at holde styr på spiller-ejet felter?
                     //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
                     //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
@@ -228,9 +228,9 @@ public class GameBoard {
 
                     //we use set balance here to update the gui
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
-                }
             }
         }
+
         //****************************************Restart game?!!*******************************************
         if(uiController.getGUI().getUserLeftButtonPressed(currentLang[16], currentLang[17], currentLang[18])){
             uiController.getGUI().close();
