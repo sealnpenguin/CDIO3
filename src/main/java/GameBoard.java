@@ -4,17 +4,18 @@ import ViewLayer.UIController;
 
 import java.awt.*;
 
-/* !!!TANKER!!!
+/*
+//**************************************************!!!TANKER!!!********************************************************
 - Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
 - Property value int i player for at nemmere at kunne tjekke når der er en der vinder?
-- Se gameflow jail løsning - skal rettes til når chance kort er på plads!
-- Fiks så folk får penge når de passeré start.
-- Gør så det er synligt at se hvem der ejer hvad.
 - Måske gør så man kan se hvem der betaler til hvem i.e. Jens Betaler 1M Til Mads for at blive natten over.
 - Enten gør valget af sprog usynligt eller færdiggør det.
-- DrawAgain virker ikke lige nu.
-- Måske gør så 2 ikke kan have samme farve.
+- Gør så 2 spillere ikke kan have samme farve. - Vigtigt
 - Justér farve på felter i Gui så det ikke er de samme
+- Opdel gameboard i flere metoder? se steder med mange ****
+- Optimer hele gameboard??
+
+//**********************************************************************************************************************
 */
 
 public class GameBoard {
@@ -159,7 +160,7 @@ public class GameBoard {
                 for (int j = 0; j < playerList.length; j++) {
                     uiController.getGuiPlayer(j).setBalance(playerList[j].getMoney());
                 }
-                //************************************JAIL************************************
+                //**********************************************JAIL**********************************************
                 if(playerList[i].getInJail() && !playerList[i].getJailCard())
                 {
                     playerList[i].SetinJail(false);
@@ -172,7 +173,7 @@ public class GameBoard {
                     playerList[i].setJailCard(false);
                     playerList[i].SetinJail(false);
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[21]);
-                }//***********************************JAIL************************************
+                }//*********************************************JAIL**********************************************
 
                 //loop to check if a player as reached 0
                 EndGame();
@@ -191,51 +192,43 @@ public class GameBoard {
                     //updates gui player position
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 
+                }
+                //Part 1 of landOnField test see part 2
+                System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
+
+                //**********************checks is player is on a chancefield if so he draws a card**********************
+                if(myFields[playerList[i].getPosition()] instanceof FieldChance){
+                    boolean draw = true;
+                    //Loop that draws cards until the last drawn card has drawAgain == false
+                    while(draw) {
+                        uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
+                        fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                        draw = fieldChance.getCards().atIndex(0).getDrawAgain();
                     }
-                    //Part 1 of landOnField test see part 2
-                    System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
-
-
-
-                    //checks is player is on a chancefield if so he draws a card
-                    if(myFields[playerList[i].getPosition()] instanceof FieldChance){
-                        boolean draw = true;
-                        //Loop that draws cards until the last drawn card has drawAgain == false
-                        while(draw) {
-                            uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
-                            fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
-                            draw = fieldChance.getCards().atIndex(0).getDrawAgain();
-                        }
-                    }
-                    else if(myFields[playerList[i].getPosition()] instanceof Properties){
+                } else if(myFields[playerList[i].getPosition()] instanceof Properties){
                         ((Properties) myFields[playerList[i].getPosition()]).landOnField(playerList,i, myFields);
-                    }
-                    else{
-                        myFields[playerList[i].getPosition()].landOnField(playerList, i);
-                    }
+                } else{
+                    myFields[playerList[i].getPosition()].landOnField(playerList, i);
+                } //****************************************************************************************************
 
-                    //here we update the player position again to make sure it's correct if a chancecard has been used
-                    uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
-                    //Checks if player lands on Property and updates GUI with owner
-                    if(myFields[playerList[i].getPosition()] instanceof Properties) {
-                    uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition()); }
-                    //Mulige måder at holde styr på spiller-ejet felter?
-                    //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
-                    //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
+                //here we update the player position again to make sure it's correct if a chancecard has been used
+                uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
+                //Checks if player lands on Property and updates GUI with owner
+                if(myFields[playerList[i].getPosition()] instanceof Properties) { uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition()); }
 
-                    //Part 2 of landOnField test
-                    System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
+                //Part 2 of landOnField test
+                System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
 
-                    //we use set balance here to update the gui
-                    uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
+                //we use set balance here to update the gui
+                uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
             }
         }
 
-        //****************************************Restart game?!!*******************************************
+        //*********************************************Restart game?!!**************************************************
         if(uiController.getGUI().getUserLeftButtonPressed(currentLang[16], currentLang[17], currentLang[18])){
             uiController.getGUI().close();
             Game();
         } else uiController.getGUI().close();
-        //****************************************Restart game?!!*******************************************
+        //*********************************************Restart game?!!**************************************************
     }
 }
