@@ -154,6 +154,10 @@ public class GameBoard {
         while (!GameOver) {
             // Change turn loop
             for (int i = 0; i < playerList.length; i++) {
+                // Gotta update Money here to make sure the gui displays the correct amount.
+                for (int j = 0; j < playerList.length; j++) {
+                    uiController.getGuiPlayer(j).setBalance(playerList[j].getMoney());
+                }
                 //************************************JAIL************************************
                 if(playerList[i].getInJail() && !playerList[i].getJailCard())
                 {
@@ -187,7 +191,7 @@ public class GameBoard {
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 
                     //Part 1 of landOnField test see part 2
-                    //System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
+                    System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
 
 
 
@@ -216,7 +220,7 @@ public class GameBoard {
                     //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
 
                     //Part 2 of landOnField test
-                    //System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
+                    System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
 
                     //we use set balance here to update the gui
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
