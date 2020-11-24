@@ -15,11 +15,26 @@ class PropertiesTest {
         FieldsOnBoard f1 = new FieldsOnBoard();
         fields = f1.getFieldArr();
         players[1].setMoney(20);
-        ((Properties)fields[1]).setOwnedBy(1);
+
+        //Test with first group
+        ((Properties)fields[1]).setOwnedBy(0);
         ((Properties)fields[2]).setOwnedBy(1);
         players[0].setPosition(2);
         ((Properties)fields[2]).landOnField(players, 0, fields);
-        assertEquals(18,players[0].getMoney());
-        assertEquals(22,players[1].getMoney());
+        assertEquals(19,players[0].getMoney());
+        assertEquals(21,players[1].getMoney());
+
+        //test with most last group
+        ((Properties)fields[22]).setOwnedBy(0);
+        ((Properties)fields[23]).setOwnedBy(0);
+        players[1].setSpecificPosition(23);
+        ((Properties)fields[23]).landOnField(players, 1, fields);
+        assertEquals(29,players[0].getMoney());
+        assertEquals(11,players[1].getMoney());
+
+        assertEquals(-1, ((Properties)fields[5]).getOwnedBy());
+        players[2].setSpecificPosition(5);
+        ((Properties)fields[5]).landOnField(players, 2, fields);
+        assertEquals(2, ((Properties)fields[5]).getOwnedBy());
     }
 }

@@ -61,6 +61,7 @@ public class UIController {
                 Color color, txtcolor;
                 txtcolor = Color.black;
                 color = Color.red;
+
                 if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("blå")){
                     color = Color.blue;
                     txtcolor = Color.white;
@@ -160,6 +161,10 @@ public class UIController {
                     return -1;
 
             }
+        }
+
+        public void updateGUIFieldOwner(Player[] players, int player,  Field[] fields, int field){
+            ((GUI_Ownable)this.gui.getFields()[field]).setOwnerName(players[((Properties) fields[field]).getOwnedBy()].getName());
         }
 
         public GUI_Player getGuiPlayer(int playerNumber){
