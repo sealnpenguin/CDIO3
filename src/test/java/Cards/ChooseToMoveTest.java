@@ -50,81 +50,81 @@ class ChooseToMoveTest {
         choiceCards.lastItemToFront();
 
         //Tester for kort 8: "Vælg orange eller grøn". Skatepark, swimmingpool(orange). Bowling, Zoo(Green)
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 0);
         assertEquals(10, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(11, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 2);
         assertEquals(19, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 3);
         assertEquals(20, players[0].getPosition());
         choiceCards.lastItemToFront();
 
         //Tester for kort 9: "Vælg lyseblot felt". Godtebutik eller isbod
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 0);
         assertEquals(4, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(5, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.lastItemToFront();
 
         //Test for kort 15: "Vælg lilla eller mørkeblå"
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 0);
         assertEquals(7, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(8, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 2);
         assertEquals(22, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 3);
         assertEquals(23, players[0].getPosition());
         choiceCards.lastItemToFront();
 
         //test for kort 17: "Vælg rødt felt": Spillehal eller biograf
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 0);
         assertEquals(13, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(14, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.lastItemToFront();
 
         //Test for kort 19: "Vælg Rødt eller lyseblåt felt": Spillehal, biograt(Rød). Godtebutik, iskiosk(Lyseblå)
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 0);
         assertEquals(4, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(5, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 2);
         assertEquals(13, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 3);
         assertEquals(14, players[0].getPosition());
         choiceCards.lastItemToFront();
 
         //Test for kort 20: "Vælgt gråt eller gult"
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 0);
         assertEquals(1, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 1);
         assertEquals(2, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 2);
         assertEquals(16, players[0].getPosition());
-        players[0].setSpecificPosition(0);
+        players[0].setSpecificPosition(3);
         choiceCards.getLast().drawCard(players, 0, fields, 3);
         assertEquals(17, players[0].getPosition());
 
