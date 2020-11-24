@@ -67,11 +67,12 @@ public class GameBoard {
     }
 
     private void PlayerCreator(){
+        uiController.getGUI().showMessage(currentLang[26]);
         //sets player name and sets start money amount
         for (int i = 1; i < numberOfPlayers + 1; i++) {
             Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
             //Made fast to check if name is already taken
-            if (i == 2) {
+            /*if (i == 2) {
                 while (player.getName().equals(playerList[0].getName())) {
                     player.setName(uiController.getGUI().getUserString(currentLang[19] + 2));
                 }
@@ -83,7 +84,7 @@ public class GameBoard {
                 while (player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName()) || player.getName().equals(playerList[2].getName())) {
                     player.setName(uiController.getGUI().getUserString(currentLang[19] + 4));
                 }
-            }
+            }*/
             //Sets the players money according the rules
             switch (numberOfPlayers) {
                 case 2 -> player.setMoney(20);
@@ -122,36 +123,50 @@ public class GameBoard {
     }
 
     private void ChooseColor(){
+        for (int g = 0; g < playerList.length; g++) {
+            uiController.getGuiPlayer(g).getCar().setPrimaryColor(Color.darkGray);
+        }
         for (int i = 0; i < playerList.length; i++) {
-            String color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3],currentLang[4], currentLang[5],currentLang[6],currentLang[7],currentLang[8],currentLang[9],currentLang[10],currentLang[11]);
-            if(lang.equals("English")) {
-                switch (color) {
-                    case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
-                    case "BLACK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
-                    case "BLUE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
-                    case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
-                    case "PINK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
-                    case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
-                    case "YELLOW" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
-                    case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
-                }
-            } else if(lang.equals("Dansk")) {
-                switch (color) {
-                    case "RØD" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
-                    case "SORT" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
-                    case "BLÅ" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
-                    case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
-                    case "ROSE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
-                    case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
-                    case "GUL" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
-                    case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
-                }
+            while(uiController.getGuiPlayer(i).getPrimaryColor() == Color.darkGray ||
+                i > 0 && uiController.getGuiPlayer(i).getPrimaryColor() == uiController.getGuiPlayer(0).getPrimaryColor()||
+                i > 1 && uiController.getGuiPlayer(i).getPrimaryColor() == uiController.getGuiPlayer(1).getPrimaryColor()||
+                i > 2 && uiController.getGuiPlayer(i).getPrimaryColor() == uiController.getGuiPlayer(2).getPrimaryColor()){
+                String color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3],currentLang[4],
+                        currentLang[5],currentLang[6],currentLang[7],currentLang[8],currentLang[9],currentLang[10],currentLang[11]);
+                ColorSwitch(color,i);
             }
+
             // we update GUIPLAYERPOS here to set player at start
             uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
         }
     }
 
+
+    private void ColorSwitch(String color, int i){
+        if(lang.equals("English")) {
+            switch (color) {
+                case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
+                case "BLACK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
+                case "BLUE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
+                case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
+                case "PINK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
+                case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
+                case "YELLOW" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
+                case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
+            }
+        } else if(lang.equals("Dansk")) {
+            switch (color) {
+                case "RØD" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
+                case "SORT" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
+                case "BLÅ" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
+                case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
+                case "ROSE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
+                case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
+                case "GUL" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
+                case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
+            }
+        }
+    }
     private void GameFlow(){
         while (!GameOver) {
             // Change turn loop
