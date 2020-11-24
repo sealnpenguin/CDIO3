@@ -26,12 +26,15 @@ public class GameBoard {
     FieldChance fieldChance = new FieldChance();
 
 
+
     private final FieldsOnBoard f1 = new FieldsOnBoard();
     private final Field[] myFields = f1.getFieldArr();
     private UIController uiController;
     private String[] currentLang;
 
+
     public void Game() {
+        ((FieldChance)myFields[3]).mixCards();
         uiController = new UIController(myFields);
         GameOver = false;
         lang = uiController.getGUI().getUserButtonPressed("", "WIP English", "Dansk");
