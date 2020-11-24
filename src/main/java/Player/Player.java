@@ -42,6 +42,9 @@ public class Player{
     public void setSpecificPosition(int position){
         this.oldposition = this.Position;
         this.Position = position;
+        if(this.Position < this.oldposition && !this.inJail){
+            this.setMoney(+2);
+        }
     }
     public int getSpecificPosition(){
         return Position;
