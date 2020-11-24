@@ -189,7 +189,6 @@ public class GameBoard {
 
                     //updates gui player position
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
-
                     //Part 1 of landOnField test see part 2
                     System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
 
@@ -222,6 +221,16 @@ public class GameBoard {
                     //Part 2 of landOnField test
                     System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
 
+                    /*Properties properties = (Properties) myFields[playerList[i].getPosition()];
+                    if(properties.getOwnedBy() == i) {
+                        uiController.updateGUIFieldOwner(playerList,myFields, playerList[i].getPosition());
+                    }*/
+                    if(myFields[playerList[i].getPosition()] instanceof Properties){
+                        Properties properties = (Properties) myFields[playerList[i].getPosition()];
+                        if(properties.getOwnedBy() == i) {
+                            uiController.updateGUIFieldOwner(playerList,myFields, playerList[i].getPosition());
+                        }
+                    }
                     //we use set balance here to update the gui
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
                 }
