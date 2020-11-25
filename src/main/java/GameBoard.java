@@ -9,12 +9,10 @@ import java.util.Arrays;
 - Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
 - Property value int i player for at nemmere at kunne tjekke når der er en der vinder?
 - Se gameflow jail løsning - skal rettes til når chance kort er på plads!
-- Fiks så folk får penge når de passeré start.
-- Gør så det er synligt at se hvem der ejer hvad.
+
 - Måske gør så man kan se hvem der betaler til hvem i.e. Jens Betaler 1M Til Mads for at blive natten over.
 - Enten gør valget af sprog usynligt eller færdiggør det.
-- DrawAgain virker ikke lige nu.
-- Måske gør så 2 ikke kan have samme farve.
+
 - Justér farve på felter i Gui så det ikke er de samme
 */
 
