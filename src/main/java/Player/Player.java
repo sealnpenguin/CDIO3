@@ -78,6 +78,17 @@ public class Player{
         return this.JailCard;
     }
 
+    public boolean hasPlayerSpecificCard(){
+        boolean check = false;
+        for (int i = 0; i < this.cardArray.size; i++) {
+            String tester = this.cardArray.atIndex(i).getCardText().substring(0, 2);
+            if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
+                check = true;
+            }
+        }
+        return check;
+    }
+
     public void SetinJail(boolean inJail)
     {
         this.inJail = inJail;

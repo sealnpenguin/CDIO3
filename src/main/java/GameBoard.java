@@ -188,6 +188,12 @@ public class GameBoard {
                     playerList[i].SetinJail(false);
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[21]);
                 }//***********************************JAIL************************************
+                //Check for if player has a player specific card and gives them the choice
+                if(playerList[i].hasPlayerSpecificCard()){
+
+
+
+                }
 
                 //loop to check if a player as reached 0
                 EndGame();
@@ -252,5 +258,86 @@ public class GameBoard {
             Game();
         } else uiController.getGUI().close();
         //****************************************Restart game?!!*******************************************
+    }
+    //Hvis player has PlayerSpecific card at start of turn this needs to run.
+    public void playerSpecificCardChoice(int player){
+        int numberOfFreeFields = 0;
+        String[] chooseFieldArray;
+        int[] fieldsToChose;
+        //Counters number of fields with no owner
+        for (int j = 0; j < myFields.length; j++) {
+            if(myFields[j] instanceof Properties){
+                if(((Properties) myFields[j]).getOwnedBy() == -1){
+                    numberOfFreeFields++;
+                }
+            }
+        }
+        //Checks if any free Properties exist
+        if(numberOfFreeFields > 0) {
+            fieldsToChose = new int[numberOfFreeFields];
+            chooseFieldArray = new String[numberOfFreeFields];
+            int freeFieldCounter = 0;
+            //Builds int array of all the indecies of Properties with no owner(Used to change player position)
+            //Also builds String array(Used for output to screen so player can choose)
+            for (int j = 0; j < myFields.length; j++) {
+                if (myFields[j] instanceof Properties) {
+                    if (((Properties) myFields[j]).getOwnedBy() == -1) {
+                        fieldsToChose[freeFieldCounter] = j;
+                        chooseFieldArray[freeFieldCounter] = myFields[j].getFieldName();
+                    }
+                }
+            }
+            String choiceString = "";
+            int choiceInt = -1;
+            //Makes choice based on Propety names
+            choiceString = uiController.getGUI().getUserButtonPressed("Vælg et frit felt", chooseFieldArray);
+            //Looks through fields to find index of chosen field
+            for (int j = 0; j < myFields.length; j++) {
+                if (choiceString.equals(myFields[j].getFieldName())) {
+                    choiceInt = j;
+                }
+            }
+            //Updates playerPosition to chosen field and gives the money so they get field for free
+            playerList[player].setSpecificPosition(choiceInt);
+            playerList[player].setMoney(((Properties)myFields[playerList[player].getPosition()]).getPrice());
+        }
+        else{
+            String choiceString = "";
+            int choiceInt = -1;
+            int otherPlayersFields = 0;
+            int fieldChoiceCounter = 0;
+            for (int i = 0; i < myFields.length; i++) {
+                if(myFields[i] instanceof Properties){
+                    if(((Properties)myFields[i]).getOwnedBy() != player){
+                        otherPlayersFields++;
+                    }
+                }
+            }
+            fieldsToChose = new int[otherPlayersFields];
+            chooseFieldArray = new String[otherPlayersFields];
+            for (int i = 0; i < myFields.length; i++) {
+                if(myFields[i] instanceof Properties){
+                    if(((Properties)myFields[i]).getOwnedBy() != player){
+                        fieldsToChose[fieldChoiceCounter] = i;
+                        chooseFieldArray[fieldChoiceCounter] = myFields[i].getFieldName();
+                        fieldChoiceCounter++;
+                    }
+                }
+            }
+            choiceInt = -1;
+            String choice = uiController.getGUI().getUserButtonPressed("Vælg en anden spillers felt og køb det af personen", chooseFieldArray);
+            //Looks through fields to find index of chosen field
+            for (int j = 0; j < myFields.length; j++) {
+                if (choiceString.equals(myFields[j].getFieldName())) {
+                    choiceInt = j;
+                }
+            }
+            playerList[player].setPosition(choiceInt);
+            playerList[player].setMoney(-((Properties)myFields[choiceInt]).getPrice());
+            playerList[((Properties)myFields[choiceInt]).getOwnedBy()].setMoney(((Properties)myFields[choiceInt]).getPrice());
+            ((Properties)myFields[choiceInt]).setOwnedBy(player);
+        }
+
+        ((Properties)myFields[playerList[player].getPosition()]).landOnField(playerList, player, myFields);
     }
 }
