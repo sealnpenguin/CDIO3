@@ -3,19 +3,19 @@ import Player.Player;
 import ViewLayer.UIController;
 
 import java.awt.*;
+import java.util.Arrays;
 
-/*
-//**************************************************!!!TANKER!!!********************************************************
+/* !!!TANKER!!!
 - Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
 - Property value int i player for at nemmere at kunne tjekke når der er en der vinder?
+- Se gameflow jail løsning - skal rettes til når chance kort er på plads!
+- Fiks så folk får penge når de passeré start.
+- Gør så det er synligt at se hvem der ejer hvad.
 - Måske gør så man kan se hvem der betaler til hvem i.e. Jens Betaler 1M Til Mads for at blive natten over.
 - Enten gør valget af sprog usynligt eller færdiggør det.
-- Gør så 2 spillere ikke kan have samme farve. - Vigtigt
+- DrawAgain virker ikke lige nu.
+- Måske gør så 2 ikke kan have samme farve.
 - Justér farve på felter i Gui så det ikke er de samme
-- Opdel gameboard i flere metoder? se steder med mange ****
-- Optimer hele gameboard??
-
-//**********************************************************************************************************************
 */
 
 public class GameBoard {
@@ -67,12 +67,11 @@ public class GameBoard {
     }
 
     private void PlayerCreator(){
-        uiController.getGUI().showMessage(currentLang[26]);
         //sets player name and sets start money amount
         for (int i = 1; i < numberOfPlayers + 1; i++) {
             Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
             //Made fast to check if name is already taken
-            /*if (i == 2) {
+            if (i == 2) {
                 while (player.getName().equals(playerList[0].getName())) {
                     player.setName(uiController.getGUI().getUserString(currentLang[19] + 2));
                 }
@@ -84,7 +83,7 @@ public class GameBoard {
                 while (player.getName().equals(playerList[0].getName()) || player.getName().equals(playerList[1].getName()) || player.getName().equals(playerList[2].getName())) {
                     player.setName(uiController.getGUI().getUserString(currentLang[19] + 4));
                 }
-            }*/
+            }
             //Sets the players money according the rules
             switch (numberOfPlayers) {
                 case 2 -> player.setMoney(20);
@@ -123,50 +122,48 @@ public class GameBoard {
     }
 
     private void ChooseColor(){
-        for (int g = 0; g < playerList.length; g++) {
-            uiController.getGuiPlayer(g).getCar().setPrimaryColor(Color.darkGray);
-        }
+        String[] choiceArr = Arrays.copyOfRange(currentLang, 4, 11);
+        String[] temp;
+        String color;
         for (int i = 0; i < playerList.length; i++) {
-            while(uiController.getGuiPlayer(i).getPrimaryColor() == Color.darkGray ||
-                i > 0 && uiController.getGuiPlayer(i).getPrimaryColor() == uiController.getGuiPlayer(0).getPrimaryColor()||
-                i > 1 && uiController.getGuiPlayer(i).getPrimaryColor() == uiController.getGuiPlayer(1).getPrimaryColor()||
-                i > 2 && uiController.getGuiPlayer(i).getPrimaryColor() == uiController.getGuiPlayer(2).getPrimaryColor()){
-                String color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3],currentLang[4],
-                        currentLang[5],currentLang[6],currentLang[7],currentLang[8],currentLang[9],currentLang[10],currentLang[11]);
-                ColorSwitch(color,i);
+            color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3], choiceArr);
+            if(lang.equals("English")) {
+                switch (color) {
+                    case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
+                    case "BLACK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
+                    case "BLUE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
+                    case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
+                    case "PINK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
+                    case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
+                    case "YELLOW" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
+                    case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
+                }
+            } else if(lang.equals("Dansk")) {
+                switch (color) {
+                    case "RØD" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
+                    case "SORT" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
+                    case "BLÅ" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
+                    case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
+                    case "ROSE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
+                    case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
+                    case "GUL" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
+                    case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
+                }
             }
-
+            temp = new String[choiceArr.length-1];
+            int tempCount = 0;
+            for (int j = 0; j < choiceArr.length; j++) {
+                if(!choiceArr[j].equals(color)) {
+                    temp[tempCount] = choiceArr[j];
+                    tempCount++;
+                }
+            }
+            choiceArr = temp;
             // we update GUIPLAYERPOS here to set player at start
             uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
         }
     }
 
-
-    private void ColorSwitch(String color, int i){
-        if(lang.equals("English")) {
-            switch (color) {
-                case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
-                case "BLACK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
-                case "BLUE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
-                case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
-                case "PINK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
-                case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
-                case "YELLOW" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
-                case "WHITE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
-            }
-        } else if(lang.equals("Dansk")) {
-            switch (color) {
-                case "RØD" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
-                case "SORT" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
-                case "BLÅ" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLUE);
-                case "MAGENTA" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.MAGENTA);
-                case "ROSE" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.PINK);
-                case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
-                case "GUL" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
-                case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
-            }
-        }
-    }
     private void GameFlow(){
         while (!GameOver) {
             // Change turn loop
@@ -175,7 +172,7 @@ public class GameBoard {
                 for (int j = 0; j < playerList.length; j++) {
                     uiController.getGuiPlayer(j).setBalance(playerList[j].getMoney());
                 }
-                //**********************************************JAIL**********************************************
+                //************************************JAIL************************************
                 if(playerList[i].getInJail() && !playerList[i].getJailCard())
                 {
                     playerList[i].SetinJail(false);
@@ -188,7 +185,7 @@ public class GameBoard {
                     playerList[i].setJailCard(false);
                     playerList[i].SetinJail(false);
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[21]);
-                }//*********************************************JAIL**********************************************
+                }//***********************************JAIL************************************
 
                 //loop to check if a player as reached 0
                 EndGame();
@@ -207,43 +204,51 @@ public class GameBoard {
                     //updates gui player position
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
 
-                }
-                //Part 1 of landOnField test see part 2
-                System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
-
-                //**********************checks is player is on a chancefield if so he draws a card**********************
-                if(myFields[playerList[i].getPosition()] instanceof FieldChance){
-                    boolean draw = true;
-                    //Loop that draws cards until the last drawn card has drawAgain == false
-                    while(draw) {
-                        uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
-                        fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
-                        draw = fieldChance.getCards().atIndex(0).getDrawAgain();
                     }
-                } else if(myFields[playerList[i].getPosition()] instanceof Properties){
+                    //Part 1 of landOnField test see part 2
+                    System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
+
+
+
+                    //checks is player is on a chancefield if so he draws a card
+                    if(myFields[playerList[i].getPosition()] instanceof FieldChance){
+                        boolean draw = true;
+                        //Loop that draws cards until the last drawn card has drawAgain == false
+                        while(draw) {
+                            uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
+                            fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                            draw = fieldChance.getCards().atIndex(0).getDrawAgain();
+                        }
+                    }
+                    else if(myFields[playerList[i].getPosition()] instanceof Properties){
                         ((Properties) myFields[playerList[i].getPosition()]).landOnField(playerList,i, myFields);
-                } else{
-                    myFields[playerList[i].getPosition()].landOnField(playerList, i);
-                } //****************************************************************************************************
+                    }
+                    else{
+                        myFields[playerList[i].getPosition()].landOnField(playerList, i);
+                    }
 
-                //here we update the player position again to make sure it's correct if a chancecard has been used
-                uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
-                //Checks if player lands on Property and updates GUI with owner
-                if(myFields[playerList[i].getPosition()] instanceof Properties) { uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition()); }
+                    //here we update the player position again to make sure it's correct if a chancecard has been used
+                    uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
+                    //Checks if player lands on Property and updates GUI with owner
+                    if(myFields[playerList[i].getPosition()] instanceof Properties) {
+                    uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition());
+                    //Mulige måder at holde styr på spiller-ejet felter?
+                    //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
+                    //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
 
-                //Part 2 of landOnField test
-                System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
+                    //Part 2 of landOnField test
+                    System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
 
-                //we use set balance here to update the gui
-                uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
+                    //we use set balance here to update the gui
+                    uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
+                }
             }
         }
-
-        //*********************************************Restart game?!!**************************************************
+        //****************************************Restart game?!!*******************************************
         if(uiController.getGUI().getUserLeftButtonPressed(currentLang[16], currentLang[17], currentLang[18])){
             uiController.getGUI().close();
             Game();
         } else uiController.getGUI().close();
-        //*********************************************Restart game?!!**************************************************
+        //****************************************Restart game?!!*******************************************
     }
 }
