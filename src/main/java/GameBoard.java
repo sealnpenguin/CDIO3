@@ -3,6 +3,7 @@ import Player.Player;
 import ViewLayer.UIController;
 
 import java.awt.*;
+import java.util.Arrays;
 
 /* !!!TANKER!!!
 - Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
@@ -121,8 +122,11 @@ public class GameBoard {
     }
 
     private void ChooseColor(){
+        String[] choiceArr = Arrays.copyOfRange(currentLang, 4, 11);
+        String[] temp;
+        String color;
         for (int i = 0; i < playerList.length; i++) {
-            String color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3],currentLang[4], currentLang[5],currentLang[6],currentLang[7],currentLang[8],currentLang[9],currentLang[10],currentLang[11]);
+            color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3], choiceArr);
             if(lang.equals("English")) {
                 switch (color) {
                     case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
@@ -146,6 +150,15 @@ public class GameBoard {
                     case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
                 }
             }
+            temp = new String[choiceArr.length-1];
+            int tempCount = 0;
+            for (int j = 0; j < choiceArr.length; j++) {
+                if(!choiceArr[j].equals(color)) {
+                    temp[tempCount] = choiceArr[j];
+                    tempCount++;
+                }
+            }
+            choiceArr = temp;
             // we update GUIPLAYERPOS here to set player at start
             uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
         }

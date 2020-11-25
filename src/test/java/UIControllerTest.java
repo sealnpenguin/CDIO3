@@ -60,6 +60,7 @@ class UIControllerTest {
         UIController myControl = new UIController(players, myFields);
         ((Properties)myFields[2]).setOwnedBy(1);
         myControl.updateGUIFieldOwner(players, myFields, 2);
-        myControl.getGUI().getUserButtonPressed("hej", "test");
+        String[] test = new String[]{"hej", "test"};
+        myControl.getGUI().getUserButtonPressed("hej", test);
     }
 }
