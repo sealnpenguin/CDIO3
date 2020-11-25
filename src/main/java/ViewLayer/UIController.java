@@ -13,11 +13,10 @@ import Player.*;
 public class UIController {
     private GUI gui;
     private GUI_Player[] guiPlayers;
-
-
     // Constructer that automatically generates GUI with all the players
     public UIController(Field[] fields){
-        this.gui = new GUI(UIFieldGen(fields));
+        Color BgColor = new Color(99, 90, 75);
+        this.gui = new GUI(UIFieldGen(fields), BgColor);
     }
 
     public UIController(Player[] players, Field[] fields){
