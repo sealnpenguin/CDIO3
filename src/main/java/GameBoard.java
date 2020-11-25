@@ -5,15 +5,16 @@ import ViewLayer.UIController;
 import java.awt.*;
 import java.util.Arrays;
 
-/* !!!TANKER!!!
-- Optimer funktionen der tjekker om 2 brugere har samme navn??? se linje 34-44
+/*
+//**************************************************!!!TANKER!!!********************************************************
+- Optimer funktionen der tjekker om 2 brugere har samme navn???
 - Property value int i player for at nemmere at kunne tjekke når der er en der vinder?
-- Se gameflow jail løsning - skal rettes til når chance kort er på plads!
-
 - Måske gør så man kan se hvem der betaler til hvem i.e. Jens Betaler 1M Til Mads for at blive natten over.
 - Enten gør valget af sprog usynligt eller færdiggør det.
-
 - Justér farve på felter i Gui så det ikke er de samme
+- Opdel gameboard i flere metoder? se steder med mange ****
+- Optimer hele gameboard??
+//**********************************************************************************************************************
 */
 
 public class GameBoard {
@@ -65,6 +66,7 @@ public class GameBoard {
     }
 
     private void PlayerCreator(){
+        uiController.getGUI().showMessage(currentLang[26]);
         //sets player name and sets start money amount
         for (int i = 1; i < numberOfPlayers + 1; i++) {
             Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
@@ -189,11 +191,11 @@ public class GameBoard {
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[21]);
                 }//***********************************JAIL************************************
                 //Check for if player has a player specific card and gives them the choice
-                if(playerList[i].hasPlayerSpecificCard()){
+                //if(playerList[i].hasPlayerSpecificCard()){
 
 
 
-                }
+                //}
 
                 //loop to check if a player as reached 0
                 EndGame();
