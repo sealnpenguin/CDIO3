@@ -1,6 +1,11 @@
+import ViewLayer.UIController;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
 import org.junit.jupiter.api.Test;
+import Cards.*;
+import Fields.*;
+import ViewLayer.*;
+import Player.*;
 
 import java.util.Scanner;
 
@@ -11,9 +16,8 @@ class UIControllerTest {
     @Test
     void UIFieldGen() {
         Field[] myFields = new Field[24];
-        for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties();
-        }
+        FieldsOnBoard f1 = new FieldsOnBoard();
+        myFields = f1.getFieldArr();
         Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         UIController myControl = new UIController(players, myFields);
 
@@ -25,9 +29,8 @@ class UIControllerTest {
     @Test
     void updateGuiPlayerPos(){
         Field[] myFields = new Field[24];
-        for (int i = 0; i < myFields.length; i++) {
-            myFields[i] = new Properties();
-        }
+        FieldsOnBoard f1 = new FieldsOnBoard();
+        myFields = f1.getFieldArr();
         Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
         UIController myControl = new UIController(players, myFields);
         for (int i = 0; i < players.length; i++) {
@@ -46,5 +49,18 @@ class UIControllerTest {
         myControl.updateGUIPlayerPos(players[3],5, 11);
         myControl.getGUI().getUserButtonPressed( "Click a button",
                 "Button 1", "Button 2");
+    }
+
+    @Test
+    void updateGUIFieldOwner(){
+        Field[] myFields = new Field[24];
+        FieldsOnBoard f1 = new FieldsOnBoard();
+        myFields = f1.getFieldArr();
+        Player[] players = {new Player("test1"), new Player("test2"), new Player("test3"), new Player("test4")};
+        UIController myControl = new UIController(players, myFields);
+        ((Properties)myFields[2]).setOwnedBy(1);
+        myControl.updateGUIFieldOwner(players, myFields, 2);
+        String[] test = new String[]{"hej", "test"};
+        myControl.getGUI().getUserButtonPressed("hej", test);
     }
 }

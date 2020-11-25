@@ -1,14 +1,13 @@
-import java.util.ArrayList;
+import Cards.DynamicArr;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class ArraylistTest {
+class DynamicArrTest {
 
     @org.junit.jupiter.api.Test
     void add() {
-        Arraylist <Integer> k = new Arraylist<> ();
-        Arraylist <String> s = new Arraylist<>();
+        DynamicArr<Integer> k = new DynamicArr<Integer>();
+        DynamicArr<String> s = new DynamicArr<String>();
 
+       //ynamicArr<Fields.Field>
         // integer array
         k.add(4);
         k.print();
