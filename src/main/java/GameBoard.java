@@ -89,6 +89,9 @@ public class GameBoard {
                 case 4 -> player.setMoney(16);
             }
             playerList[i - 1] = player;
+
+        }
+        for (int i = 1; i < numberOfPlayers + 1; i++) {
             playerList[i-1].setName(playerList[i-1].getName() + currentLang[i+21]);
         }
     }
