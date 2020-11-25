@@ -102,6 +102,11 @@ public class DynamicArr<T> {
 
     }
 
+    public void addAtStart(T object){
+        this.add(object);
+        this.lastItemToFront();
+    }
+
     public T getLast(){
         return this.atIndex(this.size-1);
     }

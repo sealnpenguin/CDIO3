@@ -78,15 +78,51 @@ public class Player{
         return this.JailCard;
     }
 
-    public boolean hasPlayerSpecificCard(){
-        boolean check = false;
-        for (int i = 0; i < this.cardArray.size; i++) {
-            String tester = this.cardArray.atIndex(i).getCardText().substring(0, 2);
+
+
+    public Cards getPlayerSpecific(){
+        for (int i = 0; i < cardArray.size; i++) {
+            String tester = cardArray.atIndex(i).getCardText().substring(0,2);
             if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
-                check = true;
+                return this.cardArray.atIndex(i);
             }
         }
-        return check;
+        return null;
+    }
+
+    public void removePlayerSpecific(){
+        for (int i = 0; i < cardArray.size; i++) {
+            String tester = cardArray.atIndex(i).getCardText().substring(0,2);
+            if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
+                this.cardArray.removeAt(i);
+            }
+        }
+    }
+
+    public Cards getJailCardOject(){
+        for (int i = 0; i < cardArray.size; i++) {
+            if(cardArray.atIndex(i) instanceof GetOutOfJail){
+                return cardArray.atIndex(i);
+            }
+        }
+        return null;
+    }
+    public void removeJailCardObect() {
+        for (int i = 0; i < cardArray.size; i++) {
+            if (cardArray.atIndex(i) instanceof GetOutOfJail) {
+                cardArray.removeAt(i);
+            }
+        }
+    }
+
+    public boolean hasPlayerSpecific(){
+        boolean tester = false;
+        for (int i = 0; i < cardArray.size; i++) {
+            if(cardArray.atIndex(i) instanceof PlayerSpecific){
+                tester = true;
+            }
+        }
+        return tester;
     }
 
     public void SetinJail(boolean inJail)

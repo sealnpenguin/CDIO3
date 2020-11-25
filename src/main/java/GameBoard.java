@@ -1,3 +1,5 @@
+import Cards.GetOutOfJail;
+import Cards.PlayerSpecific;
 import Fields.*;
 import Player.Player;
 import ViewLayer.UIController;
@@ -42,8 +44,8 @@ public class GameBoard {
         Language langSelector = new Language(lang);
         currentLang = langSelector.returnLang();
         playerList = new Player[SetPlayerAmount()];
-
         fieldChance.mixCards();
+
         PlayerCreator();
         uiController.addPlayers(playerList);
 
@@ -156,6 +158,7 @@ public class GameBoard {
             }
             temp = new String[choiceArr.length-1];
             int tempCount = 0;
+            //Creates new array where player choice has been removed and update choiceArr so it no longer contains choice
             for (int j = 0; j < choiceArr.length; j++) {
                 if(!choiceArr[j].equals(color)) {
                     temp[tempCount] = choiceArr[j];
@@ -188,14 +191,20 @@ public class GameBoard {
                 {
                     playerList[i].setJailCard(false);
                     playerList[i].SetinJail(false);
+                    fieldChance.getCards().add(playerList[i].getJailCardOject());
+                    fieldChance.getCards().lastItemToFront();
+                    playerList[i].removeJailCardObect();
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[21]);
                 }//***********************************JAIL************************************
                 //Check for if player has a player specific card and gives them the choice
-                //if(playerList[i].hasPlayerSpecificCard()){
-
-
-
-                //}
+                //After choice have been made it moves card back into fieldChance and puts it at bottom
+                if(playerList[i].hasPlayerSpecific()){
+                    uiController.getGUI().getUserButtonPressed(playerList[i].getName() + " har sit figur kort tryk Ok for at tage valg", "ok");
+                    playerSpecificCardChoice(i);
+                    fieldChance.getCards().add(playerList[i].getPlayerSpecific());
+                    fieldChance.getCards().lastItemToFront();
+                    playerList[i].removePlayerSpecific();
+                }
 
                 //loop to check if a player as reached 0
                 EndGame();
@@ -224,10 +233,26 @@ public class GameBoard {
                     if(myFields[playerList[i].getPosition()] instanceof FieldChance){
                         boolean draw = true;
                         //Loop that draws cards until the last drawn card has drawAgain == false
+                        //If else statements keeps track of which type of card and acts accordingly
                         while(draw) {
                             uiController.getGUI().displayChanceCard(fieldChance.getCards().getLast().getCardText());
-                            fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
-                            draw = fieldChance.getCards().atIndex(0).getDrawAgain();
+                            if(fieldChance.getCards().getLast() instanceof PlayerSpecific){
+                                draw = true;
+                                fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                            }
+                            else if(fieldChance.getCards().getLast() instanceof GetOutOfJail)
+                            {
+                                draw = false;
+                                fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                            }
+                            else {
+                                fieldChance.takeChanceCard(playerList, i, myFields, uiController.getGuiInput(fieldChance.nextCard()));
+                                draw = fieldChance.getCards().atIndex(0).getDrawAgain();
+                            }
+
+                            if(draw == true) {
+                                uiController.getGUI().getUserButtonPressed("Du skal trække igen", "træk");
+                            }
                         }
                     }
                     else if(myFields[playerList[i].getPosition()] instanceof Properties){
@@ -286,6 +311,7 @@ public class GameBoard {
                     if (((Properties) myFields[j]).getOwnedBy() == -1) {
                         fieldsToChose[freeFieldCounter] = j;
                         chooseFieldArray[freeFieldCounter] = myFields[j].getFieldName();
+                        freeFieldCounter++;
                     }
                 }
             }
@@ -327,7 +353,7 @@ public class GameBoard {
                 }
             }
             choiceInt = -1;
-            String choice = uiController.getGUI().getUserButtonPressed("Vælg en anden spillers felt og køb det af personen", chooseFieldArray);
+            choiceString = uiController.getGUI().getUserButtonPressed("Vælg en anden spillers felt og køb det af personen", chooseFieldArray);
             //Looks through fields to find index of chosen field
             for (int j = 0; j < myFields.length; j++) {
                 if (choiceString.equals(myFields[j].getFieldName())) {
@@ -341,5 +367,10 @@ public class GameBoard {
         }
 
         ((Properties)myFields[playerList[player].getPosition()]).landOnField(playerList, player, myFields);
+        fieldChance.getCards().add(playerList[player].getPlayerSpecific());
+        fieldChance.getCards().lastItemToFront();
+        playerList[player].removePlayerSpecific();
+        uiController.updateGUIFieldOwner(playerList , myFields, playerList[player].getPosition());
+        uiController.updateGUIPlayerPos(playerList[player], playerList[player].getOldposition(), playerList[player].getPosition());
     }
 }
