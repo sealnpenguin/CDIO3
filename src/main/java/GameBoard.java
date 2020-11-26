@@ -8,13 +8,9 @@ import java.awt.*;
 import java.util.Arrays;
 
 /*
-//**************************************************!!!TANKER!!!********************************************************
-- Optimer funktionen der tjekker om 2 brugere har samme navn???
-- Property value int i player for at nemmere at kunne tjekke når der er en der vinder?
+//**************************************************!!!Throughts!!!********************************************************
 - Måske gør så man kan se hvem der betaler til hvem i.e. Jens Betaler 1M Til Mads for at blive natten over.
-- Enten gør valget af sprog usynligt eller færdiggør det.
-- Justér farve på felter i Gui så det ikke er de samme
-- Opdel gameboard i flere metoder? se steder med mange ****
+- Opdel gameboard i flere metoder? se evt steder med mange ****
 - Optimer hele gameboard??
 //**********************************************************************************************************************
 */
@@ -40,7 +36,7 @@ public class GameBoard {
         ((FieldChance)myFields[3]).mixCards();
         uiController = new UIController(myFields);
         GameOver = false;
-        lang = uiController.getGUI().getUserButtonPressed("", "WIP English", "Dansk");
+        lang = uiController.getGUI().getUserButtonPressed("", /*"WIP English",*/ "Dansk");
         Language langSelector = new Language(lang);
         currentLang = langSelector.returnLang();
         playerList = new Player[SetPlayerAmount()];
@@ -72,7 +68,7 @@ public class GameBoard {
         //sets player name and sets start money amount
         for (int i = 1; i < numberOfPlayers + 1; i++) {
             Player player = new Player(uiController.getGUI().getUserString(currentLang[2] + i));
-            //Made fast to check if name is already taken
+            //Made quickly to check if name is already taken
             if (i == 2) {
                 while (player.getName().equals(playerList[0].getName())) {
                     player.setName(uiController.getGUI().getUserString(currentLang[19] + 2));
@@ -229,7 +225,7 @@ public class GameBoard {
 
 
 
-                    //checks is player is on a chancefield if so he draws a card
+                    //********************checks is player is on a chancefield if so he draws a card***********************************
                     if(myFields[playerList[i].getPosition()] instanceof FieldChance){
                         boolean draw = true;
                         //Loop that draws cards until the last drawn card has drawAgain == false
@@ -260,7 +256,8 @@ public class GameBoard {
                     }
                     else{
                         myFields[playerList[i].getPosition()].landOnField(playerList, i);
-                    }
+                    }//***************************************************************************************************************
+
 
                     //here we update the player position again to make sure it's correct if a chancecard has been used
                     uiController.updateGUIPlayerPos(playerList[i],playerList[i].getOldposition(), playerList[i].getPosition());
