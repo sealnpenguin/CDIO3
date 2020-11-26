@@ -7,6 +7,7 @@ import java.util.Random;
 public class FieldChance extends Field {
 
     private DynamicArr<Cards> cards = new DynamicArr<Cards>();
+    private CardInfo info = new CardInfo();
 
     public FieldChance(){
         super("?", "Tag et chancekort");
@@ -36,7 +37,6 @@ public class FieldChance extends Field {
     //Method that generates a set of cards from cardInfo
     //Get out of jail card excluded parameter is false
     public void generateChanceCards(boolean jail){
-        CardInfo info = new CardInfo();
         cards = new DynamicArr<Cards>();
         String temp;
         for (int i = 0; i < info.getText().length; i++) {
