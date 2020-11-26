@@ -4,7 +4,6 @@ import Player.Player;
 
 public class FieldStart extends Field{
     //Starting field
-    private int fieldValue = 2; // Skal det være -2, fordi man modtager pengene?
 
     public FieldStart(){
        super("Start", "Modtag 2M når du passerer start");
@@ -16,7 +15,4 @@ public class FieldStart extends Field{
 
     }
 
-    public int getFieldValue() {
-        return fieldValue;
-    }
 }

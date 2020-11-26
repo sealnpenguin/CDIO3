@@ -8,7 +8,6 @@ class FieldsOnBoardTest {
     @Test
     void fieldsOnBoard() {
         FieldsOnBoard f1 = new FieldsOnBoard();
-        f1.fieldsOnBoard();
         for (int i = 0; i < f1.getFieldArr().length; i++) {
             Field[] testarr = f1.getFieldArr();
             String testString = testarr[i].getFieldName();

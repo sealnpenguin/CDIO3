@@ -69,20 +69,7 @@ public class FieldsOnBoard {
         }
 
     }
-    public void fieldsOnBoard() {
-        //Test
-        //Jail j = new Jail();
-        //j.fieldDescription = "This is jail";
-        //System.out.println(j.fieldDescription);
 
-        //Samtlige felter, inkl. beskrivelser, på brættet
-
-
-        //Forsøg på at hente attributter fra de forskellige klasser
-        //allFields[3] = new String[]{FieldChance.getFieldName(), FieldChance.getFieldDescription()});
-
-
-    }
 
     @Override
     public String toString() {
@@ -96,8 +83,6 @@ public class FieldsOnBoard {
     public Field[] getFieldArr(){
         return this.fieldArr;
     }
-    public Field getFieldArrIndex(int index){
-        return this.fieldArr[index];
-    }
+
 }
 

@@ -48,11 +48,6 @@ public class GameBoard {
         uiController.addPlayers(playerList);
 
         ChooseColor();
-
-        //Fast way to test jail functionality
-        //playerList[3].setInJail(true);
-        //playerList[3].setJailCard(true);
-
         GameFlow();
 
     }
@@ -194,7 +189,7 @@ public class GameBoard {
                 //************************************JAIL************************************
                 if(playerList[i].getInJail() && !playerList[i].getJailCard())
                 {
-                    playerList[i].SetinJail(false);
+                    playerList[i].setInJail(false);
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[20]);
                     playerList[i].setMoney(+-1);
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
@@ -202,7 +197,7 @@ public class GameBoard {
                 } else if(playerList[i].getInJail() && playerList[i].getJailCard())
                 {
                     playerList[i].setJailCard(false);
-                    playerList[i].SetinJail(false);
+                    playerList[i].setInJail(false);
                     fieldChance.getCards().add(playerList[i].getJailCardOject());
                     fieldChance.getCards().lastItemToFront();
                     playerList[i].removeJailCardObect();
@@ -221,8 +216,7 @@ public class GameBoard {
                 //loop to check if a player as reached 0
                 EndGame();
                 if(GameOver) break;
-                //Maybe use showmessage to make sure the correct player rolls?
-                //gui.showMessage(playerList.get(i).getName() + " has the die in his court");
+
 
                 //Guibutton to read the next user input
                 String ready = uiController.getGUI().getUserButtonPressed(uiController.getGuiPlayer(i).getName() + currentLang[14], currentLang[15]);
@@ -280,9 +274,6 @@ public class GameBoard {
                     //Checks if player lands on Property and updates GUI with owner
                     if(myFields[playerList[i].getPosition()] instanceof Properties) {
                     uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition());
-                    //Mulige måder at holde styr på spiller-ejet felter?
-                    //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
-                    //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
 
                     //Part 2 of landOnField test
                     System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
