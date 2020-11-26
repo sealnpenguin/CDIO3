@@ -124,6 +124,8 @@ public class Player{
         }
         return tester;
     }
+    //public int getTotalPropertyValue(){
+    //}
 
     public void SetinJail(boolean inJail)
     {
@@ -139,6 +141,7 @@ public class Player{
 
     //Return array with players properties
     public Boolean[] getmyProperties(){
+
         return myProperties;
     }
 

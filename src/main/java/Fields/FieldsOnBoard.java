@@ -84,6 +84,15 @@ public class FieldsOnBoard {
 
     }
 
+    @Override
+    public String toString() {
+        String fieldString = "";
+        for (int i = 0; i < fieldArr.length; i++) {
+            fieldString+= fieldArr[i].getFieldName() + ": " + fieldArr[i].getFieldDescription()+"\n";
+        }
+        return fieldString;
+    }
+
     public Field[] getFieldArr(){
         return this.fieldArr;
     }

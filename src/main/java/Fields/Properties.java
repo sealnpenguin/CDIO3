@@ -44,6 +44,21 @@ public class Properties extends Field {
             players[this.getOwnedBy()].setMoney(this.getPrice() * priceMulti);
         }
     }
+    public int getTotalPropertyValue(Player[] players, int player, Field[] fields)
+    {
+        int propertiesTotalValue = 0;
+        for (int i = 1; i <= 23; i++) {
+            if (i % 3 == 0 )
+            {
+                continue;
+            }
+            if (((Properties) fields[i]).getOwnedBy() == player){
+               propertiesTotalValue += ((Properties) fields[i]).getPrice();
+            }
+
+        }
+        return propertiesTotalValue;
+    }
 
     public String getFieldName() {
         return fieldName;
