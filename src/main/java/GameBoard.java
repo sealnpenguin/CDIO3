@@ -118,8 +118,13 @@ public class GameBoard {
                         lastmax = j;
                     }
                     else if (a[j] == max){
+                        System.out.println("player: " + j + "property value: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " property value: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
                         if (((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) > ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields)){
                             uiController.getGuiPlayer(j).setBalance(max + 1);
+                            max = a[j];
+                        }
+                        else{
+                            uiController.getGuiPlayer(lastmax).setBalance(max+1);
                             max = a[j];
                         }
                     }
