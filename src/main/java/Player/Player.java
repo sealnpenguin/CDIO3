@@ -7,7 +7,6 @@ public class Player{
     private String name;
     private Boolean inJail;
     private boolean JailCard;
-    private Boolean[] myProperties = new Boolean[11]; //Players properties (Max properties is 12)
     private int Position, oldposition;
     private Wallet wallet = new Wallet();
     private DynamicArr<Cards> cardArray = new DynamicArr<Cards>();
@@ -61,13 +60,6 @@ public class Player{
     public void setName(String Name){
         this.name = Name;
     }
-    public void setMyProperties(int k, boolean tf)
-    {
-        if (tf)
-        myProperties[k] = true;
-        else
-            myProperties[k] = false;
-    }
 
     //adds or remove jailcard(s) to a player
     public void setJailCard(boolean jailCard) {
@@ -83,7 +75,7 @@ public class Player{
     public Cards getPlayerSpecific(){
         for (int i = 0; i < cardArray.size; i++) {
             String tester = cardArray.atIndex(i).getCardText().substring(0,2);
-            if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
+            if(cardArray.atIndex(i) instanceof PlayerSpecific){
                 return this.cardArray.atIndex(i);
             }
         }
@@ -93,7 +85,7 @@ public class Player{
     public void removePlayerSpecific(){
         for (int i = 0; i < cardArray.size; i++) {
             String tester = cardArray.atIndex(i).getCardText().substring(0,2);
-            if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
+            if(cardArray.atIndex(i) instanceof PlayerSpecific){
                 this.cardArray.removeAt(i);
             }
         }
@@ -124,13 +116,7 @@ public class Player{
         }
         return tester;
     }
-    //public int getTotalPropertyValue(){
-    //}
 
-    public void SetinJail(boolean inJail)
-    {
-        this.inJail = inJail;
-    } //slet?
     public void setInJail(boolean input){
         this.inJail = input;
     }
@@ -139,11 +125,6 @@ public class Player{
         return inJail;
     }
 
-    //Return array with players properties
-    public Boolean[] getmyProperties(){
-
-        return myProperties;
-    }
 
     public int getMoney(){
         return wallet.getMoney();
