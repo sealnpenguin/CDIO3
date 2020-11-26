@@ -107,6 +107,8 @@ public class GameBoard {
             if (uiController.getGuiPlayer(k).getBalance() <= endGameIf) {
                 int[] a = new int[numberOfPlayers];
                 int max = 0;
+                int lastmax = 0;
+                int maxval1 = 0, maxval2 = 0;
                 GameOver = true;
                 uiController.getGUI().showMessage("Gameover! " + uiController.getGuiPlayer(k).getName() + currentLang[12]);
 
@@ -115,6 +117,12 @@ public class GameBoard {
                     a[j] = uiController.getGuiPlayer(j).getBalance();
                     if (a[j] > max) {
                         max = a[j];
+                        lastmax = j;
+                    }
+                    else if (a[j] == max){
+                        if (((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) > ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields)){
+                            max = a[j];
+                        }
                     }
                 }
                 // second loop to announce winner
