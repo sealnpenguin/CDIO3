@@ -134,12 +134,12 @@ public class GameBoard {
     }
 
     private void ChooseColor(){
-        String[] choiceArr = Arrays.copyOfRange(currentLang, 4, 11);
+        String[] choiceArr = Arrays.copyOfRange(currentLang, 4, 12);
         String[] temp;
         String color;
         for (int i = 0; i < playerList.length; i++) {
             color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3], choiceArr);
-            if(lang.equals("English")) {
+            if(lang.equals("WIP English")) {
                 switch (color) {
                     case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
                     case "BLACK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
@@ -160,6 +160,7 @@ public class GameBoard {
                     case "CYAN" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.CYAN);
                     case "GUL" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.YELLOW);
                     case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.WHITE);
+                    //case "HVID" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.);
                 }
             }
             temp = new String[choiceArr.length-1];
