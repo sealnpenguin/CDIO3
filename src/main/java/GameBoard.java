@@ -24,15 +24,17 @@ public class GameBoard {
 
 
 
-
-    private final FieldsOnBoard f1 = new FieldsOnBoard();
-    private final Field[] myFields = f1.getFieldArr();
+    private FieldsOnBoard f1;
+    private Field[] myFields;
     private UIController uiController;
     private String[] currentLang;
-    FieldChance fieldChance = (FieldChance) myFields[3];
+    FieldChance fieldChance;
 
 
     public void Game() {
+        f1 = new FieldsOnBoard();
+        myFields = f1.getFieldArr();
+        fieldChance = (FieldChance) myFields[3];
         ((FieldChance)myFields[3]).mixCards();
         uiController = new UIController(myFields);
         GameOver = false;
