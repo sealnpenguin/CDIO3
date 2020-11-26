@@ -7,17 +7,15 @@ import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
-import Fields.*;
-import Player.*;
+
 
 public class UIController {
     private GUI gui;
     private GUI_Player[] guiPlayers;
-
-
     // Constructer that automatically generates GUI with all the players
     public UIController(Field[] fields){
-        this.gui = new GUI(UIFieldGen(fields));
+        Color BgColor = new Color(99, 90, 75);
+        this.gui = new GUI(UIFieldGen(fields), BgColor);
     }
 
     public UIController(Player[] players, Field[] fields){
@@ -51,7 +49,7 @@ public class UIController {
                 guiFields[i] = new GUI_Start(((FieldStart) fieldArray[i]).getFieldName(), ((FieldStart) fieldArray[i]).getFieldDescription(), ((FieldStart) fieldArray[i]).getFieldDescription(), Color.white, Color.BLACK);
             }
             else if(fieldArray[i] instanceof FieldChance) {
-                guiFields[i] = new GUI_Chance(((FieldChance) fieldArray[i]).getFieldName(), ((FieldChance) fieldArray[i]).getFieldDescription(), ((FieldChance) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+                guiFields[i] = new GUI_Chance(((FieldChance) fieldArray[i]).getFieldName(), ((FieldChance) fieldArray[i]).getFieldDescription(), ((FieldChance) fieldArray[i]).getFieldDescription(), Color.WHITE, Color.BLACK);
 
             }
             else if(fieldArray[i] instanceof Jail) {
@@ -59,6 +57,7 @@ public class UIController {
             }
             else if(fieldArray[i] instanceof Properties) {
                 Color color, txtcolor;
+                Color OrangeColor = new Color(207, 151, 23);
                 txtcolor = Color.black;
                 color = Color.red;
 
@@ -79,7 +78,7 @@ public class UIController {
                     color = Color.yellow;
                 }
                 else if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("orange")){
-                    color = Color.orange;
+                    color = OrangeColor;
                 }
                 else if(((Properties)((Properties) fieldArray[i])).getFieldColor().equals("lyseblå")){
                     color = Color.cyan;
@@ -88,13 +87,13 @@ public class UIController {
                     color = Color.green;
                 }
 
-                guiFields[i] = new GUI_Street(((Properties) fieldArray[i]).getFieldName(), ((Properties) fieldArray[i]).getFieldDescription(), ((Properties) fieldArray[i]).getFieldDescription(), String.valueOf(((Properties) fieldArray[i]).getPrice()), color, txtcolor);
+                guiFields[i] = new GUI_Street(((Properties) fieldArray[i]).getFieldName(), ((Properties) fieldArray[i]).getFieldDescription(), (fieldArray[i]).getFieldName(), String.valueOf(((Properties) fieldArray[i]).getPrice()), color, txtcolor);
             }
             else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("I fængsel")) {
                 guiFields[i] = new GUI_Jail("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
             }
             else if(fieldArray[i] instanceof FieldInfo && ((FieldInfo)fieldArray[i]).getFieldName().equals("Gratis")) {
-                guiFields[i] = new GUI_Refuge("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.RED, Color.BLACK);
+                guiFields[i] = new GUI_Refuge("default",((FieldInfo) fieldArray[i]).getFieldName(), ((FieldInfo) fieldArray[i]).getFieldDescription(), ((FieldInfo) fieldArray[i]).getFieldDescription(), Color.WHITE, Color.BLACK);
             }
 
         }

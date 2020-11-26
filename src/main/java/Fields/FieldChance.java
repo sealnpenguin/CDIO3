@@ -7,6 +7,7 @@ import java.util.Random;
 public class FieldChance extends Field {
 
     private DynamicArr<Cards> cards = new DynamicArr<Cards>();
+    private CardInfo info = new CardInfo();
 
     public FieldChance(){
         super("?", "Tag et chancekort");
@@ -25,7 +26,7 @@ public class FieldChance extends Field {
     public void takeChanceCard(Player[] players, int player, Field[] fields, int choice){
         cards.getLast().drawCard(players, player, fields, choice);
         //Checks if chance card is getOutOfJail and removes it from stack of cards if so
-        if(cards.getLast() instanceof GetOutOfJail){
+        if(cards.getLast() instanceof GetOutOfJail || cards.getLast() instanceof PlayerSpecific){
             cards.removeAt(cards.size-1);
         }
         else{cards.lastItemToFront();
@@ -36,7 +37,6 @@ public class FieldChance extends Field {
     //Method that generates a set of cards from cardInfo
     //Get out of jail card excluded parameter is false
     public void generateChanceCards(boolean jail){
-        CardInfo info = new CardInfo();
         cards = new DynamicArr<Cards>();
         String temp;
         for (int i = 0; i < info.getText().length; i++) {

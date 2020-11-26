@@ -36,5 +36,17 @@ class PropertiesTest {
         players[2].setSpecificPosition(5);
         ((Properties)fields[5]).landOnField(players, 2, fields);
         assertEquals(2, ((Properties)fields[5]).getOwnedBy());
+        //
+//       for (int i = 1; i <= 23; i++) {
+//           if (i % 3 == 0 )
+//            {
+//                continue;
+//           }
+//            System.out.println(((Properties) fields[i]).getOwnedBy());
+//        }
+
+        System.out.println(((Properties)fields[2]).getTotalPropertyValue(players, 2, fields));
+
+
     }
 }
