@@ -7,13 +7,13 @@ import ViewLayer.UIController;
 import java.awt.*;
 import java.util.Arrays;
 
-/*
-//**************************************************!!!Throughts!!!********************************************************
-- Måske gør så man kan se hvem der betaler til hvem i.e. Jens Betaler 1M Til Mads for at blive natten over.
-- Opdel gameboard i flere metoder? se evt steder med mange ****
-- Optimer hele gameboard??
+
+//**************************************************!!!Thoughts!!!******************************************************
+// TODO: 26-11-2020  - Maybe make it so you can see who pays to whom i.e. Jens pays 1M to Mads to stay overnight.
+// TODO: 26-11-2020  - Divide gameboard into several methods? see possibly places with many ****
+// TODO: 26-11-2020  - Optimize the entire gameboard ??
 //**********************************************************************************************************************
-*/
+
 
 public class GameBoard {
     private boolean GameOver = false;
@@ -140,12 +140,12 @@ public class GameBoard {
     }
 
     private void ChooseColor(){
-        String[] choiceArr = Arrays.copyOfRange(currentLang, 4, 11);
+        String[] choiceArr = Arrays.copyOfRange(currentLang, 4, 12);
         String[] temp;
         String color;
         for (int i = 0; i < playerList.length; i++) {
             color = uiController.getGUI().getUserSelection(uiController.getGuiPlayer(i).getName()+currentLang[3], choiceArr);
-            if(lang.equals("English")) {
+            if(lang.equals("WIP English")) {
                 switch (color) {
                     case "RED" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.RED);
                     case "BLACK" -> uiController.getGuiPlayer(i).getCar().setPrimaryColor(Color.BLACK);
