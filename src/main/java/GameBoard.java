@@ -119,6 +119,7 @@ public class GameBoard {
                     }
                     else if (a[j] == max){
                         if (((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) > ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields)){
+                            uiController.getGuiPlayer(j).setBalance(max + 1);
                             max = a[j];
                         }
                     }
