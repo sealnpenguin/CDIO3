@@ -49,7 +49,7 @@ public class FieldsOnBoard {
                     this.fieldArr[i] = new FieldChance();
 
                 }
-                //makes all chanceFields the reference
+                //makes all chanceFields the same object reference
                 else{fieldArr[i] = fieldArr[3];}
 
 
