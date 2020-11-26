@@ -351,6 +351,7 @@ public class GameBoard {
             }
             fieldsToChose = new int[otherPlayersFields];
             chooseFieldArray = new String[otherPlayersFields];
+            //Fills chooseFieldArray with other players' fields
             for (int i = 0; i < myFields.length; i++) {
                 if(myFields[i] instanceof Properties){
                     if(((Properties)myFields[i]).getOwnedBy() != player){
@@ -373,7 +374,7 @@ public class GameBoard {
             playerList[((Properties)myFields[choiceInt]).getOwnedBy()].setMoney(((Properties)myFields[choiceInt]).getPrice());
             ((Properties)myFields[choiceInt]).setOwnedBy(player);
         }
-
+        //After choice has been made and internal state of player + field has been changed this runs and updates UI
         ((Properties)myFields[playerList[player].getPosition()]).landOnField(playerList, player, myFields);
         fieldChance.getCards().add(playerList[player].getPlayerSpecific());
         fieldChance.getCards().lastItemToFront();
