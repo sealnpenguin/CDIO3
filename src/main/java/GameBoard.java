@@ -83,7 +83,7 @@ public class GameBoard {
             switch (numberOfPlayers) {
                 case 2 -> player.setMoney(20);
                 case 3 -> player.setMoney(18);
-                case 4 -> player.setMoney(1600);
+                case 4 -> player.setMoney(16);
             }
             playerList[i - 1] = player;
 
