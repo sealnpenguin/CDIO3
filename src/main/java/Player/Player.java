@@ -75,7 +75,7 @@ public class Player{
     public Cards getPlayerSpecific(){
         for (int i = 0; i < cardArray.size; i++) {
             String tester = cardArray.atIndex(i).getCardText().substring(0,2);
-            if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
+            if(cardArray.atIndex(i) instanceof PlayerSpecific){
                 return this.cardArray.atIndex(i);
             }
         }
@@ -85,7 +85,7 @@ public class Player{
     public void removePlayerSpecific(){
         for (int i = 0; i < cardArray.size; i++) {
             String tester = cardArray.atIndex(i).getCardText().substring(0,2);
-            if(tester.equals("1:") || tester.equals("6:") || tester.equals("12") || tester.equals("13")){
+            if(cardArray.atIndex(i) instanceof PlayerSpecific){
                 this.cardArray.removeAt(i);
             }
         }

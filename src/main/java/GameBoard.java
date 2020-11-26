@@ -35,14 +35,14 @@ public class GameBoard {
         f1 = new FieldsOnBoard();
         myFields = f1.getFieldArr();
         fieldChance = (FieldChance) myFields[3];
-        ((FieldChance)myFields[3]).mixCards();
+        fieldChance.mixCards();
         uiController = new UIController(myFields);
         GameOver = false;
         lang = uiController.getGUI().getUserButtonPressed("", /*"WIP English",*/ "Dansk");
         Language langSelector = new Language(lang);
         currentLang = langSelector.returnLang();
         playerList = new Player[SetPlayerAmount()];
-        fieldChance.mixCards();
+
 
         PlayerCreator();
         uiController.addPlayers(playerList);
@@ -83,7 +83,7 @@ public class GameBoard {
             switch (numberOfPlayers) {
                 case 2 -> player.setMoney(20);
                 case 3 -> player.setMoney(18);
-                case 4 -> player.setMoney(16);
+                case 4 -> player.setMoney(1600);
             }
             playerList[i - 1] = player;
 
@@ -180,7 +180,7 @@ public class GameBoard {
 
     private void GameFlow(){
         while (!GameOver) {
-            // Change turn loop
+
             for (int i = 0; i < playerList.length; i++) {
                 // Gotta update Money here to make sure the gui displays the correct amount.
                 for (int j = 0; j < playerList.length; j++) {
@@ -365,7 +365,7 @@ public class GameBoard {
                     choiceInt = j;
                 }
             }
-            playerList[player].setPosition(choiceInt);
+            playerList[player].setSpecificPosition(choiceInt);
             playerList[player].setMoney(-((Properties)myFields[choiceInt]).getPrice());
             playerList[((Properties)myFields[choiceInt]).getOwnedBy()].setMoney(((Properties)myFields[choiceInt]).getPrice());
             ((Properties)myFields[choiceInt]).setOwnedBy(player);
@@ -374,7 +374,8 @@ public class GameBoard {
         ((Properties)myFields[playerList[player].getPosition()]).landOnField(playerList, player, myFields);
         fieldChance.getCards().add(playerList[player].getPlayerSpecific());
         fieldChance.getCards().lastItemToFront();
-        playerList[player].removePlayerSpecific();
+
+
         uiController.updateGUIFieldOwner(playerList , myFields, playerList[player].getPosition());
         uiController.updateGUIPlayerPos(playerList[player], playerList[player].getOldposition(), playerList[player].getPosition());
     }
