@@ -100,8 +100,7 @@ public class GameBoard {
             if (uiController.getGuiPlayer(k).getBalance() <= endGameIf) {
                 int[] a = new int[numberOfPlayers];
                 int max = 0;
-                int lastmax = 0;
-                int maxval1 = 0, maxval2 = 0;
+                int lastmax = max;
                 GameOver = true;
                 uiController.getGUI().showMessage("Gameover! " + uiController.getGuiPlayer(k).getName() + currentLang[12]);
 
@@ -112,15 +111,21 @@ public class GameBoard {
                         max = a[j];
                         lastmax = j;
                     }
+                    //if 2 players have the same amount of money at the end of the game
                     else if (a[j] == max){
-                        System.out.println("player: " + j + " propertyvalue: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " propertyvalue: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
+                        uiController.getGUI().showMessage("player: " + j + " propertyvalue: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " propertyvalue: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
+                        //System.out.println("player: " + j + " propertyvalue: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " propertyvalue: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
                         if (((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) > ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields)){
                             uiController.getGuiPlayer(j).setBalance(max + 1);
                             max = a[j];
                         }
-                        else{
+                        else if ((((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) < ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields))){
                             uiController.getGuiPlayer(lastmax).setBalance(max+1);
                             max = a[j];
+                        }
+                        else
+                        {
+                            uiController.getGUI().showMessage("begge spillere har samme værdi i egendomme... I begge vinder!!!");
                         }
                     }
                 }
@@ -231,7 +236,7 @@ public class GameBoard {
 
                     }
                     //Part 1 of landOnField test see part 2
-                    System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
+                    //System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
 
 
 
@@ -276,7 +281,7 @@ public class GameBoard {
                     uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition());
 
                     //Part 2 of landOnField test
-                    System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
+                    //System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
 
                     //we use set balance here to update the gui
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
