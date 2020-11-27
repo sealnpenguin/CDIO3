@@ -1,1 +1,1 @@
-java -jar CDIO3Game.jar
+java -jar CDIO3.jar
