@@ -44,6 +44,7 @@ public class Properties extends Field {
             players[this.getOwnedBy()].setMoney(this.getPrice() * priceMulti);
         }
     }
+    //methode for when 2 players have the same amount of money in the end of the game
     public int getTotalPropertyValue(Player[] players, int player, Field[] fields)
     {
         int propertiesTotalValue = 0;

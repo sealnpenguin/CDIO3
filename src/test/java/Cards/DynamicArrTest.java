@@ -61,10 +61,11 @@ class DynamicArrTest {
     @Test
     void removeAt() {
         DynamicArr<Integer> arr = new DynamicArr();
-        arr.add(5);
-        arr.add(15);
+        for (int i = 0; i < 20; i++) {
+            arr.add(i);
+        }
         arr.print();
-        arr.removeAt(0);
+        arr.removeAt(15);
         arr.print();
     }
     @Test

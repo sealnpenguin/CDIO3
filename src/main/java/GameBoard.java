@@ -35,24 +35,19 @@ public class GameBoard {
         f1 = new FieldsOnBoard();
         myFields = f1.getFieldArr();
         fieldChance = (FieldChance) myFields[3];
-        ((FieldChance)myFields[3]).mixCards();
+        fieldChance.mixCards();
         uiController = new UIController(myFields);
         GameOver = false;
         lang = uiController.getGUI().getUserButtonPressed("", /*"WIP English",*/ "Dansk");
         Language langSelector = new Language(lang);
         currentLang = langSelector.returnLang();
         playerList = new Player[SetPlayerAmount()];
-        fieldChance.mixCards();
+
 
         PlayerCreator();
         uiController.addPlayers(playerList);
 
         ChooseColor();
-
-        //Fast way to test jail functionality
-        //playerList[3].setInJail(true);
-        //playerList[3].setJailCard(true);
-
         GameFlow();
 
     }
@@ -105,8 +100,7 @@ public class GameBoard {
             if (uiController.getGuiPlayer(k).getBalance() <= endGameIf) {
                 int[] a = new int[numberOfPlayers];
                 int max = 0;
-                int lastmax = 0;
-                int maxval1 = 0, maxval2 = 0;
+                int lastmax = max;
                 GameOver = true;
                 uiController.getGUI().showMessage("Gameover! " + uiController.getGuiPlayer(k).getName() + currentLang[12]);
 
@@ -117,15 +111,21 @@ public class GameBoard {
                         max = a[j];
                         lastmax = j;
                     }
+                    //if 2 players have the same amount of money at the end of the game
                     else if (a[j] == max){
-                        System.out.println("player: " + j + " propertyvalue: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " propertyvalue: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
+                        uiController.getGUI().showMessage("player: " + j + " propertyvalue: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " propertyvalue: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
+                        //System.out.println("player: " + j + " propertyvalue: " + ((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) + " player: " + lastmax + " propertyvalue: " +((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields));
                         if (((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) > ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields)){
                             uiController.getGuiPlayer(j).setBalance(max + 1);
                             max = a[j];
                         }
-                        else{
+                        else if ((((Properties) myFields[2]).getTotalPropertyValue(playerList,j, myFields) < ((Properties) myFields[2]).getTotalPropertyValue(playerList,lastmax, myFields))){
                             uiController.getGuiPlayer(lastmax).setBalance(max+1);
                             max = a[j];
+                        }
+                        else
+                        {
+                            uiController.getGUI().showMessage("begge spillere har samme værdi i egendomme... I begge vinder!!!");
                         }
                     }
                 }
@@ -185,7 +185,7 @@ public class GameBoard {
 
     private void GameFlow(){
         while (!GameOver) {
-            // Change turn loop
+
             for (int i = 0; i < playerList.length; i++) {
                 // Gotta update Money here to make sure the gui displays the correct amount.
                 for (int j = 0; j < playerList.length; j++) {
@@ -194,7 +194,7 @@ public class GameBoard {
                 //************************************JAIL************************************
                 if(playerList[i].getInJail() && !playerList[i].getJailCard())
                 {
-                    playerList[i].SetinJail(false);
+                    playerList[i].setInJail(false);
                     uiController.getGUI().showMessage(playerList[i].getName() + currentLang[20]);
                     playerList[i].setMoney(+-1);
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
@@ -202,7 +202,7 @@ public class GameBoard {
                 } else if(playerList[i].getInJail() && playerList[i].getJailCard())
                 {
                     playerList[i].setJailCard(false);
-                    playerList[i].SetinJail(false);
+                    playerList[i].setInJail(false);
                     fieldChance.getCards().add(playerList[i].getJailCardOject());
                     fieldChance.getCards().lastItemToFront();
                     playerList[i].removeJailCardObect();
@@ -221,8 +221,7 @@ public class GameBoard {
                 //loop to check if a player as reached 0
                 EndGame();
                 if(GameOver) break;
-                //Maybe use showmessage to make sure the correct player rolls?
-                //gui.showMessage(playerList.get(i).getName() + " has the die in his court");
+
 
                 //Guibutton to read the next user input
                 String ready = uiController.getGUI().getUserButtonPressed(uiController.getGuiPlayer(i).getName() + currentLang[14], currentLang[15]);
@@ -237,7 +236,7 @@ public class GameBoard {
 
                     }
                     //Part 1 of landOnField test see part 2
-                    System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
+                    //System.out.println(playerList[i].getName() + " before landing on field: " + playerList[i].getMoney());
 
 
 
@@ -280,12 +279,9 @@ public class GameBoard {
                     //Checks if player lands on Property and updates GUI with owner
                     if(myFields[playerList[i].getPosition()] instanceof Properties) {
                     uiController.updateGUIFieldOwner(playerList, myFields, playerList[i].getPosition());
-                    //Mulige måder at holde styr på spiller-ejet felter?
-                    //uiController.getGUI().getFields()[1].setBackGroundColor(Color.blue);
-                    //uiController.getGUI().getFields()[1].setForeGroundColor(Color.blue);
 
                     //Part 2 of landOnField test
-                    System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
+                    //System.out.println(playerList[i].getName() + " after landing on field: " + playerList[i].getMoney());
 
                     //we use set balance here to update the gui
                     uiController.getGuiPlayer(i).setBalance(playerList[i].getMoney());
@@ -374,7 +370,7 @@ public class GameBoard {
                     choiceInt = j;
                 }
             }
-            playerList[player].setPosition(choiceInt);
+            playerList[player].setSpecificPosition(choiceInt);
             playerList[player].setMoney(-((Properties)myFields[choiceInt]).getPrice());
             playerList[((Properties)myFields[choiceInt]).getOwnedBy()].setMoney(((Properties)myFields[choiceInt]).getPrice());
             ((Properties)myFields[choiceInt]).setOwnedBy(player);
@@ -383,7 +379,8 @@ public class GameBoard {
         ((Properties)myFields[playerList[player].getPosition()]).landOnField(playerList, player, myFields);
         fieldChance.getCards().add(playerList[player].getPlayerSpecific());
         fieldChance.getCards().lastItemToFront();
-        playerList[player].removePlayerSpecific();
+
+
         uiController.updateGUIFieldOwner(playerList , myFields, playerList[player].getPosition());
         uiController.updateGUIPlayerPos(playerList[player], playerList[player].getOldposition(), playerList[player].getPosition());
     }

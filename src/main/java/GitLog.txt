@@ -1,3 +1,10 @@
+samme slut penge 2.o Martin 9 minutes ago
+ændret playerMoney tilbage til 16 ved 4 spillere Sealnpenguin 18 minutes ago
+Har løst fejl hvor player returnere null til cardarray som medføre nullpointer exception Sealnpenguin 20 minutes ago
+Har fjernet ubrugte metoder samt udkommenteret kode Sealnpenguin Today 15:03
+Merge remote-tracking branch 'origin/Development' into Development Sealnpenguin Today 13:56
+Opdateret kommentar inde i FieldsOnBoard Sealnpenguin Today 13:56
+Lavet Gitlog og JarFil zPadduz Today 13:34
 Merge remote-tracking branch 'origin/Development' into master zPadduz 5 minutes ago
 Sidste små rettelserp p1 zPadduz 8 minutes ago
 Merge remote-tracking branch 'origin/Development' into Development zPadduz 44 minutes ago

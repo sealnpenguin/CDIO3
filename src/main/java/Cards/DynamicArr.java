@@ -17,7 +17,7 @@ public class DynamicArr<T> {
     }
 
     // Function to add element to the back of the array
-    // we multiply the size of the array everytime it has reached the limit.
+    // we add the size of the array      everytime it has reached the limit.
     public void add(T data) {
         if (size == current) {
             T[] newarr = (T[]) new Object[1 + size];

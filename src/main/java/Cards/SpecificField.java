@@ -22,13 +22,13 @@ public class SpecificField extends Cards
                 players[player].setSpecificPosition(0);
                 break;
 
-
+            //Gå til strandpromenaden
             case("11"):
                 Properties p1 = ((Properties)fields[23]);
                 players[player].setSpecificPosition(23);
                 p1.landOnField(players, player, fields);
                 break;
-
+            //Gå til skateparken
             case("18"):
                 Properties p2 = ((Properties)fields[10]);
                 players[player].setSpecificPosition(10);
